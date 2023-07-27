@@ -89,7 +89,7 @@ Conteúdo texto de um arquivo.
 ```
 cat arquivo.txt
 ```
-#### Exemplo 2 - Mostrando variável de ambiente:
+#### Exemplo 2 - Chamando variável de ambiente:
 ```
 cat $HOME/.gitconfig
 ```

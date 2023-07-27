@@ -94,7 +94,7 @@ cat arquivo.txt
 cat $HOME/.gitconfig
 ```
 
-## Comando GIT
+## Comandos GIT
 
 | Comando | Função |
 ----|----

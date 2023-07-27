@@ -37,9 +37,6 @@ cat $HOME/.gitconfig
 | cd | Sem parâmetros, volta pro home |
 | cat | Exibir o conteúdo de arquivos de texto |
 
-
-
-
 ### Explicação de avançar nos diretórios 
 
 Ao utilizar o ``cd ..`` volta para o diretório pai.
@@ -53,6 +50,7 @@ cat ../../../home/aluno/.gitconfig^C
 cat $HOME/.gitconfig
 cat ~/.gitconfig
 
+
 imprime variável
 echo $HOME
 
@@ -64,17 +62,11 @@ aluno: jvm$ echo $POO
 
 ### Comandos ls-cd-mkdir
 
-printenv Mostra todas as varívaeis.
-
-
-mkdir cria arquivo
-
-cd primeiro/
-
-
-ls -la Mostra oq tem dentro
-
-
+| Comando | Função |
+----|----
+| printenv | Mostra todas as varívaeis |
+| mkdir | Criar um arquivo |
+| ls -la | Mostra o que tem dentro do arquivo |
 
 (> rediresiona p onde sai a msg)
 echo "Olá mundo" > ola.txt

@@ -1,49 +1,57 @@
-## Anotações
+# Introdução 1 - Terminal e Git
 
-
+###  Usuário associado a commits
+```
+git config --global user.name "Luiza Kuze" 
+git config --global user.email "luizakuze08@gmail.com"
 git config --global alias.tree "log --oneline --graph --decorate --all"
+```
 
+###  Mostrando variável de ambiente
 cat $HOME/.gitconfig
--> Variaǘel de ambiente
-/home/aluno
 
-~$   
+### Parte Inicial 
 
-$ Usuário regular
+|Símbolo|Significado|
+----|----
+| ~ | Diretório "home" |
+| $ | Usuário regular |
+| # | Superusuário |
 
-~   É o diretório "home"
+### Conceitos Diretórios
 
-pwd -> Lista diretorio que está ///////
+| x | Nomenclatura |
+----|----
+| . | Diretório atual |
+| .. | Diretório pai |
+| / ou c:/ | raíz |
+| /home/usuarios/luiza | Caminho absoluto para 'luiza' |
+| /||
+- O diretório atual também pode se chamar diretório relativo.
 
-cd -> Sem parâmetro, volta pro home
+### Comandos Terminal
 
-cd .. -> Sobe 
-
-cd /home/aluno -> Diretório absoluto (Smpre começa coma  raíz (/) (no windowns c::/)) //////
-
-. -> Diretório atual
-.. -> Diretório pai
-
-Diretório relativo -> Atual
-
-cd ../aluno -> volta p home se estiver no aluno //////
-
-/////////////
-
-cd /usr/lib/jvm
-
-cd ../../usr/lib/jvm
+| Comando | Função |
+----|----
+| pwd | Listar o diretório que está |
+| cd | Sem parâmetros, volta pro home |
+| cat | Exibir o conteúdo de arquivos de texto |
 
 
-cat -> listar conteudo de um arquivo
 
-cat /home/aluno/.gitconfig caminho absoluto
+
+### Explicação de avançar nos diretórios 
+
+Ao utilizar o ``cd ..`` volta para o diretório pai.
+
+Diretório atual: /home/aluno/ <br>
+Ao usar ``cd ..`` será levado para /home/
+
+### Maneiras de usar o comando "cat"
+cat /home/aluno/.gitconfig
 cat ../../../home/aluno/.gitconfig^C
 cat $HOME/.gitconfig
 cat ~/.gitconfig
-
-////////
-
 
 imprime variável
 echo $HOME
@@ -51,9 +59,10 @@ echo $HOME
 echo $SHELL
 mostra qual shell está usando
 
-aluno: jvm$ export POO="Aula"
+export POO="Aula"
 aluno: jvm$ echo $POO
 
+### Comandos ls-cd-mkdir
 
 printenv Mostra todas as varívaeis.
 
@@ -135,6 +144,57 @@ luno: primeiro$ git commit -m "Adicionando ola"
  create mode 100644 ola.txt
 
 
+///
 
+
+git config 
+
+cat $HOME/.gitconfig
+
+cd /tmp
+pwd
+cd
+
+cd /home/aluno
+
+cd ../home/aluno
+
+cd ../aluno
+
+cd ../home/aluno
+
+cd ../../usr/lib/jvm
+
+cat /home/aluno/.gitconfig
+
+echo $SHELL
+
+export POO = "Aula"
+
+echo $POO
+
+ls -la
+
+echo "Ola mundo" > ola.txt
+
+cat ola.txt
+
+git init
+
+git branch -m main
+
+cat ~/.gitconfig
+
+tree
+
+git add ola.txt
+
+git status
+
+git commit -m "adicionando ola"
+
+git tree
+
+git log
 
 

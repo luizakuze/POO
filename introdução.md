@@ -9,12 +9,14 @@ git config --global alias.tree "log --oneline --graph --decorate --all"
 
 ## Parte Inicial 
 
-### Simbologias 
+### Atalhos 
 
-| Comandos | Ação |
+| Atalhos | Ação |
 ----|----
 | ctrl + alt + T | Abre o terminal |
 | ctrl + j | Abre terminal no vscode |
+
+### Simbologias 
 
 |Símbolo|Significado|
 ----|----

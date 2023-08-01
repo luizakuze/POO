@@ -131,7 +131,8 @@ tira um arquivo do commit
 git restore --staged segundo.md
 
 
-
+to no main
+tras o dev 
 
 aluno: segundo$ git merge dev
 Auto-merging segundo.md

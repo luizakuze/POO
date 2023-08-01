@@ -105,6 +105,7 @@ cat $HOME/.gitconfig
 | git commit | Faz um commit |
 | git commit -m "Adicionando ola" | Faz um commit com mensagem |
 | git log | Mostra o histórico de commits |
+| git tree | Mostra o histórico de commits (- detalhado) |
 
 - **OBS:** (o comando 'git init' mostra que vamos controlar arquivos pelo git.
 

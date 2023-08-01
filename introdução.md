@@ -11,6 +11,11 @@ git config --global alias.tree "log --oneline --graph --decorate --all"
 
 ### Simbologias 
 
+| Comandos | Ação |
+----|----
+| ctrl + alt + T | Abre o terminal |
+| ctrl + j | Abre terminal no vscode |
+
 |Símbolo|Significado|
 ----|----
 | ~ | Diretório "home" |
@@ -98,16 +103,29 @@ cat $HOME/.gitconfig
 
 | Comando | Função |
 ----|----
+| code .  | Abre vscode no diretório atual |
+
+| Comando | Função |
+----|----
 | git init | Inicializar o git |
 | git branch -m main | Renomear a branch |
 | cat ~/.gitconfig | Mostra o arquivo de configuração global do Git | 
 | git status | Mostra o estado atual do repositório |
-| git commit | Faz um commit |
-| git commit -m "Adicionando ola" | Faz um commit com mensagem |
+| git add <arquivo> | Adiciona o arquivo ao ambiente git |
+| git commit <arquivo> | Faz um commit |
+| git commit -m "uma mensagem" | Faz um commit com mensagem |
 | git log | Mostra o histórico de commits |
 | git tree | Mostra o histórico de commits (- detalhado) |
-
-- **OBS:** (o comando 'git init' mostra que vamos controlar arquivos pelo git.
+| git checkout <branch> | Altera a branch do HEAD |
+| git checkout main | Altera para branch principal ||
+| git diff <arquivo> | Mostra alterações no arquivo não comitadas |
+| git branch | Mostra a branch atual |
+| git branch <branch> | Criando uma nova branch |
+| git checkout <branch> | Troca a branch atual |
+| git checkout -b <branch> | Cria e troca para branch atual |
+| git merge <branch>| Mesclar duas branchs |
+| git branch -d <branch> | Deleta a branch |
+| git restore --staged <arquivo> | Retira um arquivo do git |
 
 ### Comando cat ~/.gitconfig 
 ```
@@ -116,6 +134,59 @@ cat $HOME/.gitconfig
 	email = luizakuze08@gmail.com
 [alias]
 	tree = log --online --graph --decorate --all
+```
+### Fazendo um commit
+
+```
+git add primeiro.md
+git commit -m "Adicionando primeiro"
+```
+### Dois comando ao mesmo tempo
+- Se conseguir realizar o primeiro comando, o seguindo acontece em sequência.
+```
+git add arquivo.txt && git commit -m "Adicionando arquivo"
+```
+
+### Ao realizar algumas alterações e não dar git add
+```
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   primeiro.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+#### O que fazer:
+- `git add arquivo.txt`: Vai adicionar no git o arquivo com a última modificação.
+- `git restore arquivo.txt`: vai restaurar o arquivo para versão anterior sem modificações.
+#### Após isso, o ambiente deve estar da seguinte maneira:
+```
+On branch main
+nothing to commit, working tree clean
+```
+
+### Commits, HEAD e branchs
+- Cada commit tem uma identificação.
+- `HEAD`: É a branch atual. Ao usar o comando 'ls', o que vai aparecer são os arquivos do head.
+```
+git tree
+* 817ed09 (HEAD -> main) Adicionando terceiro
+* c278ee7 Adicionando segundo
+* 9b38b62 Adicionando primeiro
+```
+
+- Para mudar de branch:
+```
+git checkout 9b38b62
+```
+
+- O que mudou:
+```
+git tree
+* 817ed09 (main) Adicionando terceiro
+* c278ee7 Adicionando segundo
+* 9b38b62 (HEAD) Adicionando primeiro
 ```
 
 ### Comando git status
@@ -128,7 +199,6 @@ Your branch is up to date with 'origin/master'.
 
 nothing to commit, working tree clean
 ```
-
 #### Novo arquivo não rastreado 
 ```
 On branch master
@@ -140,3 +210,11 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
+
+## Vscode
+
+### Extensões
+- Extension Pack for Java
+- Gradle Extension Pack
+- Extensao GitLens — Git supercharg
+- Markdown github

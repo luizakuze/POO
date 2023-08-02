@@ -113,21 +113,21 @@ cat $HOME/.gitconfig
 | git branch -m main | Renomear a branch |
 | cat ~/.gitconfig | Mostra o arquivo de configuração global do Git | 
 | git status | Mostra o estado atual do repositório |
-| git add <arquivo> | Adiciona o arquivo ao ambiente git |
-| git commit <arquivo> | Faz um commit |
+| git add (arquivo) | Adiciona o arquivo ao ambiente git |
+| git commit (arquivo) | Faz um commit |
 | git commit -m "uma mensagem" | Faz um commit com mensagem |
 | git log | Mostra o histórico de commits |
 | git tree | Mostra o histórico de commits (- detalhado) |
-| git checkout <branch> | Altera a branch do HEAD |
+| git checkout (branch) | Altera a branch do HEAD |
 | git checkout main | Altera para branch principal ||
-| git diff <arquivo> | Mostra alterações no arquivo não comitadas |
+| git diff (arquivo) | Mostra alterações no arquivo não comitadas |
 | git branch | Mostra a branch atual |
-| git branch <branch> | Criando uma nova branch |
-| git checkout <branch> | Troca a branch atual |
-| git checkout -b <branch> | Cria e troca para branch atual |
-| git merge <branch>| Mesclar duas branchs |
-| git branch -d <branch> | Deleta a branch |
-| git restore --staged <arquivo> | Retira um arquivo do git |
+| git branch (branch) | Criando uma nova branch |
+| git checkout (branch) | Troca a branch atual |
+| git checkout -b (branch) | Cria e troca para branch atual |
+| git merge (branch) | Mesclar duas branchs |
+| git branch -d (branch) | Deleta a branch |
+| git restore --staged (arquivo) | Retira um arquivo do git |
 
 ### Comando cat ~/.gitconfig 
 ```
@@ -143,7 +143,7 @@ cat $HOME/.gitconfig
 git add primeiro.md
 git commit -m "Adicionando primeiro"
 ```
-### Dois comando ao mesmo tempo
+### Dois comandos ao mesmo tempo
 - Se conseguir realizar o primeiro comando, o seguindo acontece em sequência.
 ```
 git add arquivo.txt && git commit -m "Adicionando arquivo"

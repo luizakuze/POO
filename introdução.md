@@ -130,6 +130,10 @@ cat $HOME/.gitconfig
 | git merge (branch) | Mesclar duas branchs |
 | git branch -d (branch) | Deleta a branch |
 | git restore --staged (arquivo) | Retira um arquivo do git |
+| git clone | Abrir repositório no computador |
+
+push - local p remoto
+pull - remoto p local
 
 ### Comando cat ~/.gitconfig 
 ```

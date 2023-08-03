@@ -1,5 +1,7 @@
 # Introdução 1 - Terminal e Git
 
+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
+
 ##  Usuário associado a commits
 ```
 git config --global user.name "Luiza Kuze" 

@@ -135,7 +135,7 @@ cat $HOME/.gitconfig
 	name = Luiza Kuze
 	email = luizakuze08@gmail.com
 [alias]
-	tree = log --online --graph --decorate --all
+	tree = log --oneline --graph --decorate --all
 ```
 ### Fazendo um commit
 

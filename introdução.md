@@ -2,6 +2,14 @@
 
 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
 
+
+CamelCase
+pascalCase
+
+em c 
+snake_case
+Kebab-case pra criar repositorio
+
 ##  Usuário associado a commits
 ```
 git config --global user.name "Luiza Kuze" 

@@ -29,3 +29,15 @@ https://www.toptal.com/developers/gitignore/api/java,linux,windows,intellij,visu
 
 mudar p maina master
 git branch -M main
+
+
+
+aluno: terceiro$ git remote add origin https://github.com/luizakuze/aula-poo-git.git
+aluno: terceiro$ git remote -v
+origin	https://github.com/luizakuze/aula-poo-git.git (fetch)
+origin	https://github.com/luizakuze/aula-poo-git.git (push)
+aluno: terceiro$ 
+
+o U cria o ramo
+git push -u origin main
+

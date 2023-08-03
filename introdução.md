@@ -167,8 +167,17 @@ cat $HOME/.gitconfig
 | git push | Leva o repositório local para remoto |
 | git pull | Leva o repositório remoto para local |
 
+### Computador -> Github
+O caminho que deve ser feito para passar um projeto que está inicialmente somente na própria máquina para passar para o github em um novo repositório.
 
--> git pull - git add - git commit - git push -> ...
+1. Passo: Criar um novo repositório no github.
+
+2. Passo: Ter certeza que o ramo principal se chama "main" e NÃO "master. Caso esteja MASTER: `git branch -M main`
+
+3. Passo: Associar o repositório remoto com o novo do github: `git remote add origin (https://github.com/luizakuze/POO)`
+
+4. Passo: Empurrar os arquivos do computador para o github: `git push -u origin main`
+
 
 
 ### Comando cat ~/.gitconfig 
@@ -179,11 +188,13 @@ cat $HOME/.gitconfig
 [alias]
 	tree = log --oneline --graph --decorate --all
 ```
-### Fazendo um commit
+### Fazendo um commit simples
 
 ```
+git pull
 git add primeiro.md
 git commit -m "Adicionando primeiro"
+git push
 ```
 ### Dois comandos ao mesmo tempo
 - Se conseguir realizar o primeiro comando, o seguindo acontece em sequência.

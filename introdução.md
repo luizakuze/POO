@@ -178,6 +178,15 @@ O caminho que deve ser feito para passar um projeto que está inicialmente somen
 
 4. Passo: Empurrar os arquivos do computador para o github: `git push -u origin main`
 
+### Github -> Computador
+O caminho que deve ser feito para abrir na própria máquina (repositório local) o repositório remoto do Github.
+
+1. Passo: Clonar o projeto do Github `git clone (urlProjeto)`
+
+2. Passo: Acessar o diretório do projeto: `cd (nomeDiretorio)`
+
+3. Passo: Atualizar o repositório, para ter certeza que está na versão mais nova: `git pull`
+
 ### Problema de Sincronização do projeto
 Quando duas pessoas trabalham no mesmo projeto simultaneamente sem sincronizar (pull) e ambas fazem commits com a versão desatualizada, pode ocorrer um conflito. <br> Esse confluto pode ser resolvido da seguinte forma:
 

@@ -178,7 +178,22 @@ O caminho que deve ser feito para passar um projeto que está inicialmente somen
 
 4. Passo: Empurrar os arquivos do computador para o github: `git push -u origin main`
 
+### Problema de Sincronização do projeto
+Quando duas pessoas trabalham no mesmo projeto simultaneamente sem sincronizar (pull) e ambas fazem commits com a versão desatualizada, pode ocorrer um conflito. <br> Esse confluto pode ser resolvido da seguinte forma:
 
+1. Passo: Estar na branch main: `git checkout main`
+2. Passo: Sincronizar: `git pull origin main`
+3. Passo: Localizar o erro: `git status`
+4. Passo: Abrir o arquivo no editor e resolver o conflito manualmente. Aparece de uma maneira similar:
+```
+<<<<<<< HEAD
+Código da versão atual
+=======
+Código da versão conflitante
+>>>>>>> branch-conflitante
+```
+5. Passo: Com o problema resolvido, adicionar os arquivos para commit: `git add .` `git commit -m "Resolvendo onflitos entre as versões`
+6. Passo: Enviar as alterações: `git push origin main`
 
 ### Comando cat ~/.gitconfig 
 ```

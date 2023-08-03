@@ -58,6 +58,28 @@ git config --global alias.tree "log --oneline --graph --decorate --all"
 
 - **OBS:** Caso o gedit não encontre um arquivo existente com aquele nome, ele cria um.
 
+## Arquivo .gitignore
+Esse é um arquivo para escrever tudo o que deve ser ignorado no programa. <br> Uma boa prática é criar um arquivo ".gitignore" em todo novo repositório. 
+
+`*.class` - Aqui, vai ignorar todos os arquivos com extensão class.
+Isso deve estar em um gitignore de um projeto java, já que um arquivo.java já gera um arquivo.class.
+
+`!aula/*.log` - Se for dessa forma a escrita, fala para NÃO ignorar todos os arquios presentes com a extensão .log
+
+Existem muitos arquivos que ficam "sobrando" em um projeto, então para auxiliar existe a ferramenta: 
+
+```
+gitgnore.io
+```
+
+Um site que gera automaticamente um gitignore dependendo da necessidade do projeto.
+
+## Como criar mais de um diretório ao mesmo tempo
+- Utilizar o **-p**
+```
+mkdir -p poo/aula-01 poo/aula-02 poo/aula-03
+```
+
 ## Explicação de avançar nos diretórios 
 
 Ao utilizar o ``cd ..`` volta para o diretório pai.
@@ -114,12 +136,12 @@ cat $HOME/.gitconfig
 | Comando | Função |
 ----|----
 | code .  | Abre vscode no diretório atual |
+| cat ~/.gitconfig | Mostra o arquivo de configuração global do Git | 
 
 | Comando | Função |
 ----|----
 | git init | Inicializar o git |
 | git branch -m main | Renomear a branch |
-| cat ~/.gitconfig | Mostra o arquivo de configuração global do Git | 
 | git status | Mostra o estado atual do repositório |
 | git add (arquivo) | Adiciona o arquivo ao ambiente git |
 | git commit (arquivo) | Faz um commit |
@@ -136,10 +158,18 @@ cat $HOME/.gitconfig
 | git merge (branch) | Mesclar duas branchs |
 | git branch -d (branch) | Deleta a branch |
 | git restore --staged (arquivo) | Retira um arquivo do git |
-| git clone | Abrir repositório no computador |
+| git rm (arquivo) | Remove um arquivo do ambiente git |
+| git branch -m (novaBranch) | Renomeia o nome da branch atual |
 
-push - local p remoto
-pull - remoto p local
+| Comando | Função |
+----|----
+| git clone (urlRepositorio) | Abrir repositório no computador |
+| git push | Leva o repositório local para remoto |
+| git pull | Leva o repositório remoto para local |
+
+
+-> git pull - git add - git commit - git push -> ...
+
 
 ### Comando cat ~/.gitconfig 
 ```

@@ -2,13 +2,11 @@
 
 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
 
-
-CamelCase
-pascalCase
-
-em c 
-snake_case
-Kebab-case pra criar repositorio
+## Convenções da programação
+- `CamelCase`
+- `pascalCase`
+- `snake_case` - em C
+- `Kebab-case` - criar repositorio
 
 ##  Usuário associado a commits
 ```

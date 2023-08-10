@@ -62,9 +62,3 @@ org.gradle.logging.level=quiet
 
 
 ////
-
-CRLF
-
-   | lf
-<--- 
-cr

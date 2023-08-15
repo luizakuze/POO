@@ -20,7 +20,7 @@ _Durante as aulas, ocorreu um erro ao inicializar o Intellij (IDE utilizada), po
 Os pacotes servem para organizar a aplicação java. <br>
 Um pacote pode ser visto como um diretório do projeto.
 
-Os pacotes "enpacotam" classes.
+Os pacotes "empacotam" classes.
 
 Convensão:
 Utilizar o domínio da impresa invertido.

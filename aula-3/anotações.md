@@ -38,3 +38,13 @@ Para nossas aulas:<br>
 
 O caminho ficou da seguinte forma no projeto:
 `src/main/java/engtelecom/poo/Main.java`
+
+
+//////
+## Organização Gradle
+- resources: Arquivos de imagem.
+- gradle - wrapper - properties: Versão gradle.
+- gradle - wrapper - ...jar: Torna possível compilar e executar um .java sem q a máquina tenha jvm.
+`.jar`: Empacotar uma aplicação em java, um "zip".
+-gradelw: 
+

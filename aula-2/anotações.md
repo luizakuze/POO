@@ -54,11 +54,9 @@ src/main/java/engtelecom/poo/Main.java
 
 comando kill terminal
 
+## Retirar excesso de informações gradle
 
-//////
-arquivo gradel.properties
-org.gradle.console=plain
-org.gradle.logging.level=quiet
+arquivo gradel.properties <br> <br>
+org.gradle.console=plain <br>
+org.gradle.logging.level=quiet <br>
 
-
-////

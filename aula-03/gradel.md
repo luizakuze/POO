@@ -39,7 +39,6 @@ Onde criar o arquivo: `$HOME/.gradle/gradel.properties`
 | cat gradle/wrapper/gradle-wapper.properties | Ver a versão atual do gradle |
 
 ## Arquivo build.gradle
-arquivo build.gradle
 
 ### Dependências / dependencies
 Especifica as bibliotecas e dependências que o projeto requer para compilação e execução.
@@ -61,7 +60,6 @@ application {
 
 ### Repositório / repositories
 Indica de onde da internet pode baixar biliotecas de terceiros, caso elas não estejam ainda no projeto.
-
 
 ## Diferença Repositório x Dependência
 ### Repositórios
@@ -126,7 +124,7 @@ code .
 
 ## Empacotar aplicação Java
 
-- É entregue em um pacoto `.jar`
+- É entregue em um pacote com exntensão `.jar`
 
 O plugin 'application' provê 2 tarefas:
 
@@ -154,7 +152,6 @@ O plugin 'application' provê 2 tarefas:
 3) `cd app`
 4) Executar o script: `./bin/app`
 
-
-#### Copiar/Descompactar via terminal
+#### Revisão copiar/Descompactar via terminal
 - Copiar arquivo para o main (~): `cp app.zip ~`
 - Descompactar arquivo pelo terminal: `unzip app.zip`

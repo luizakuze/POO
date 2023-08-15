@@ -46,6 +46,11 @@ git config --global alias.tree "log --oneline --graph --decorate --all"
 | cat | Exibir o conteúdo de arquivos de texto |
 | echo | Exibir mensagem de texto e variáveis |
 | tree | Visualizar todos os diretórios a partir de um diretório específico |
+| ps aux | Lista os processos em execução no sistema |
+| kill -9 (processo) | Encerra um processo |
+
+
+_Durante as aulas, ocorreu um erro ao inicializar o Intellij (IDE utilizada), pois foi instalado utilizando o "snap" que pode ocasionar alguns erros para alguns programas instalados. Então, solucionamos o problema com o comando "kill" para encerrar o processo e abrir novamente a IDE._
 
 ### Comandos ls-cd-mkdir
 
@@ -56,7 +61,7 @@ git config --global alias.tree "log --oneline --graph --decorate --all"
 | gedit | Abre arquivo para edição |
 | ls -la | Mostra conteúdo do arquivo |
 
-- **OBS:** Caso o gedit não encontre um arquivo existente com aquele nome, ele cria um.
+_Caso o gedit não encontre um arquivo existente com aquele nome, ele cria um_
 
 ## Arquivo .gitignore
 Esse é um arquivo para escrever tudo o que deve ser ignorado no programa. <br> Uma boa prática é criar um arquivo ".gitignore" em todo novo repositório. 
@@ -197,7 +202,7 @@ Quando duas pessoas trabalham no mesmo projeto simultaneamente sem sincronizar (
 ```
 <<<<<<< HEAD
 Código da versão atual
-=======
+====== 
 Código da versão conflitante
 >>>>>>> branch-conflitante
 ```

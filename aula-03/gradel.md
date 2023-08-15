@@ -36,7 +36,7 @@ Onde criar o arquivo: `$HOME/.gradle/gradel.properties`
 | ./gradlew clean | Deletar arquivos temporários/script | 
 |./gradlew run | Executar a aplicação|
 | ./gradlew tasks | Listar tarefas possíveis | 
-
+| cat gradle/wrapper/gradle-wapper.properties | Ver a versão atual do gradle |
 
 ## Arquivo build.gradle
 arquivo build.gradle
@@ -130,47 +130,31 @@ code .
 
 O plugin 'application' provê 2 tarefas:
 
-1) distZip - Cria `app.zip` no subdiretório `build/distributions` que contém a JRE.
-2) installDist - Gera scripts em app/build/install/app que permite executar a aplicação.
+1) **distZip** - Cria `app.zip` no subdiretório `build/distributions` que contém a JRE.
+2) **installDist** - Gera scripts em app/build/install/app que permite executar a aplicação.
+
+> _Usar o **distZip** para distribuir o código para outras pessoas e usar o **installDist** para realizar meus próprios testes em meu computador_
 
 
+### Uso distZip
+1) No diretório do do projeto: `./gradlew distZip`
 
-distribuir o codigo 
-installDist - Installs the project as a distribution as-is.
-/gradlew installDist
-meio q cria e descompacta o zip
+- _Um zip da aplicação foi criado!_
 
-ls -lh
-total 2,8M
--rw-r--r-- 1 aluno aluno 2,7M ago 15 10:48 app.zip
-
- cp app.zip ~
-copia p home o zip
-
-descompactar arquivo pelo terminal
-unzip app.zip
+2) Descompactar zio: `unzip build/distributions/app.zip`
+3) Executar o script: `./bin/app`
 
 
-p executar aplicacao 
-  inflating: app/bin/app             
-  inflating: app/bin/app.bat         
-aluno: ~$ cd app/
-aluno: app$ ls
-bin  lib
-aluno: app$ ./bin/app
+### Uso InstallDist
+1) No diretório do do projeto: `./gradlew distInstall`
+
+- _Estrutura de diretórios da aplicação foi criada!_
+
+2) `cd build/install`
+3) `cd app`
+4) Executar o script: `./bin/app`
 
 
-cat gradle/wrapper/gradle-wapper.properties
-ver versao gradle
-
-
-baixar biblioteca internet
-dependencies {
-    
-    implementation 'org.fusesource.jansi:jansi:2.4.0' ///////////////
-    
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    implementation 'com.google.guava:guava:31.1-jre'
-}
-
+#### Copiar/Descompactar via terminal
+- Copiar arquivo para o main (~): `cp app.zip ~`
+- Descompactar arquivo pelo terminal: `unzip app.zip`

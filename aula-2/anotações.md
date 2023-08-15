@@ -60,3 +60,6 @@ arquivo gradel.properties <br> <br>
 org.gradle.console=plain <br>
 org.gradle.logging.level=quiet <br>
 
+Onde colocar o arquivo em casa:
+$HOME/.gradle/gradel.properties
+

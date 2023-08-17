@@ -155,3 +155,8 @@ O plugin 'application' provê 2 tarefas:
 #### Revisão copiar/Descompactar via terminal
 - Copiar arquivo para o main (~): `cp app.zip ~`
 - Descompactar arquivo pelo terminal: `unzip app.zip`
+
+
+/////////
+
+Sempre usar gradle init p criar, n pela idea

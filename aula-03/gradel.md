@@ -107,6 +107,8 @@ release)? (default: no) [yes, no] no
 ```
 ## Projeto Gradel - VScode
 
+_LEMBRETE: Criar o projeto com gradle via terminal durante as aulas!_
+
 1) Criar um diretório vazio e abrir com o VSCode:
 ```cmd
 mkdir projeto

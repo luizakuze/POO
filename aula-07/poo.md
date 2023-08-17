@@ -15,6 +15,22 @@ Um paradigma é uma abordagem/estilo de escrever um código de programação.
 - **Estado** - Características - `atributo`
 - **Comportamento** - Função - `método`
 
+Criando um objeto Caneta
+```java
+public class Caneta {
+
+    // Atributos ..
+
+    // Métodos ....
+}
+```
+
+Como trazer o objeto para o main? 
+"Quero criar uma caneta" 
+```java
+Caneta c = new Caneta();
+```
+
 Inicialmente...<br>
 Classes - PUBLIC <br>
 Atributos - PRIVATE <br>

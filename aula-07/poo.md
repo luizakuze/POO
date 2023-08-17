@@ -34,22 +34,24 @@ public class Pessoa {
 ```
 
 ### Getter 
-Poderiamos usar o getter para acessar o atributo.
+Poderiamos usar o getter para **acessar** o atributo.
 ```java
 public String getNome() {
     return nome;
 }
 ```
-  abobora
 ### Setter
-Além disso, utilizar o setter para modificar o atributo.
+Além disso, utilizar o setter para **modificar** o atributo.
 ```java
-    public void setNome(String novoNome) {
-        nome = novoNome;
+public void setNome(String novoNome) {
+    nome = novoNome;
+}
 ```
 
 ## Métodos
-Quando é preciso que esse objeto realize alguma função, é preciso criar um método para isso. <br> No exemplo abaixo, foi criado um método para uma classe chamada Calculadora.
+Quando é preciso que esse objeto realize alguma função, é preciso criar um método para isso. 
+
+No exemplo abaixo, foi criado um método para uma classe Calculadora. Uma calculadora tem funções como somar, subtrair, multiplicar e dividir. Assim, criamos um método para somar.
 ```java
 public class Calculadora {
     public int somar(int a, int b) {

@@ -15,5 +15,6 @@ Um paradigma é uma abordagem/estilo de escrever um código de programação.
 - **Estado** - Características - `atributo`
 - **Comportamento** - Função - `método`
 
-Classes - PUBLIC
-Atributos - PRIVATE
+Inicialmente...<br>
+Classes - PUBLIC <br>
+Atributos - PRIVATE <br>

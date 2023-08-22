@@ -1,5 +1,7 @@
 # Programação Orientada a Objetos
 
+# Parte 1
+
 _LEMBRETE: Comparar strings usando o equals `str1.equals(str2);`_
 
 ## Paradigmas
@@ -76,55 +78,41 @@ public class Calculadora {
 }
 ```
 
-//////
+---
 
-Caneta c; ((null))
-nao criou objeto 
+# Parte 2
+
+Não criando objeto
+```java
+Caneta c; // null
+```
+
+Criando objeto 
+```java
 Caneta c = new CAneta():
-criou objeto
+```
 
-
+Em, se uma variável inteira não é inicializada, ela começã com o valor 0
+```java
 int i; // guarda 0
+```
 
-
-tods as canetas azuis 
+Criando uma classe caneta que todas as canetas vão ser azuiz e com nível 100
+```java
 public class Caneta {
     
     // Atributos
     private String cor = "azul";
     private double nivelTinta = 100;
-
-
-    denarete source action
-
+```
 
 
 
-///////
+_Para criar o getter e o setter automáticos no vscode, utilizar o `Source Action`_
 
+## Encapsulamento
+Deixar dentro do método somente a lógica.
+Quem usar o metodo não precisa saber como funciona!
 
-encapsulamento
-
-deixar dentro do metodo da logica, quem usa o metodo nao precisa saber como funciona
-
-uml - antes de codificar
-
-
-
-exrcicio
-contador de pessoas
-
-girar - vai p zero
-
-atributo valorAtual
-
-...
-
-atribuir um valo
-incrementar o contador obter o atual valor do contador
-
-
-
-2) batedeira planetaria
-
-
+## uml
+Uma maneira simplificada de mostrar o código (antes de codificar).

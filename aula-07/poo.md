@@ -75,3 +75,56 @@ public class Calculadora {
     }
 }
 ```
+
+//////
+
+Caneta c; ((null))
+nao criou objeto 
+Caneta c = new CAneta():
+criou objeto
+
+
+int i; // guarda 0
+
+
+tods as canetas azuis 
+public class Caneta {
+    
+    // Atributos
+    private String cor = "azul";
+    private double nivelTinta = 100;
+
+
+    denarete source action
+
+
+
+
+///////
+
+
+encapsulamento
+
+deixar dentro do metodo da logica, quem usa o metodo nao precisa saber como funciona
+
+uml - antes de codificar
+
+
+
+exrcicio
+contador de pessoas
+
+girar - vai p zero
+
+atributo valorAtual
+
+...
+
+atribuir um valo
+incrementar o contador obter o atual valor do contador
+
+
+
+2) batedeira planetaria
+
+

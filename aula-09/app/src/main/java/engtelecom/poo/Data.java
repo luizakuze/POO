@@ -16,7 +16,6 @@ public class Data {
         this.ano = 0;
     }
 
-
     public Data(int dia, int mes) {
         this();
         this.dia = dia;

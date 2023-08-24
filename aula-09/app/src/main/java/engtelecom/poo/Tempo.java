@@ -101,9 +101,7 @@ public class Tempo {
                 this.minutos++;
                 segundos -= 60;
             }
-            if (segundos > 0) {
-                this.segundos += segundos;
-            }
+            this.segundos += segundos;
             return true;
         }
         return false;

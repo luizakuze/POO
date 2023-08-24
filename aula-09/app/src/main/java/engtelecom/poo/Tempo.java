@@ -34,7 +34,8 @@ public class Tempo {
         long tempo = 0;
         if (this.horas > 0) {
             tempo += this.horas*3600;
-        } if (this.minutos > 0) {
+        }
+        if (this.minutos > 0) {
             tempo += this.minutos*60;
         }  
         tempo += this.segundos;
@@ -73,6 +74,7 @@ public class Tempo {
 
     public boolean setMinutos(int minutos) {
         if (minutos >= 0) {
+            // 1 minuto são 60 segundos!
             while (minutos >= 60) {
                 this.horas++;
                 minutos -= 60;
@@ -90,10 +92,12 @@ public class Tempo {
 
     public boolean setSegundos(int segundos) {
         if (segundos >= 0) {
+            // 1 hora são 60 minutos
             while (segundos >= 3600) { 
                 this.horas++;
                 segundos -= 3600;
             } 
+            // 1 minuto são 60 segundos
             while (segundos >= 60) { 
                 this.minutos++;
                 segundos -= 60;

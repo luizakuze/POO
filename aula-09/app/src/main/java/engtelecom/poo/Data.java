@@ -9,7 +9,22 @@ public class Data {
     private int mes;
     private int ano;
 
+    // construtor vazio
+    public Data() {
+        this.dia = 0;
+        this.mes = 0;
+        this.ano = 0;
+    }
+
+
+    public Data(int dia, int mes) {
+        this();
+        this.dia = dia;
+        this.mes = mes;
+    }
+
     public Data(int dia, int mes, int ano) {
+        this();
         this.dia = dia;
         this.mes = 1;
         this.setMes(mes);

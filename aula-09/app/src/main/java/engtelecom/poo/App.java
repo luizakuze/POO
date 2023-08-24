@@ -5,20 +5,14 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        Data a = new Data(24, 8, 2023);
+        Data a = new Data(24, 8);
+
+        System.out.println(a.toString());
         Data b = new Data(25, 8, 2023);
 
         int diferencaDias = a.diferencaEmDias(b);
 
         //b.diferencaEmDias(a);
-
-
-
-
-
-
-
-
         // Scanner teclado = new Scanner(System.in);
 
         // System.out.println("Entre com o dia: ");

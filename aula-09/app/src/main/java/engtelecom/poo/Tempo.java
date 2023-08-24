@@ -52,7 +52,6 @@ public class Tempo {
         String h = String.format("%02d", horas);
         String min = String.format("%02d", minutos);
         String seg = String.format("%02d", segundos);
-
         return h + ":" + min + ":" + seg;
     }
 
@@ -74,7 +73,7 @@ public class Tempo {
 
     public boolean setMinutos(int minutos) {
         if (minutos >= 0) {
-            // 1 minuto são 60 segundos!
+            // 1 minuto são 60 segundos
             while (minutos >= 60) {
                 this.horas++;
                 minutos -= 60;

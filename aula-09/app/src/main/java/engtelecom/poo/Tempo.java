@@ -5,7 +5,7 @@ public class Tempo {
     private int horas;
     private int minutos;
     private int segundos;
-  
+
     // construtor padrão
     public Tempo() {
         this.horas = 0;
@@ -33,11 +33,11 @@ public class Tempo {
     public long tempoEmSegundos() {
         long tempo = 0;
         if (this.horas > 0) {
-            tempo += this.horas*3600;
+            tempo += this.horas * 3600;
         }
         if (this.minutos > 0) {
-            tempo += this.minutos*60;
-        }  
+            tempo += this.minutos * 60;
+        }
         tempo += this.segundos;
         return tempo;
     }
@@ -45,10 +45,10 @@ public class Tempo {
     public long diferencaTempo(Tempo t) {
         long t1 = this.tempoEmSegundos();
         long t2 = t.tempoEmSegundos();
-        return t1 - t2;
+        return Math.abs(t1 - t2); // módulo
     }
 
-    public String toString(){
+    public String toString() {
         String h = String.format("%02d", horas);
         String min = String.format("%02d", minutos);
         String seg = String.format("%02d", segundos);
@@ -63,7 +63,7 @@ public class Tempo {
         if (horas >= 0) {
             this.horas += horas;
             return true;
-        } 
+        }
         return false;
     }
 
@@ -80,10 +80,9 @@ public class Tempo {
             }
             this.minutos += minutos;
             return true;
-        } 
+        }
         return false;
     }
-
 
     public int getSegundos() {
         return segundos;
@@ -92,12 +91,12 @@ public class Tempo {
     public boolean setSegundos(int segundos) {
         if (segundos >= 0) {
             // 1 hora são 60 minutos
-            while (segundos >= 3600) { 
+            while (segundos >= 3600) {
                 this.horas++;
                 segundos -= 3600;
-            } 
+            }
             // 1 minuto são 60 segundos
-            while (segundos >= 60) { 
+            while (segundos >= 60) {
                 this.minutos++;
                 segundos -= 60;
             }
@@ -106,6 +105,5 @@ public class Tempo {
         }
         return false;
     }
-    
-    
+
 }

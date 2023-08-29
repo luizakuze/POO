@@ -22,9 +22,12 @@ public class Tempo {
     }
 
     public Tempo(int horas, int minutos, int segundos) {
-        this.setHoras(horas);
-        this.setMinutos(minutos);
-        this.setSegundos(segundos);
+        this();
+        if (setHoras(horas) && setMinutos(minutos) && setSegundos(segundos)) {
+            this.setHoras(horas);
+            this.setMinutos(minutos);
+            this.setSegundos(segundos);
+        } 
     }
 
     public long tempoEmSegundos() {
@@ -44,6 +47,24 @@ public class Tempo {
         return Math.abs(t1 - t2); // módulo
     }
 
+    public Tempo definirHorario(int segundos) {
+        Tempo t = new Tempo();
+
+        // 1 hora são 60 minutos
+        while (segundos >= 3600) {
+            t.horas++;
+            segundos -= 3600;
+        }
+        // 1 minuto são 60 segundos
+        while (segundos >= 60) {
+            t.minutos++;
+            segundos -= 60;
+        }
+        t.segundos = segundos;
+
+        return t;
+    }
+
     public String toString() {
         return String.format("%02d:%02d:%02d", horas, minutos, segundos);
     }
@@ -53,11 +74,12 @@ public class Tempo {
     }
 
     public boolean setHoras(int horas) {
-        if (horas >= 0) {
+        if (horas >= 0 || horas < 24) {
             this.horas = horas;
             return true;
         }
         return false;
+
     }
 
     public int getMinutos() {
@@ -65,15 +87,10 @@ public class Tempo {
     }
 
     public boolean setMinutos(int minutos) {
-        if (minutos >= 0) {
-            // 1 minuto são 60 segundos
-            while (minutos >= 60) {
-                this.horas++;
-                minutos -= 60;
-            }
+        if (minutos >= 0 || minutos < 60) {
             this.minutos = minutos;
             return true;
-        }
+        } 
         return false;
     }
 
@@ -82,21 +99,11 @@ public class Tempo {
     }
 
     public boolean setSegundos(int segundos) {
-        if (segundos >= 0) {
-            // 1 hora são 60 minutos
-            while (segundos >= 3600) {
-                this.horas++;
-                segundos -= 3600;
-            }
-            // 1 minuto são 60 segundos
-            while (segundos >= 60) {
-                this.minutos++;
-                segundos -= 60;
-            }
+        if (segundos >= 0 || segundos < 60) {
             this.segundos = segundos;
             return true;
         }
-        return false;
+        return false;  
     }
 
 }

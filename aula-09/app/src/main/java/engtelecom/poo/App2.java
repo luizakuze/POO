@@ -24,6 +24,10 @@ public class App2 {
         System.out.println("Tempo: " + t5.toString());
 
         t5.setSegundos(3600);
+        System.out.println("Tempo: " + t5.toString());
+        t5.setSegundos(7000);
+        System.out.println("Tempo: " + t5.toString());
+        t5.setSegundos(-7000);
         System.out.println("Tempo: " + t5.toString() + "\n");
 
         // o tempo total em segundos

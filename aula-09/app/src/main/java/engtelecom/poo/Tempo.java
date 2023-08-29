@@ -45,10 +45,7 @@ public class Tempo {
     }
 
     public String toString() {
-        String h = String.format("%02d", horas);
-        String min = String.format("%02d", minutos);
-        String seg = String.format("%02d", segundos);
-        return h + ":" + min + ":" + seg;
+        return String.format("%02d:%02d:%02d", horas, minutos, segundos);
     }
 
     public int getHoras() {
@@ -57,7 +54,7 @@ public class Tempo {
 
     public boolean setHoras(int horas) {
         if (horas >= 0) {
-            this.horas += horas;
+            this.horas = horas;
             return true;
         }
         return false;
@@ -74,7 +71,7 @@ public class Tempo {
                 this.horas++;
                 minutos -= 60;
             }
-            this.minutos += minutos;
+            this.minutos = minutos;
             return true;
         }
         return false;
@@ -96,7 +93,7 @@ public class Tempo {
                 this.minutos++;
                 segundos -= 60;
             }
-            this.segundos += segundos;
+            this.segundos = segundos;
             return true;
         }
         return false;

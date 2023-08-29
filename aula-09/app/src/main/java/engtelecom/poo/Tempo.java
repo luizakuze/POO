@@ -22,7 +22,6 @@ public class Tempo {
     }
 
     public Tempo(int horas, int minutos, int segundos) {
-        this();
         if (setHoras(horas) && setMinutos(minutos) && setSegundos(segundos)) {
             this.setHoras(horas);
             this.setMinutos(minutos);

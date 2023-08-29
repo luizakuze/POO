@@ -28,14 +28,13 @@ public class Tempo {
     }
 
     public long tempoEmSegundos() {
-        long tempo = 0;
+        long tempo = this.segundos;;
         if (this.horas > 0) {
             tempo += this.horas * 3600;
         }
         if (this.minutos > 0) {
             tempo += this.minutos * 60;
         }
-        tempo += this.segundos;
         return tempo;
     }
 

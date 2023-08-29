@@ -14,14 +14,11 @@ public class Tempo {
     }
 
     public Tempo(int horas) {
-        this();
-        this.setHoras(horas);
+        this(horas, 0, 0);
     }
 
     public Tempo(int horas, int minutos) {
-        this();
-        this.setHoras(horas);
-        this.setMinutos(minutos);
+        this(horas,minutos,0);
     }
 
     public Tempo(int horas, int minutos, int segundos) {

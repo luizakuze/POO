@@ -1,4 +1,4 @@
-# Anotações - Gradle e pacotes
+# Anotações - Gradel e pacotes
 O gradle permite abrir um projeto java fora da idea. 
 
 Precisa da JRE (ambiente de execução java).<br>

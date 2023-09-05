@@ -35,16 +35,24 @@ public class Circulo {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public boolean setX(int x) {
+        if (x >= 0 && x <= MAX_X) {
+            this.x = x;
+            return true;
+        }
+        return false;
     }
 
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public boolean setY(int y) {
+        if (x >= 0 && x <= MAX_Y) {
+            this.y = y;
+            return true;
+        }
+        return false;
     }
 
     public double getRaio() {

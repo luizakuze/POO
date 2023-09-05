@@ -21,6 +21,10 @@ public class Circulo {
         this.total++;
     }
 
+    public String toString () {
+        return "Círculo: x - " + this.x + " | y - " + this.y + " | raio - " + this.raio;
+    }
+
     // Método estático para obter o total de objetos Circulo criados
     public static int getTotal() {
         return total;

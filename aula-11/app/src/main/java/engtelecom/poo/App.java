@@ -11,17 +11,15 @@ public class App {
     public static void main(String[] args) {
         App app = new App();
 
-        // Criação de um objeto da classe Draw
+        // Criação de um objeto da classe 
         app.desenho = new Draw();
-
-        app.desenho.setCanvasSize(400,400);
-        app.desenho.setXscale(0, 400);
-        app.desenho.setYscale(0, 400);
 
         app.desenho.clear(Draw.PINK);
 
+        app.desenho.setPenRadius(0.3);
+
         // Desenha uma linha dada as coordenadas
-        app.desenho.line(0, 1, 50, 50);
+        app.desenho.line(1, 1, 50, 50);
 
         System.out.println(Circulo.getTotal());
 

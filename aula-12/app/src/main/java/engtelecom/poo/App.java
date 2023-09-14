@@ -17,10 +17,20 @@ public class App {
 
         // tenho certeza que não está duplicado
         // já da o return false
-        this.banco.add(c, uc);
+        this.banco.put(c, uc);
 
         return true;
     }
+
+    public boolean excluirUC(String c) {
+        this.banco.remove(c);
+        return true;
+    }
+
+    // public boolean mostrarUC (String c) {
+        
+    //     return true;
+    // }
 
     // criar menu fora do main
     public int menuDeOperacoes(){
@@ -82,13 +92,6 @@ public class App {
         App app = new App();
 
         //app.adicionarUC();
-
-
-
-
-
-
-
 
 
 

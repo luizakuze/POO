@@ -13,13 +13,20 @@ public class App {
         this.banco = new HashMap<>();
     }
 
+
+    @Override
+    public String toString() {
+        return "App [banco=" + banco + "]";
+    }
+
+
     public boolean adicionarUC(String c, UnidadeCurricular uc){
-
-        // tenho certeza que não está duplicado
-        // já da o return false
-        this.banco.put(c, uc);
-
-        return true;
+        // verifica se a chave já existe, assim não sobrescreve o valor! 
+        if(!banco.containsKey(c)) {
+            this.banco.put(c, uc);
+            return true;
+        }
+        return false;
     }
 
     public boolean excluirUC(String c) {
@@ -27,58 +34,84 @@ public class App {
         return true;
     }
 
-    // public boolean mostrarUC (String c) {
+    public boolean mostrarUC (String c) {
         
-    //     return true;
-    // }
+        return true;
+    }
 
-    // criar menu fora do main
+
     public int menuDeOperacoes(){
-        int opcao = 1;
+        int opcao = -1;
 
         do {
             System.out.println("..:: Sistema Acadêmico ::..");
             System.out.println(" 1 - Adicionar UC");
-            System.out.println(" 2 - Sair");
+            System.out.println(" 2 - Remover UC");
+            System.out.println(" 3 - Alterar UC");
+            System.out.println(" 4 - Exibir UC");
+            System.out.println(" 5 - Listar todas as UC");
+            System.out.println(" 6 - Sair");
             System.out.println("Entre com uma opção: ");
-
-            // System.out.println(" 2 - Alterar UC");
-            // System.out.println(" 3 - Exibir UC");
-            // System.out.println(" 4 - Listar UC");
 
             Scanner teclado = new Scanner(System.in);
             opcao = teclado.nextInt();
 
             switch (opcao) {
-                case 1:
+                case 1: 
+                    // adicionar uma UC
                     System.out.println("Entre com a UC");
 
-                    System.out.printf("\nCódigo c:");
+                    System.out.println("Código Uc:");
                     String c = teclado.nextLine();
 
-                    System.out.printf("\nNome:");
+                    System.out.println("Nome:");
                     String nome = teclado.nextLine();
 
-                    System.out.printf("\nCódigo:");
+                    System.out.println("Código:");
                     String codigo = teclado.nextLine();
 
-                    System.out.printf("\nSigla:");
+                    System.out.println("Sigla:");
                     String sigla = teclado.nextLine();
 
-                    System.out.printf("\nCréditos:");
+                    System.out.println("Créditos:");
                     Integer creditos = teclado.nextInt();
 
-                    System.out.printf("\nEmenta:");
+                    System.out.println("Ementa:");
                     String ementa = teclado.nextLine();
 
                     UnidadeCurricular uc = new UnidadeCurricular(nome, codigo, sigla, creditos, ementa);
                     adicionarUC(c, uc);
                     break;
+
+                case 2:
+                    // remover uma UC
+                    System.out.println("Entre com o nome da UC");
+                    String codigoUc = teclado.nextLine();
+                    excluirUC(codigoUc);
+                    break;
+
+                case 3:
+                    // alterar uma UC
+                    System.out.println("Entre com o nome da UC");
+                    break;
+                case 4:
+                    // mostrar uma UC
+                    System.out.println("Entre com o nome da UC");
+                    String codigoUc = teclado.nextLine();
+                    toString(codigoUc);
+                    break;
+                case 5:
+                    // mostrar todas as UCs
+                    System.out.println("Entre com o nome da UC");
+                break;
+                case 6:
+                    // sair
+                    System.out.println("Fechando acesso ao sistema...");
+
                 default:
                     System.out.println("Opção inválida!");
             }
 
-            opcao = 0;
 
         } while(opcao > 0);
 

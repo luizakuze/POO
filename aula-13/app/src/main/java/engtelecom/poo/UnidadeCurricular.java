@@ -11,9 +11,8 @@ public class UnidadeCurricular {
     private ArrayList<String> objetivo; //1 a n objetivos
     private ArrayList<String> conteudo; 
 
-    // sem objetivo e conteudo construtor
 
-
+    // construtor padrão
     public UnidadeCurricular(String nome, String codigo, String sigla, Integer creditos, String ementa) {
         this.nome = nome;
         this.codigo = codigo;
@@ -23,6 +22,13 @@ public class UnidadeCurricular {
         this.objetivo = new ArrayList<>();
         this.conteudo = new ArrayList<>();
     }
+
+    @Override
+    public String toString() {
+        return "UnidadeCurricular [nome=" + nome + ", codigo=" + codigo + ", sigla=" + sigla + ", creditos=" + creditos
+                + ", ementa=" + ementa + ", objetivo=" + objetivo + ", conteudo=" + conteudo + "]";
+    }
+
 
     public int getCargaHoraria() {
         return this.creditos * Curso.SEMANAS;
@@ -84,23 +90,26 @@ public class UnidadeCurricular {
         objetivo.add(obj);
     }
 
-    public void removerObjetivo(String ob) {
-        objetivo.remove(ob);
+    public void removerObjetivo(String obj) {
+        objetivo.remove(obj);
     }
 
     public String obterConteudo(int pos) {
-        // pos inválida
-        if (pos > objetivo.size()) {
-            return null;
+        // pos válida
+        if (pos >= 0 && pos < conteudo.size()) {
+            return conteudo.get(pos);
         }
-        return objetivo.get(pos);
+        return null; 
     }
 
-    public void adicionarConteudo(String cont) {
-        conteudo.add(cont);
+    public void adicionarConteudo(String c) {
+        conteudo.add(c);
     }
 
-    public void removerConteudo(String cont) {
-        objetivo.remove(cont);
+    public void removerConteudo(int pos) {
+        // pos válida
+        if (pos >= 0 && pos < conteudo.size()) {
+            conteudo.remove(pos);
+        }
     }
 }

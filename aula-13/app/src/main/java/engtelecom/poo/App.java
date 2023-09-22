@@ -9,20 +9,18 @@ public class App {
 
     private HashMap<String, UnidadeCurricular> banco;
 
-    public App(){
+    public App() {
         this.banco = new HashMap<>();
     }
-
 
     @Override
     public String toString() {
         return "App [banco=" + banco + "]";
     }
 
-
-    public boolean adicionarUC(String c, UnidadeCurricular uc){
-        // verifica se a chave já existe, assim não sobrescreve o valor! 
-        if(!banco.containsKey(c)) {
+    public boolean adicionarUC(String c, UnidadeCurricular uc) {
+        // verifica se a chave já existe, assim não sobrescreve o valor!
+        if (!banco.containsKey(c)) {
             this.banco.put(c, uc);
             return true;
         }
@@ -34,14 +32,13 @@ public class App {
         return true;
     }
 
-    public boolean mostrarUC (String c) {
-        
+    public boolean mostrarUC(String c) {
+
         return true;
     }
 
-
-    public int menuDeOperacoes(){
-        int opcao = -1;
+    public int menuDeOperacoes() {
+        int opcao = 0;
 
         do {
             System.out.println("..:: Sistema Acadêmico ::..");
@@ -57,7 +54,7 @@ public class App {
             opcao = teclado.nextInt();
 
             switch (opcao) {
-                case 1: 
+                case 1:
                     // adicionar uma UC
                     System.out.println("Entre com a UC");
 
@@ -97,13 +94,13 @@ public class App {
                 case 4:
                     // mostrar uma UC
                     System.out.println("Entre com o nome da UC");
-                    String codigoUc = teclado.nextLine();
-                    toString(codigoUc);
+                    codigoUc = teclado.nextLine();
+                    banco.get(codigoUc);
                     break;
                 case 5:
                     // mostrar todas as UCs
                     System.out.println("Entre com o nome da UC");
-                break;
+                    break;
                 case 6:
                     // sair
                     System.out.println("Fechando acesso ao sistema...");
@@ -112,19 +109,18 @@ public class App {
                     System.out.println("Opção inválida!");
             }
 
-
-        } while(opcao > 0);
+        } while (opcao != 6);
 
         return opcao;
     }
 
-
-    
     public static void main(String[] args) {
 
         App app = new App();
 
-        //app.adicionarUC();
+        // app.adicionarUC();
+
+        app.menuDeOperacoes();
 
     }
 }

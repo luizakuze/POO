@@ -43,7 +43,7 @@ public class App {
     public boolean alteraUC(String nomeUC, int op) {
         switch (op) {
             case 1:
-                // fazer o do switch ver se tem a chave e dai alterar cada valor
+                // fazer o do switch ver se tem a chave e dai alterar
                 if (banco.containsKey(nome)) {
 
                 }

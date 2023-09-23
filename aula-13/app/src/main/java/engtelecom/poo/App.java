@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Map.Entry;
 
 public class App {
 
@@ -32,7 +33,25 @@ public class App {
         return true;
     }
 
-    public boolean mostrarUC(String c) {
+    public boolean mostrarUCs() {
+        for (Entry<String, UnidadeCurricular> uc : this.banco.entrySet()) {
+            System.out.println(uc);
+        }
+        return true;
+    }
+
+    public boolean alteraUC(String nomeUC, int op) {
+        switch (op) {
+            case 1:
+                // fazer o do switch ver se tem a chave e dai alterar cada valor
+                if (banco.containsKey(nome)) {
+
+                }
+                break;
+
+            default:
+                break;
+        }
 
         return true;
     }
@@ -55,11 +74,8 @@ public class App {
 
             switch (opcao) {
                 case 1:
-                    // adicionar uma UC
-                    System.out.println("Entre com a UC");
-
-                    System.out.println("Código Uc:");
-                    String c = teclado.nextLine();
+                    // adicionar uma uc
+                    teclado.nextLine(); // ??????
 
                     System.out.println("Nome:");
                     String nome = teclado.nextLine();
@@ -77,7 +93,7 @@ public class App {
                     String ementa = teclado.nextLine();
 
                     UnidadeCurricular uc = new UnidadeCurricular(nome, codigo, sigla, creditos, ementa);
-                    adicionarUC(c, uc);
+                    adicionarUC(codigo, uc);
                     break;
 
                 case 2:
@@ -90,6 +106,12 @@ public class App {
                 case 3:
                     // alterar uma UC
                     System.out.println("Entre com o nome da UC");
+                    String nomeUC = teclado.nextLine();
+                    System.out.println("Entre com o dado que deseja alterar:");
+                    System.out.println("1 - Nome\n2 - Código\n3 - Sigla\n4 - Créditos\nEmenta\nObjetivos");
+                    int dado = teclado.nextInt();
+                    alteraUC(nomeUC, dado);
+                    System.out.println(dado + " de " + nomeUC + " alterado!");
                     break;
                 case 4:
                     // mostrar uma UC
@@ -99,12 +121,11 @@ public class App {
                     break;
                 case 5:
                     // mostrar todas as UCs
-                    System.out.println("Entre com o nome da UC");
+                    mostrarUCs();
                     break;
                 case 6:
                     // sair
                     System.out.println("Fechando acesso ao sistema...");
-
                 default:
                     System.out.println("Opção inválida!");
             }

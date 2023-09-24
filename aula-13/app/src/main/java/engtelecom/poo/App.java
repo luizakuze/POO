@@ -50,8 +50,9 @@ public class App {
             System.out.println("Sigla: " + uc.getSigla());
             System.out.println("Créditos: " + uc.getCreditos());
             System.out.println("Ementa: " + uc.getEmenta());
+            System.out.println("Objetivos: " + uc.obterObjetivo()); // colocar obter ou get???
+            System.out.println("Conteúdos: " + uc.obterConteudo());
             System.out.println("-----");
-            /// colcoa rconteuod e objetivos
         }
     }
 
@@ -111,7 +112,7 @@ public class App {
 
             default:
 
-                /// deixar a op invlaida aqui ou escrever no app??
+                /// deixar a op inváida aqui ou escrever no app???????w
                 System.out.println("Opção inválida!");
                 return false;
         }
@@ -172,6 +173,8 @@ public class App {
 
                 case 3:
                     // Alterar uma UC
+                    teclado.nextLine();
+
                     System.out.print("Entre com o código da UC que deseja alterar: ");
                     String codigoUC = teclado.nextLine();
 

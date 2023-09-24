@@ -8,9 +8,8 @@ public class UnidadeCurricular {
     private String sigla;
     private Integer creditos;
     private String ementa;
-    private ArrayList<String> objetivo; //1 a n objetivos
-    private ArrayList<String> conteudo; 
-
+    private ArrayList<String> objetivo; // 1 a n objetivos
+    private ArrayList<String> conteudo;
 
     // construtor padrão
     public UnidadeCurricular(String nome, String codigo, String sigla, Integer creditos, String ementa) {
@@ -28,7 +27,6 @@ public class UnidadeCurricular {
         return "UnidadeCurricular [nome=" + nome + ", codigo=" + codigo + ", sigla=" + sigla + ", creditos=" + creditos
                 + ", ementa=" + ementa + ", objetivo=" + objetivo + ", conteudo=" + conteudo + "]";
     }
-
 
     public int getCargaHoraria() {
         return this.creditos * Curso.SEMANAS;
@@ -74,10 +72,20 @@ public class UnidadeCurricular {
         this.ementa = ementa;
     }
 
-    public ArrayList<String> getObjetivo() {
-        return objetivo;
+    // obter todos os objetivos
+    public String obterObjetivo() {
+        // sem objetivos cadastrados
+        if (objetivo.size() == 0) {
+            return null;
+        }
+        String objetivos = "";
+        for (String dado : this.objetivo) {
+            objetivos += dado;
+        }
+        return objetivos;
     }
 
+    // obter um objetivo específico
     public String obterObjetivo(int pos) {
         // pos inválida
         if (pos > objetivo.size()) {
@@ -94,12 +102,26 @@ public class UnidadeCurricular {
         objetivo.remove(obj);
     }
 
+    // obter um objetivo específico
+    public String obterConteudo() {
+        // pos inválida
+        if (objetivo.size() == 0) {
+            return null;
+        }
+        String conteudos = "";
+        for (String dado : this.objetivo) {
+            conteudos += dado;
+        }
+        return conteudos;
+    }
+
+    // obter um conteúdo específico
     public String obterConteudo(int pos) {
         // pos válida
         if (pos >= 0 && pos < conteudo.size()) {
             return conteudo.get(pos);
         }
-        return null; 
+        return null;
     }
 
     public void adicionarConteudo(String c) {

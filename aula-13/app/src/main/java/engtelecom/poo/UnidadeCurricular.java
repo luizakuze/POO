@@ -24,8 +24,8 @@ public class UnidadeCurricular {
 
     @Override
     public String toString() {
-        return "UnidadeCurricular [nome=" + nome + ", codigo=" + codigo + ", sigla=" + sigla + ", creditos=" + creditos
-                + ", ementa=" + ementa + ", objetivo=" + objetivo + ", conteudo=" + conteudo + "]";
+        return "Nome - " + nome + "\nCodigo - " + codigo + "\nSigla - " + sigla + "\nCreditos - " + creditos
+                + "\nEmenta - " + ementa + "\nObjetivo - " + objetivo + "\nConteudo - " + conteudo;
     }
 
     public int getCargaHoraria() {

@@ -33,27 +33,19 @@ public class App {
         return true;
     }
 
-    public void mostrarUCs() {
+    public boolean mostrarUCs() {
         if (this.banco.isEmpty()) {
-            System.out.println("Nenhuma disciplina cadastrada.");
-            return;
+
+            return false;
         }
 
         System.out.println("=== Disciplinas Cadastradas ===");
 
-        for (Map.Entry<String, UnidadeCurricular> entry : this.banco.entrySet()) {
-            String codigo = entry.getKey();
-            UnidadeCurricular uc = entry.getValue();
-
-            System.out.println("Código: " + codigo);
-            System.out.println("Nome: " + uc.getNome());
-            System.out.println("Sigla: " + uc.getSigla());
-            System.out.println("Créditos: " + uc.getCreditos());
-            System.out.println("Ementa: " + uc.getEmenta());
-            System.out.println("Objetivos: " + uc.obterObjetivo()); // colocar obter ou get???
-            System.out.println("Conteúdos: " + uc.obterConteudo());
-            System.out.println("-----");
+        for (Map.Entry<String, UnidadeCurricular> uc : this.banco.entrySet()) {
+           System.out.println(uc.getValue());
+           System.out.println("---------------");
         }
+        return true;
     }
 
     public boolean alteraUC(String codigoUc, int dado) {
@@ -143,11 +135,11 @@ public class App {
                     // adicionar uma uc
                     teclado.nextLine(); // ??????
 
-                    System.out.println("Nome:");
-                    String nome = teclado.nextLine();
-
                     System.out.println("Código:");
                     String codigo = teclado.nextLine();
+                    
+                    System.out.println("Nome:");
+                    String nome = teclado.nextLine();
 
                     System.out.println("Sigla:");
                     String sigla = teclado.nextLine();
@@ -155,20 +147,31 @@ public class App {
                     System.out.println("Créditos:");
                     Integer creditos = teclado.nextInt();
 
+                    teclado.nextLine(); // ???
+
                     System.out.println("Ementa:");
                     String ementa = teclado.nextLine();
 
                     UnidadeCurricular uc = new UnidadeCurricular(nome, codigo, sigla, creditos, ementa);
-                    adicionarUC(codigo, uc);
+                    if (adicionarUC(codigo, uc)) {
+                        System.out.println("Unidade curricular " + codigo + " cadastrada!");
+                    } else {
+                        System.out.println("Erro! Unidade curricular " + codigo + " já existente!");
+                    };
                     break;
 
                 case 2:
                     // remover uma UC
                     teclado.nextLine();
 
-                    System.out.println("Entre com o nome da UC");
-                    String codigoUc = teclado.nextLine();
-                    excluirUC(codigoUc);
+                    System.out.println("Entre com o código da UC");
+                    codigo = teclado.nextLine();
+
+                    if (excluirUC(codigo)) {
+                        System.out.println("Unidade curricular " + codigo + " removida!");
+                    } else {
+                        System.out.println("Erro! Unidade curricular " + codigo + " não existe!");
+                    };
                     break;
 
                 case 3:
@@ -192,9 +195,9 @@ public class App {
 
                 case 4:
                     // mostrar uma UC
-                    System.out.println("Entre com o nome da UC");
-                    codigoUc = teclado.nextLine();
-                    banco.get(codigoUc);
+                    System.out.println("Entre com o código da UC");
+                    codigo = teclado.nextLine();
+                    banco.get(codigo);
                     break;
 
                 case 5:

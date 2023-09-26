@@ -97,7 +97,7 @@ public class UnidadeCurricular {
         }
         String objetivos = "[";
         for (String dado : this.objetivo) {
-            objetivos += dado + ' ';
+            objetivos += dado + '|';
         }
         return objetivos + "]";
     }
@@ -127,12 +127,12 @@ public class UnidadeCurricular {
     // obter todos os conteúdos
     public String obterConteudo() {
         // pos inválida
-        if (objetivo.size() == 0) {
+        if (conteudo.size() == 0) {
             return null;
         }
         String conteudos = "[";
         for (String dado : this.conteudo) {
-            conteudos += dado + ' ';
+            conteudos += dado + '|';
         }
         return conteudos + "]";
     }

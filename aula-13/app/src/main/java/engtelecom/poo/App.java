@@ -29,14 +29,18 @@ public class App {
     }
 
     public boolean excluirUC(String c) {
-        this.banco.remove(c);
-        return true;
+        // verifica se contém a uc, assim pode remover
+        if (banco.containsKey(c)) {
+            this.banco.remove(c);
+            return true;
+        }
+        return false;
     }
 
     public boolean mostrarUC(String codigo) {
         UnidadeCurricular uc = banco.get(codigo);
         if (uc != null) {
-            System.out.println("====== UC " + codigo + " ======");
+            System.out.println("----- UC " + codigo + " -----");
             System.out.println(uc);
             System.out.println("--------------");
             return true;
@@ -46,11 +50,12 @@ public class App {
     }
 
     public boolean mostrarUCs() {
+        // banco vazio, não há UCs para mostrar
         if (this.banco.isEmpty()) {
             return false;
         }
 
-        System.out.println("====== UCs Cadastradas ======");
+        System.out.println("----- UCs Cadastradas -----");
         for (Map.Entry<String, UnidadeCurricular> uc : this.banco.entrySet()) {
             System.out.println(uc.getValue());
             System.out.println("---------------");
@@ -66,6 +71,9 @@ public class App {
             return false;
         }
 
+        // variável que analisa se a alteração foi bem sucedida
+        boolean alteracaoBemSucedida = false;
+
         Scanner teclado = new Scanner(System.in);
 
         switch (dado) {
@@ -74,6 +82,7 @@ public class App {
                 System.out.println("Entre com o novo nome da UC:");
                 String novoNome = teclado.nextLine();
                 uc.setNome(novoNome);
+                alteracaoBemSucedida = true;
                 break;
 
             case 2:
@@ -81,6 +90,7 @@ public class App {
                 System.out.println("Entre com o novo código da UC:");
                 String novoCodigo = teclado.nextLine();
                 uc.setCodigo(novoCodigo);
+                alteracaoBemSucedida = true;
                 break;
 
             case 3:
@@ -88,6 +98,7 @@ public class App {
                 System.out.println("Entre com a nova sigla da UC:");
                 String novaSigla = teclado.nextLine();
                 uc.setSigla(novaSigla);
+                alteracaoBemSucedida = true;
                 break;
 
             case 4:
@@ -95,6 +106,7 @@ public class App {
                 System.out.println("Entre com o novo crédito da UC:");
                 int novosCreditos = teclado.nextInt();
                 uc.setCreditos(novosCreditos);
+                alteracaoBemSucedida = true;
                 break;
 
             case 5:
@@ -102,6 +114,7 @@ public class App {
                 System.out.println("Entre com a nova ementa da UC:");
                 String novaEmenta = teclado.nextLine();
                 uc.setEmenta(novaEmenta);
+                alteracaoBemSucedida = true;
                 break;
 
             case 6:
@@ -115,28 +128,29 @@ public class App {
 
                 switch (opcao) {
                     case 1:
+                        // adiciona objetivo
                         System.out.printf("Entre com o novo objetivo:");
                         String novoObjetivo = teclado.nextLine();
                         uc.adicionarObjetivo(novoObjetivo);
+                        alteracaoBemSucedida = true;
                         break;
 
                     case 2:
+                        // remove objetivo
                         System.out.println("Objetivos atuais: " + uc.obterObjetivo());
                         System.out.print("Entre com o índice do objetivo a ser removido: ");
                         int indiceObjetivo = teclado.nextInt();
                         teclado.nextLine();
                         // não encontrou posição para remover o objetivo
-                        if (!uc.removerObjetivo(indiceObjetivo)) {
-                            return false;
+                        if (uc.removerObjetivo(indiceObjetivo)) {
+                            alteracaoBemSucedida = true;
                         }
                         break;
-
-                    default:
-                        return false;
                 }
                 break;
 
             case 7:
+                // altera o conteúdo
                 System.out.println("Tipo de alteração:");
                 System.out.println("1 - Adicionar conteúdo");
                 System.out.println("2 - Remover conteúdo");
@@ -146,28 +160,28 @@ public class App {
 
                 switch (opcao) {
                     case 1:
+                        // adiciona conteúdo
                         System.out.printf("Entre com o novo conteúdo:");
                         String novoConteudo = teclado.nextLine();
-                        uc.adicionarObjetivo(novoConteudo);
+                        uc.adicionarConteudo(novoConteudo);
+                        alteracaoBemSucedida = true;
                         break;
 
                     case 2:
+                        // remove conteúdo
                         System.out.println("Conteúdos atuais: " + uc.obterConteudo());
-                        System.out.print("Entre com o índice do conteúdo a ser removido: ");
+                        System.out.printf("Entre com o índice do conteúdo a ser removido: ");
                         int indiceConteudo = teclado.nextInt();
                         teclado.nextLine();
-                        // não encontrou posição para remover o objetivo
-                        if (!uc.removerConteudo(indiceConteudo)) {
-                            return false;
+                        // não encontrou posição para remover o conteúdo
+                        if (uc.removerConteudo(indiceConteudo)) {
+                            alteracaoBemSucedida = true;
                         }
                         break;
                 }
-            default:
-                // tipo de dado inválido
-                return false;
-
+                break;
         }
-        return true;
+        return alteracaoBemSucedida;
     }
 
     public int menuDeOperacoes() {
@@ -261,14 +275,14 @@ public class App {
                     codigo = teclado.nextLine();
 
                     if (!mostrarUC(codigo)) {
-                        System.out.println("UC não existente!");
+                        System.out.println("UC " + codigo + " não existe!");
                     }
                     break;
 
                 case 5:
                     // mostrar todas as UCs
                     if (!mostrarUCs()) {
-                        System.out.println("Nenhuma UC cadastrada.");
+                        System.out.println("Nenhuma UC cadastrada!");
                     }
                     ;
                     break;

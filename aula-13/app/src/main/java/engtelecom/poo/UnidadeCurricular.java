@@ -8,7 +8,7 @@ public class UnidadeCurricular {
     private String sigla;
     private Integer creditos;
     private String ementa;
-    private ArrayList<String> objetivo; // 1 a n objetivos
+    private ArrayList<String> objetivo; 
     private ArrayList<String> conteudo;
 
     // construtor padrão
@@ -25,10 +25,10 @@ public class UnidadeCurricular {
     @Override
     public String toString() {
         String string = "Nome - " + nome + "\n" +
-                "Codigo - " + codigo + "\n" +
-                "Sigla - " + sigla + "\n" +
-                "Creditos - " + creditos + "\n" +
-                "Ementa - " + ementa + "\n";
+                        "Codigo - " + codigo + "\n" +
+                        "Sigla - " + sigla + "\n" +
+                        "Creditos - " + creditos + "\n" +
+                        "Ementa - " + ementa + "\n";
 
         if (!objetivo.isEmpty()) {
             string += "Objetivo - " + objetivo + "\n";

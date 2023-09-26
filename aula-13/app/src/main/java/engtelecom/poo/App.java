@@ -10,6 +10,8 @@ public class App {
 
     private HashMap<String, UnidadeCurricular> banco;
 
+    Scanner teclado = new Scanner(System.in);
+
     public App() {
         this.banco = new HashMap<>();
     }
@@ -73,8 +75,6 @@ public class App {
 
         // variável que analisa se a alteração foi bem sucedida
         boolean alteracaoBemSucedida = false;
-
-        Scanner teclado = new Scanner(System.in);
 
         switch (dado) {
             case 1:
@@ -197,7 +197,6 @@ public class App {
             System.out.println(" 6 - Sair");
             System.out.printf("Entre com uma opção: ");
 
-            Scanner teclado = new Scanner(System.in);
             opcao = teclado.nextInt();
 
             switch (opcao) {
@@ -284,7 +283,6 @@ public class App {
                     if (!mostrarUCs()) {
                         System.out.println("Nenhuma UC cadastrada!");
                     }
-                    ;
                     break;
 
                 case 6:

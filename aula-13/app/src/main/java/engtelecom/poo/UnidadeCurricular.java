@@ -24,8 +24,25 @@ public class UnidadeCurricular {
 
     @Override
     public String toString() {
-        return "Nome - " + nome + "\nCodigo - " + codigo + "\nSigla - " + sigla + "\nCreditos - " + creditos
-                + "\nEmenta - " + ementa + "\nObjetivo - " + objetivo + "\nConteudo - " + conteudo;
+        String string = "Nome - " + nome + "\n" +
+                "Codigo - " + codigo + "\n" +
+                "Sigla - " + sigla + "\n" +
+                "Creditos - " + creditos + "\n" +
+                "Ementa - " + ementa + "\n";
+
+        if (!objetivo.isEmpty()) {
+            string += "Objetivo - " + objetivo + "\n";
+        } else {
+            string += "Objetivo - Não cadastrado\n";
+        }
+
+        if (!conteudo.isEmpty()) {
+            string += "Conteudo - " + conteudo;
+        } else {
+            string += "Conteudo - Não cadastrado";
+        }
+
+        return string;
     }
 
     public int getCargaHoraria() {
@@ -78,11 +95,11 @@ public class UnidadeCurricular {
         if (objetivo.size() == 0) {
             return null;
         }
-        String objetivos = "";
+        String objetivos = "[";
         for (String dado : this.objetivo) {
-            objetivos += dado;
+            objetivos += dado + ' ';
         }
-        return objetivos;
+        return objetivos + "]";
     }
 
     // obter um objetivo específico
@@ -98,21 +115,26 @@ public class UnidadeCurricular {
         objetivo.add(obj);
     }
 
-    public void removerObjetivo(String obj) {
-        objetivo.remove(obj);
+    public boolean removerObjetivo(int pos) {
+        // pos válida
+        if (pos >= 0 && pos < objetivo.size()) {
+            objetivo.remove(pos);
+            return true;
+        }
+        return false;
     }
 
-    // obter um objetivo específico
+    // obter todos os conteúdos
     public String obterConteudo() {
         // pos inválida
         if (objetivo.size() == 0) {
             return null;
         }
-        String conteudos = "";
-        for (String dado : this.objetivo) {
-            conteudos += dado;
+        String conteudos = "[";
+        for (String dado : this.conteudo) {
+            conteudos += dado + ' ';
         }
-        return conteudos;
+        return conteudos + "]";
     }
 
     // obter um conteúdo específico
@@ -128,10 +150,12 @@ public class UnidadeCurricular {
         conteudo.add(c);
     }
 
-    public void removerConteudo(int pos) {
+    public boolean removerConteudo(int pos) {
         // pos válida
         if (pos >= 0 && pos < conteudo.size()) {
             conteudo.remove(pos);
+            return true;
         }
+        return false;
     }
 }

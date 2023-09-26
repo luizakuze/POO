@@ -33,17 +33,27 @@ public class App {
         return true;
     }
 
+    public boolean mostrarUC(String codigo) {
+        UnidadeCurricular uc = banco.get(codigo);
+        if (uc != null) {
+            System.out.println("====== UC " + codigo + " ======");
+            System.out.println(uc);
+            System.out.println("--------------");
+            return true;
+        }
+        // uc não cadastrada
+        return false;
+    }
+
     public boolean mostrarUCs() {
         if (this.banco.isEmpty()) {
-
             return false;
         }
 
-        System.out.println("=== Disciplinas Cadastradas ===");
-
+        System.out.println("====== UCs Cadastradas ======");
         for (Map.Entry<String, UnidadeCurricular> uc : this.banco.entrySet()) {
-           System.out.println(uc.getValue());
-           System.out.println("---------------");
+            System.out.println(uc.getValue());
+            System.out.println("---------------");
         }
         return true;
     }
@@ -51,8 +61,8 @@ public class App {
     public boolean alteraUC(String codigoUc, int dado) {
         UnidadeCurricular uc = this.banco.get(codigoUc);
 
+        // nome inválido da UC
         if (uc == null) {
-            System.out.println("Disciplina não encontrada.");
             return false;
         }
 
@@ -60,57 +70,103 @@ public class App {
 
         switch (dado) {
             case 1:
+                // altera o nome
                 System.out.println("Entre com o novo nome da UC:");
                 String novoNome = teclado.nextLine();
                 uc.setNome(novoNome);
                 break;
 
             case 2:
+                // altera o código
                 System.out.println("Entre com o novo código da UC:");
                 String novoCodigo = teclado.nextLine();
                 uc.setCodigo(novoCodigo);
                 break;
 
             case 3:
+                // altera a sigla
                 System.out.println("Entre com a nova sigla da UC:");
                 String novaSigla = teclado.nextLine();
                 uc.setSigla(novaSigla);
                 break;
 
             case 4:
-                System.out.println("Entre com os novos créditos da UC:");
+                // altera o crédito
+                System.out.println("Entre com o novo crédito da UC:");
                 int novosCreditos = teclado.nextInt();
                 uc.setCreditos(novosCreditos);
                 break;
 
             case 5:
+                // altera a ementa
                 System.out.println("Entre com a nova ementa da UC:");
                 String novaEmenta = teclado.nextLine();
                 uc.setEmenta(novaEmenta);
                 break;
 
             case 6:
-                System.out.println("Entre com um objetivo da UC:");
-                String novoObjetivo = teclado.nextLine();
-                uc.adicionarObjetivo(novoObjetivo);
+                // altera o objetivo
+                System.out.println("Tipo de alteração:");
+                System.out.println("1 - Adicionar objetivo");
+                System.out.println("2 - Remover objetivo");
+                System.out.printf("Entre com uma opção: ");
+                int opcao = teclado.nextInt();
+                teclado.nextLine();
+
+                switch (opcao) {
+                    case 1:
+                        System.out.printf("Entre com o novo objetivo:");
+                        String novoObjetivo = teclado.nextLine();
+                        uc.adicionarObjetivo(novoObjetivo);
+                        break;
+
+                    case 2:
+                        System.out.println("Objetivos atuais: " + uc.obterObjetivo());
+                        System.out.print("Entre com o índice do objetivo a ser removido: ");
+                        int indiceObjetivo = teclado.nextInt();
+                        teclado.nextLine();
+                        // não encontrou posição para remover o objetivo
+                        if (!uc.removerObjetivo(indiceObjetivo)) {
+                            return false;
+                        }
+                        break;
+
+                    default:
+                        return false;
+                }
                 break;
 
             case 7:
-                /// adicionar a forma de adicionar mais de um conteúdo!!
-                System.out.println("Entre com um conteúdo da UC:");
-                String novoConteudo = teclado.nextLine();
-                uc.adicionarConteudo(novoConteudo);
-                break;
+                System.out.println("Tipo de alteração:");
+                System.out.println("1 - Adicionar conteúdo");
+                System.out.println("2 - Remover conteúdo");
+                System.out.printf("Entre com uma opção: ");
+                opcao = teclado.nextInt();
+                teclado.nextLine();
 
+                switch (opcao) {
+                    case 1:
+                        System.out.printf("Entre com o novo conteúdo:");
+                        String novoConteudo = teclado.nextLine();
+                        uc.adicionarObjetivo(novoConteudo);
+                        break;
+
+                    case 2:
+                        System.out.println("Conteúdos atuais: " + uc.obterConteudo());
+                        System.out.print("Entre com o índice do conteúdo a ser removido: ");
+                        int indiceConteudo = teclado.nextInt();
+                        teclado.nextLine();
+                        // não encontrou posição para remover o objetivo
+                        if (!uc.removerConteudo(indiceConteudo)) {
+                            return false;
+                        }
+                        break;
+                }
             default:
-
-                /// deixar a op inváida aqui ou escrever no app???????w
-                System.out.println("Opção inválida!");
+                // tipo de dado inválido
                 return false;
-        }
 
-        /// deixar aqui ou app??
-        System.out.println("Dado da disciplina alterado!");
+        }
         return true;
     }
 
@@ -125,31 +181,30 @@ public class App {
             System.out.println(" 4 - Exibir UC");
             System.out.println(" 5 - Listar todas as UC");
             System.out.println(" 6 - Sair");
-            System.out.println("Entre com uma opção: ");
+            System.out.printf("Entre com uma opção: ");
 
             Scanner teclado = new Scanner(System.in);
             opcao = teclado.nextInt();
 
             switch (opcao) {
                 case 1:
-                    // adicionar uma uc
-                    teclado.nextLine(); // ??????
+                    teclado.nextLine();
 
-                    System.out.println("Código:");
+                    System.out.printf("Código:");
                     String codigo = teclado.nextLine();
-                    
-                    System.out.println("Nome:");
+
+                    System.out.printf("Nome:");
                     String nome = teclado.nextLine();
 
-                    System.out.println("Sigla:");
+                    System.out.printf("Sigla:");
                     String sigla = teclado.nextLine();
 
-                    System.out.println("Créditos:");
+                    System.out.printf("Créditos:");
                     Integer creditos = teclado.nextInt();
 
-                    teclado.nextLine(); // ???
+                    teclado.nextLine();
 
-                    System.out.println("Ementa:");
+                    System.out.printf("Ementa:");
                     String ementa = teclado.nextLine();
 
                     UnidadeCurricular uc = new UnidadeCurricular(nome, codigo, sigla, creditos, ementa);
@@ -157,52 +212,65 @@ public class App {
                         System.out.println("Unidade curricular " + codigo + " cadastrada!");
                     } else {
                         System.out.println("Erro! Unidade curricular " + codigo + " já existente!");
-                    };
+                    }
                     break;
 
                 case 2:
                     // remover uma UC
                     teclado.nextLine();
 
-                    System.out.println("Entre com o código da UC");
+                    System.out.printf("Entre com o código da UC");
                     codigo = teclado.nextLine();
 
                     if (excluirUC(codigo)) {
                         System.out.println("Unidade curricular " + codigo + " removida!");
                     } else {
                         System.out.println("Erro! Unidade curricular " + codigo + " não existe!");
-                    };
+                    }
                     break;
 
                 case 3:
-                    // Alterar uma UC
+                    // alterar uma UC
                     teclado.nextLine();
 
-                    System.out.print("Entre com o código da UC que deseja alterar: ");
+                    System.out.printf("Entre com o código da UC que deseja alterar: ");
                     String codigoUC = teclado.nextLine();
 
-                    System.out.println("Entre com o tipo de dado que deseja alterar:");
+                    System.out.println("Tipo de dado:");
                     System.out.println("1 - Nome");
                     System.out.println("2 - Código");
                     System.out.println("3 - Sigla");
                     System.out.println("4 - Créditos");
                     System.out.println("5 - Ementa");
-                    System.out.print("Entre com uma opção: ");
+                    System.out.println("6 - Objetivo");
+                    System.out.println("7 - Conteúdo");
+                    System.out.printf("Entre com uma opção: ");
                     int dado = teclado.nextInt();
 
-                    boolean alterado = alteraUC(codigoUC, dado);
+                    if (alteraUC(codigoUC, dado)) {
+                        System.out.println("Dado alterado!");
+                    } else {
+                        System.out.println("Erro! Operação inválida.");
+                    }
                     break;
 
                 case 4:
                     // mostrar uma UC
-                    System.out.println("Entre com o código da UC");
+                    System.out.printf("Entre com o código da UC:");
+                    teclado.nextLine();
                     codigo = teclado.nextLine();
-                    banco.get(codigo);
+
+                    if (!mostrarUC(codigo)) {
+                        System.out.println("UC não existente!");
+                    }
                     break;
 
                 case 5:
                     // mostrar todas as UCs
-                    mostrarUCs();
+                    if (!mostrarUCs()) {
+                        System.out.println("Nenhuma UC cadastrada.");
+                    }
+                    ;
                     break;
 
                 case 6:

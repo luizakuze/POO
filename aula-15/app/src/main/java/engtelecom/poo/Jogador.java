@@ -32,6 +32,19 @@ public class Jogador {
         return false;
     }
 
+    public boolean comprarCarro(Carro c) {
+        if (this.totalDeCarrosNaGaragem() < App.TOTAL_CARROS) {
+
+            Carro antigo = carroAtual;
+
+            this.adicionarCarro(antigo);
+            this.setCarroAtual(c);
+            
+            return true;
+        } 
+        return false;
+    }
+
     public boolean comprarMotor(Motor m) {
         if (this.totalDeCarrosNaPecas() < App.TOTAL_PECAS) {
 
@@ -44,7 +57,7 @@ public class Jogador {
         } 
         return false;
     }
-    
+
     public int totalDeCarrosNaGaragem() {
         return garagem.size();
     }

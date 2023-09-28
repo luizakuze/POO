@@ -24,40 +24,16 @@ public class App {
         this.jogadores.add(j);
     }
 
-    // tem q passar o jogador como parâmetro p saber quem comprou o carro
-    // aqui imaginando q ele já viu o catálogo/menu
+
     public void comprarCarro(Jogador j) {
-
-        //verificar se tem espaço na garagem
-        if (j.totalDeCarrosNaGaragem() < TOTAL_CARROS) {
-
-            Carro c = new Carro("fusca", new Motor(300, 4));
-
-            Carro antigo = j.getCarroAtual();
-            j.adicionarCarro(antigo);
-            j.setCarroAtual(c);
+        if (j.comprarCarro(new Carro("fusca", new Motor(300, 4)))) {
             System.out.println("Carro comprado com sucesso!");
         } else {
             System.out.println("Garagem cheia");
         }
     }
 
-    //troca motor do carro atual qnd comprar novo motor e só pode se estante tiver espaço
-    // public void comprarMotor(Jogador j) {
-    //     if (j.totalDeCarrosNaPecas() < TOTAL_PECAS) {
-
-    //         Motor m = new Motor(100, 3);
-
-    //         Motor antigo = j.getCarroAtual().getPropulsor();
-    //         j.adicionarPeca(antigo);
-    //         j.getCarroAtual().setPropulsor(m);;
-    //         System.out.println("Motor comprado com sucesso!");
-    //     } else {
-    //         System.out.println("Estante cheia");
-    //     }
-    // }
-
-    // 'refatorando' o método
+    // refatorando o método anterior
     public void comprarMotor(Jogador j) {
         if (j.comprarMotor(new Motor(200, 6))) {
             System.out.println("Motor comprado com sucesso!");

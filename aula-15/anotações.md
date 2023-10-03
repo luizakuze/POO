@@ -95,3 +95,24 @@ Exemplo.contador++;
 - Poderia se chamar `Tabuleiro.java`, para ficar mais claro a necessidade de instanciar app. 
 - No tabuleiro podemos ter as peças de xadrez, por exemplo.
 - Tudo meio que gira entorno desse tabuleiro, então esta é minha classe principal.
+
+## App
+- Interação com usuário!
+- Jogo agora está em modo texto, se quiser mudar p gráfico só altera App
+
+## Agregação
+- Objeto parte existe mesmo que o objeto parte não exista mais.
+- Se não colcoar o losango, é agregação.
+
+## Composição
+- Objeto parte não existe se objeto todo não existir na memória.
+
+## Debug 
+`Motor@60`
+- Motor - Nome da classe 
+- 60 - Qual a instância (para onde está apontando da memória)
+
+## Dependência
+- Exemplo um jogador rolar dados para jogar
+- É uma dependência! Não é um atributo, precisa de um método dela ali e não atribuições.
+

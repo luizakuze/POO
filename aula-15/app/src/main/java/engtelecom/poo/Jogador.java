@@ -35,7 +35,7 @@ public class Jogador {
     public boolean comprarCarro(Carro c) {
         if (this.totalDeCarrosNaGaragem() < App.TOTAL_CARROS) {
 
-            Carro antigo = carroAtual;
+            Carro antigo = this.getCarroAtual();
 
             this.adicionarCarro(antigo);
             this.setCarroAtual(c);
@@ -46,9 +46,9 @@ public class Jogador {
     }
 
     public boolean comprarMotor(Motor m) {
-        if (this.totalDeCarrosNaPecas() < App.TOTAL_PECAS) {
+        if (this.totalDePecasNaEstante() < App.TOTAL_PECAS) {
 
-            Motor antigo = carroAtual.getPropulsor();
+            Motor antigo = this.carroAtual.getPropulsor();
 
             this.adicionarPeca(antigo);
             this.carroAtual.setPropulsor(m);;
@@ -62,7 +62,7 @@ public class Jogador {
         return garagem.size();
     }
 
-    public int totalDeCarrosNaPecas() {
+    public int totalDePecasNaEstante() {
         return estante.size();
     }
 
@@ -74,5 +74,12 @@ public class Jogador {
         this.carroAtual = carroAtual;
     }
 
-    
+    public boolean venderCarro(int posicao){
+        if ((garagem.size() == 0) || (posicao >= garagem.size()) || (posicao < 0)) {
+            return false;
+        }
+        garagem.remove(posicao);
+        return true;
+    }
+
 }   

@@ -34,3 +34,12 @@ libva error: /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so init failed
 APPIMAGE env is not defined, current application is not an AppImage
 
 emersonmello.me
+
+anotações projeto
+
+relogio digital
+display
+7 sgmentos
+
+
+- tamanho p m g (nao é classe)

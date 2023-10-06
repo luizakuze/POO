@@ -43,10 +43,10 @@ public class Pessoa {
     @Override
     public String toString() {
         String string = "Nome -" + nome + "\n" +
-                        "Sobrenome - " + sobrenome + "\n" +
-                        "Data Nascimento - " + dataNasc + "\n" +
-                        " - " + telefones + "\n" +
-                        "Emails - " + emails + "\n";
+                "Sobrenome - " + sobrenome + "\n" +
+                "Data Nascimento - " + dataNasc + "\n" +
+                "Telefones - " + telefones + "\n" +
+                "Emails - " + emails + "\n";
         return string;
     }
 }

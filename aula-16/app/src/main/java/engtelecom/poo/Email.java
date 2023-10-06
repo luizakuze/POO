@@ -9,7 +9,7 @@ public class Email {
         this.dados = new HashMap<>();
     }
 
-    private boolean verificaEmail (String e) {
+    private boolean verificaEmail(String e) {
         String eR = "^[\\w-\\+]+(\\.[\\w]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-z]{2,})$";
         if (e.matches(eR)) {
             return true;
@@ -18,12 +18,12 @@ public class Email {
     }
 
     // adicionando um email
-    public boolean add (String r, String e) {
+    public boolean add(String r, String e) {
         // verifica se o email já existe
         if (!dados.containsKey(r)) {
 
             // verifica se o email é válido
-            if (verificaEmail(e)) { 
+            if (verificaEmail(e)) {
                 dados.put(r, e);
                 return true;
             }
@@ -31,17 +31,17 @@ public class Email {
         return false;
     }
 
-    // remove um email 
-    public boolean remove (String r) {
-        if (dados.containsKey(r)){
+    // remove um email
+    public boolean remove(String r) {
+        if (dados.containsKey(r)) {
             dados.remove(r);
             return true;
         }
         return false;
     }
 
-    // atualiza um email 
-    public boolean update (String r, String e) {
+    // atualiza um email
+    public boolean update(String r, String e) {
         // verifica se existe esse email
         if (dados.containsKey(r)) {
 
@@ -56,7 +56,15 @@ public class Email {
 
     @Override
     public String toString() {
-        return "Email: " + dados + "\n";
+        StringBuilder str = new StringBuilder();
+
+        dados.forEach((chave, valor) -> str.append(chave).append(":").append(valor).append(", "));
+
+        if (str.length() > 0) {
+            str.setLength(str.length() - 2);
+        }
+
+        return str.toString();
     }
 
 }

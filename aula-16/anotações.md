@@ -1,5 +1,6 @@
 # Usando UML
 
+```bash
 aluno: ~$ ls
 'Área de trabalho'   Downloads   Modelos   POO       snap    'VirtualBox VMs'
  Documentos          Imagens     Música    Público   Vídeos
@@ -32,14 +33,14 @@ aluno: staruml$ ./opt/StarUML/staruml --no-sandbox
 libva error: /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so init failed
 [20769:1005/090105.998589:ERROR:sandbox_linux.cc(374)] InitializeSandbox() called with multiple threads in process gpu-process.
 APPIMAGE env is not defined, current application is not an AppImage
+```
 
+## Site prof
 emersonmello.me
 
-anotações projeto
+## Anotações do projeto 1
 
-relogio digital
-display
-7 sgmentos
-
-
+- relógio digital
+- display
+- 7 sgmentos
 - tamanho p m g (nao é classe)

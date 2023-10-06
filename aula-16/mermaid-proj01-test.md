@@ -1,44 +1,42 @@
 # Diagrama projeto 01
 
-- Principal: Classe que vai desenhar os ;
-- Horario: Tempo atual;
-- RelogioDigital: Conjunto de displays;
-- Display: Conjunto de segmentos;
-- Segmento: A, B, C, D, E, F, G.
-
 ```mermaid
 classDiagram
     direction LR
 
     class Principal {
-        -relogio: RelogioDigital
+        -relogio: ArrayList< RelogioDigital >
+        +menu()
+        +main()
     }
 
     class RelogioDigital{
         -tamanho: char
         -horario: Horario
+        +RelogioDigital(t: char, h: Horario)
     } 
     
     class Horario {
-        -horas: String 
-        -minutos: String
-        -segundos: String
+        -horas: int 
+        -minutos: int
+        -segundos: int
+        +Horario (h: int, s: int, s: int);
     }
 
     class Display{
-        -segmentos: ArrayList
+        -segmentos: ArrayList< Segmento >
+        +Display()
     }
 
     class Segmento{
         -estado: boolean
+        +Segmento()
     }
 
-    Principal --* RelogioDigital
     RelogioDigital *-- Horario
     RelogioDigital *-- Display
     Display *-- Segmento
 
+    Principal ..> RelogioDigital
+
 ``` .
-
-
-//Aluno *-- Matricula

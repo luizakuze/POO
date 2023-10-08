@@ -11,8 +11,12 @@ classDiagram
     }
 
     class RelogioDigital{
-        -tamanho: char
         -horario: Horario
+        -displays: ArrayList< Display >
+        -cor: string
+        -tamanho: char
+        -x: int
+        -y: int
         +RelogioDigital(t: char, h: Horario)
     } 
     
@@ -21,7 +25,7 @@ classDiagram
         -minutos: int
         -segundos: int
         +Horario (h: int, s: int, s: int);
-    }
+    } 
 
     class Display{
         -segmentos: ArrayList< Segmento >
@@ -34,9 +38,19 @@ classDiagram
     }
 
     RelogioDigital *-- Horario
-    RelogioDigital *-- Display
-    Display *-- Segmento
+    RelogioDigital "1" *-- "6" Display
+    Display "1" *-- "1" Segmento
 
     Principal ..> RelogioDigital
 
 ``` .
+
+    <!-- class Horario {
+        -horas: int 
+        -minutos: int
+        -segundos: int
+        +Horario (h: int, s: int, s: int);
+    } 
+    
+    
+    RelogioDigital *-- Horario-->

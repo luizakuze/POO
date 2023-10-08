@@ -15,8 +15,8 @@ classDiagram
         -displays: ArrayList< Display >
         -cor: string
         -tamanho: char
-        -x: int
-        -y: int
+        -coordenadaX: int
+        -coordenadaY: int
         +RelogioDigital(t: char, h: Horario)
     } 
     
@@ -33,6 +33,8 @@ classDiagram
     }
 
     class Segmento{
+        -coordenadaX: int
+        -coordenadaY: int
         -estado: boolean
         +Segmento()
     }

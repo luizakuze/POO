@@ -1,6 +1,6 @@
 # Introdução 1 - Terminal e Git
 
-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
+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
 
 ## Convenções da programação
 - `CamelCase`

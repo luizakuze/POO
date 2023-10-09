@@ -2,7 +2,6 @@
 
 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
 
-
 ## Convenções da programação
 - `CamelCase`
 - `pascalCase`

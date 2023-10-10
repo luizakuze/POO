@@ -29,7 +29,13 @@ public class Display {
     }
     
     private void inicializarNumeros() {
-        
+       numeros.add(1); // Segmento A
+       numeros.add(1); // Segmento A
+       numeros.add(1); // Segmento A
+       numeros.add(1); // Segmento A
+       numeros.add(1); // Segmento A
+       numeros.add(1); // Segmento A
+       numeros.add(1); // Segmento A
     }
 
     public Display() {

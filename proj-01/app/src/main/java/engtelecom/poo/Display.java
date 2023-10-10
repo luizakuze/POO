@@ -2,36 +2,46 @@ package engtelecom.poo;
 
 import java.util.ArrayList;
 
+import edu.princeton.cs.algs4.Draw;
+import java.awt.Color;
+
 public class Display {
     private ArrayList<Segmento> display; // segmentos A, B, C, D, E, F e G
-    private Segmento a;
-    private Segmento b;
-    private Segmento c;
-    private Segmento d;
-    private Segmento e;
-    private Segmento f;
-    private Segmento g;
+    private ArrayList<Integer> numeros;
 
-    public Display(Segmento a, Segmento b, Segmento c, Segmento d, Segmento e, Segmento f, Segmento g) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        this.d = d;
-        this.e = e;
-        this.f = f;
-        this.g = g;
+
+// incluir a coordenada dos segmentos do sdisplays
+
+    private void analisaNumero (Integer n, ArrayList<Segmento> display) {
+        if (n == 1) {
+            display.get(1).trocaEstado(); // B
+            display.get(2).trocaEstado(); // C
+        }
     }
 
-    public void setDisplay(ArrayList<Segmento> display) {
+    public Display() {
+        display = new ArrayList<>();
+        numeros = new ArrayList<>();
+    }
+
+    
+    public Display(ArrayList<Segmento> display, ArrayList<Integer> numeros) {
         this.display = display;
+        this.numeros = numeros;
     }
 
-    public Display(ArrayList<Segmento> display) {
-        this.display = new ArrayList<>();
+    public void ligaDisplay(ArrayList<Segmento> display) {
+        int i = 0;
+        for (Segmento s: display) {
+            analisaNumero(this.numeros.get(i), display);
+            i++;
+        }
     }
 
-    public void desenharDisplay() {
-
+    public void desenharDisplay(Draw desenho) {
+        for (Segmento s: display) {
+            s.desenhaSegmento(desenho);
+        }
     }
 
 }

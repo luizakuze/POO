@@ -2,16 +2,22 @@ package engtelecom.poo;
 
 import edu.princeton.cs.algs4.Draw;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Principal {
+
     public static void main(String[] args) throws InterruptedException {
         Draw desenho = new Draw();
         int dimensao = 800;
+
         desenho.setXscale(0, dimensao);
         desenho.setYscale(0, dimensao);
         desenho.setDefaultCloseOperation(3);
+
         double fator = 200;
         double fatorCor = 0.2;
+
         Color clara = Draw.GREEN;
         Color escura = new Color((int) (clara.getRed() * fatorCor), (int) (clara.getGreen() * fatorCor),
                 (int) (clara.getBlue() * fatorCor));
@@ -26,40 +32,24 @@ public class Principal {
         for (int j = 0; j <= dimensao; j += grade)
             desenho.line(0, j, dimensao, j);
 
-        double xInicial = 300;
-        double yInicial = 400;
 
-        // Montando vetores com os pontos em X e em Y para desenhar um segmento
-        // horizontal
-        yInicial = 180;
+        
+        ArrayList<Integer> numeros = new ArrayList<>();
+        numeros.addAll(Arrays.asList(1, 2, 3, 4, 5, 6));
+        
+        ArrayList<Segmento> display = new ArrayList<>();
+        Segmento s = new Segmento(100, 200);
+        display.addAll(Arrays.asList(s, s, s, s, s, s));
 
-        double[] xHorizontal = { 0.1 * fator + xInicial, 0.2 * fator + xInicial, 1.0 * fator + xInicial, 1.1 * fator +
-                xInicial, 1.0 * fator + xInicial, 0.2 * fator + xInicial };
-        double[] yHorizontal = { 0.2 * fator + yInicial, 0.3 * fator + yInicial, 0.3 * fator + yInicial, 0.2 * fator +
-                yInicial, 0.1 * fator + yInicial, 0.1 * fator + yInicial };
 
-        // Desenhando o segmento horizontal
-        desenho.setPenColor(clara);
-        desenho.filledPolygon(xHorizontal, yHorizontal);
+        Display d = new Display(display, numeros);
+        d.desenharDisplay(desenho);
 
-        // Montando vetores com os pontos em X e em Y para desenhar um segmento vertical
-        yInicial = 200;
-        double[] xVertical = { 0.1 * fator + xInicial, 0.2 * fator + xInicial, 0.2 * fator + xInicial,
-                0.1 * fator + xInicial,
-                0 * fator + xInicial, 0 * fator + xInicial };
-        double[] yVertical = { 0.2 * fator + yInicial, 0.3 * fator + yInicial, 1.0 * fator + yInicial,
-                1.1 * fator + yInicial,
-                1.0 * fator + yInicial, 0.3 * fator + yInicial };
 
-        // Desenhando o segmento vertical
-        desenho.setPenColor(escura);
-        desenho.filledPolygon(xVertical, yVertical);
+        // Segmento s = new Segmento(100, 200);
+        // s.trocaEstado();
+        // s.desenhaSegmento(desenho);
 
-        // Desenhando outro segmento vertical, porém com x deslocado em 'fator' pixels
-        for (int i = 0; i < xVertical.length; i++) {
-            xVertical[i] += fator;
-        }
-        desenho.filledPolygon(xVertical, yVertical);
         // Trocando o buffer para exibir o que foi desenhado
         desenho.show();
     }

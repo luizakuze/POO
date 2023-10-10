@@ -9,13 +9,13 @@ public class Display {
     private ArrayList<Segmento> display; // segmentos A, B, C, D, E, F e G
     private ArrayList<Integer> numeros;
 
-// incluir a coordenada dos segmentos dos displays
+    // incluir a coordenada dos segmentos dos displays
 
-    private void analisaNumero (Integer n, ArrayList<Segmento> display) {
+    private void analisaNumero(Integer n, ArrayList<Segmento> display) {
         if (n == 1) {
             display.get(1).trocaEstado(); // B
             display.get(2).trocaEstado(); // C
-        } 
+        }
     }
 
     private void inicializarSegmentos() {
@@ -27,15 +27,15 @@ public class Display {
         display.add(new Segmento(500, 410)); // Segmento F
         display.add(new Segmento(300, 600)); // Segmento G
     }
-    
+
     private void inicializarNumeros() {
-       numeros.add(1); // Segmento A
-       numeros.add(1); // Segmento A
-       numeros.add(1); // Segmento A
-       numeros.add(1); // Segmento A
-       numeros.add(1); // Segmento A
-       numeros.add(1); // Segmento A
-       numeros.add(1); // Segmento A
+        numeros.add(1); // Segmento A
+        numeros.add(1); // Segmento A
+        numeros.add(1); // Segmento A
+        numeros.add(1); // Segmento A
+        numeros.add(1); // Segmento A
+        numeros.add(1); // Segmento A
+        numeros.add(1); // Segmento A
     }
 
     public Display() {
@@ -45,17 +45,15 @@ public class Display {
         inicializarNumeros();
     }
 
-    
     public Display(ArrayList<Segmento> display, ArrayList<Integer> numeros) {
         this.display = display;
         this.numeros = numeros;
     }
 
-
-    public void ligaDisplay(ArrayList<Segmento> display) {
+    public void ligaDisplay() {
         int i = 0;
-        for (Segmento s: display) {
-            analisaNumero(this.numeros.get(i), display);
+        for (Segmento s : display) {
+            analisaNumero(numeros.get(i), display);
             i++;
         }
     }
@@ -71,6 +69,5 @@ public class Display {
             i++;
         }
     }
-    
 
 }

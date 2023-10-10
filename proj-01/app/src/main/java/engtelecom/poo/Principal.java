@@ -6,10 +6,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Principal {
+    private ArrayList<RelogioDigital> relogios;
+    private Draw desenho;
 
-    public static void main(String[] args) throws InterruptedException {
-        Draw desenho = new Draw();
-        int dimensao = 800;
+    public Principal() {
+        this.relogios = new ArrayList<>();
+        this.desenho = new Draw();
+    }
+
+    public void desenhaRelogio(RelogioDigital r) {
+        int dimensao = 1000;
 
         desenho.setXscale(0, dimensao);
         desenho.setYscale(0, dimensao);
@@ -32,27 +38,17 @@ public class Principal {
         for (int j = 0; j <= dimensao; j += grade)
             desenho.line(0, j, dimensao, j);
 
+        r.desenhaRelogio(desenho);
 
-        
-        ArrayList<Integer> numeros = new ArrayList<>();
-        numeros.addAll(Arrays.asList(1, 1, 1, 1, 1, 1));
-        
-        ArrayList<Segmento> display = new ArrayList<>();
-
-
-        Display d = new Display(display, numeros);
-        
-        d.ligaDisplay(display);
-
-        d.desenharDisplay(desenho);
-
-
-        // Segmento s = new Segmento(100, 200);
-        // s.trocaEstado();
-        // s.desenhaSegmento(desenho);
-
-        // Trocando o buffer para exibir o que foi desenhado
         desenho.show();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Principal p = new Principal();
+
+        RelogioDigital r = new RelogioDigital(550, 550, 10, 20, 30, "PINK", 1);
+        p.desenhaRelogio(r);
+        p.relogios.add(r);
     }
 
 }

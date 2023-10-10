@@ -31,14 +31,18 @@ public class Segmento {
     public void desenhaSegmentoHorizontal(Draw desenho) {
         // cores para diferentes estados do segmento
         Color clara = Draw.GREEN;
-        Color escura = new Color((int)(clara.getRed()*FATOR_COR), (int)(clara.getGreen()*FATOR_COR), (int)(
-        clara.getBlue()*FATOR_COR));
+        Color escura = new Color((int) (clara.getRed() * FATOR_COR),
+                (int) (clara.getGreen() * FATOR_COR), (int) (clara.getBlue() * FATOR_COR));
 
-        // montando vetores com os pontos em X e em Y para desenhar um segmento horizontal
-        double[] x = {0.1*FATOR+coordenadaX, 0.2*FATOR+coordenadaX, 1.0*FATOR+coordenadaX, 1.1*FATOR+
-        coordenadaX, 1.0*FATOR+coordenadaX, 0.2*FATOR+coordenadaX};
-        double[] y = {0.2*FATOR+coordenadaY, 0.3*FATOR+coordenadaY, 0.3*FATOR+coordenadaY, 0.2*FATOR+
-        coordenadaY, 0.1*FATOR+coordenadaY, 0.1*FATOR+coordenadaY};
+        // montando vetores com os pontos em X e em Y para desenhar um segmento
+        double[] x = { 0.1 * FATOR + coordenadaX, 0.2 * FATOR + coordenadaX,
+                1.0 * FATOR + coordenadaX, 1.1 * FATOR +
+                        coordenadaX,
+                1.0 * FATOR + coordenadaX, 0.2 * FATOR + coordenadaX };
+        double[] y = { 0.2 * FATOR + coordenadaY, 0.3 * FATOR + coordenadaY,
+                0.3 * FATOR + coordenadaY, 0.2 * FATOR +
+                        coordenadaY,
+                0.1 * FATOR + coordenadaY, 0.1 * FATOR + coordenadaY };
 
         if (this.estado) {
             desenho.setPenColor(clara); // segmento ligado
@@ -52,14 +56,16 @@ public class Segmento {
     public void desenhaSegmentoVertical(Draw desenho) {
         // cores para diferentes estados do segmento
         Color clara = Draw.GREEN;
-        Color escura = new Color((int)(clara.getRed()*FATOR_COR), (int)(clara.getGreen()*FATOR_COR), (int)(
-        clara.getBlue()*FATOR_COR));
-    
-        double[] x = {0.1* FATOR+coordenadaX, 0.2*FATOR+coordenadaX, 0.2*FATOR+coordenadaX, 0.1*FATOR+coordenadaX,
-        0*FATOR+coordenadaX, 0*FATOR+coordenadaX};
-        double[] y = {0.2*FATOR+coordenadaY, 0.3*FATOR+coordenadaY, 1.0*FATOR+coordenadaY, 1.1*FATOR+coordenadaY,
-        1.0*FATOR+coordenadaY, 0.3*FATOR+coordenadaY};
-        
+        Color escura = new Color((int) (clara.getRed() * FATOR_COR),
+                (int) (clara.getGreen() * FATOR_COR), (int) (clara.getBlue() * FATOR_COR));
+
+        double[] x = { 0.1 * FATOR + coordenadaX, 0.2 * FATOR + coordenadaX,
+                0.2 * FATOR + coordenadaX, 0.1 * FATOR + coordenadaX,
+                0 * FATOR + coordenadaX, 0 * FATOR + coordenadaX };
+        double[] y = { 0.2 * FATOR + coordenadaY, 0.3 * FATOR + coordenadaY,
+                1.0 * FATOR + coordenadaY, 1.1 * FATOR + coordenadaY,
+                1.0 * FATOR + coordenadaY, 0.3 * FATOR + coordenadaY };
+
         if (this.estado) {
             desenho.setPenColor(clara); // segmento ligado
         } else {

@@ -9,14 +9,13 @@ public class Display {
     private ArrayList<Segmento> display; // segmentos A, B, C, D, E, F e G
     private ArrayList<Integer> numeros;
 
-
 // incluir a coordenada dos segmentos do sdisplays
 
     private void analisaNumero (Integer n, ArrayList<Segmento> display) {
         if (n == 1) {
             display.get(1).trocaEstado(); // B
             display.get(2).trocaEstado(); // C
-        }
+        } 
     }
 
     public Display() {
@@ -29,6 +28,7 @@ public class Display {
         this.display = display;
         this.numeros = numeros;
     }
+
 
     public void ligaDisplay(ArrayList<Segmento> display) {
         int i = 0;

@@ -45,6 +45,7 @@ public class Segmento {
         } else {
             desenho.setPenColor(escura); // segmento desligado
         }
+
         desenho.filledPolygon(x, y);
     }
 

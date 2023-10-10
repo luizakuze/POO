@@ -12,7 +12,6 @@ public class Display {
     private Segmento f;
     private Segmento g;
 
-
     public Display(Segmento a, Segmento b, Segmento c, Segmento d, Segmento e, Segmento f, Segmento g) {
         this.a = a;
         this.b = b;
@@ -31,7 +30,8 @@ public class Display {
         this.display = new ArrayList<>();
     }
 
+    public void desenharDisplay() {
 
-    
+    }
 
 }

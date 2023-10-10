@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.Draw;
 import java.awt.Color;
 
 public class Segmento {
-    private boolean estado; // pode estar ligado ou desligado~
+    private boolean estado; // pode estar ligado ou desligado
     private int coordenadaX;
     private int coordenadaY;
     private final int FATOR = 200;
@@ -28,7 +28,7 @@ public class Segmento {
         }
     }
 
-    public void desenhaSegmento(Draw desenho) {
+    public void desenhaSegmentoHorizontal(Draw desenho) {
         // cores para diferentes estados do segmento
         Color clara = Draw.GREEN;
         Color escura = new Color((int)(clara.getRed()*FATOR_COR), (int)(clara.getGreen()*FATOR_COR), (int)(
@@ -49,4 +49,24 @@ public class Segmento {
         desenho.filledPolygon(x, y);
     }
 
+    public void desenhaSegmentoVertical(Draw desenho) {
+        // cores para diferentes estados do segmento
+        Color clara = Draw.GREEN;
+        Color escura = new Color((int)(clara.getRed()*FATOR_COR), (int)(clara.getGreen()*FATOR_COR), (int)(
+        clara.getBlue()*FATOR_COR));
+    
+        double[] x = {0.1* FATOR+coordenadaX, 0.2*FATOR+coordenadaX, 0.2*FATOR+coordenadaX, 0.1*FATOR+coordenadaX,
+        0*FATOR+coordenadaX, 0*FATOR+coordenadaX};
+        double[] y = {0.2*FATOR+coordenadaY, 0.3*FATOR+coordenadaY, 1.0*FATOR+coordenadaY, 1.1*FATOR+coordenadaY,
+        1.0*FATOR+coordenadaY, 0.3*FATOR+coordenadaY};
+        
+        if (this.estado) {
+            desenho.setPenColor(clara); // segmento ligado
+        } else {
+            desenho.setPenColor(escura); // segmento desligado
+        }
+
+        desenho.filledPolygon(x, y);
+
+    }
 }

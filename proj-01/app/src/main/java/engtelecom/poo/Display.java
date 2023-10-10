@@ -9,7 +9,7 @@ public class Display {
     private ArrayList<Segmento> display; // segmentos A, B, C, D, E, F e G
     private ArrayList<Integer> numeros;
 
-// incluir a coordenada dos segmentos do sdisplays
+// incluir a coordenada dos segmentos dos displays
 
     private void analisaNumero (Integer n, ArrayList<Segmento> display) {
         if (n == 1) {
@@ -18,9 +18,25 @@ public class Display {
         } 
     }
 
+    private void inicializarSegmentos() {
+        display.add(new Segmento(300, 200)); // Segmento A
+        display.add(new Segmento(300, 210)); // Segmento B
+        display.add(new Segmento(500, 210)); // Segmento C
+        display.add(new Segmento(300, 400)); // Segmento D
+        display.add(new Segmento(300, 410)); // Segmento E
+        display.add(new Segmento(500, 410)); // Segmento F
+        display.add(new Segmento(300, 600)); // Segmento G
+    }
+    
+    private void inicializarNumeros() {
+        
+    }
+
     public Display() {
         display = new ArrayList<>();
         numeros = new ArrayList<>();
+        inicializarSegmentos();
+        inicializarNumeros();
     }
 
     
@@ -39,9 +55,16 @@ public class Display {
     }
 
     public void desenharDisplay(Draw desenho) {
-        for (Segmento s: display) {
-            s.desenhaSegmento(desenho);
+        int i = 0;
+        for (Segmento s : display) {
+            if (i == 1 || i == 2 || i == 4 || i == 5) {
+                s.desenhaSegmentoVertical(desenho);
+            } else {
+                s.desenhaSegmentoHorizontal(desenho);
+            }
+            i++;
         }
     }
+    
 
 }

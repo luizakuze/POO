@@ -15,7 +15,10 @@ public class RelogioDigital {
         this.displays = new ArrayList<>();
     }
 
-    // public boolean defineHorario(int segundo, int minuto, int hora) {
-    // }
+    public boolean defineHorario(int horas, int minutos, int segundos) {
+        return horario.setHoras(horas) && horario.setMinutos(minutos) && horario.setSegundos(segundos);
+    }
+
+    
 
 }

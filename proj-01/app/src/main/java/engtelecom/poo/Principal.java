@@ -35,24 +35,15 @@ public class Principal {
 
         
         ArrayList<Integer> numeros = new ArrayList<>();
-        numeros.addAll(Arrays.asList(1, 2, 3, 4, 5, 6));
+        numeros.addAll(Arrays.asList(1, 1, 1, 1, 1, 1));
         
         ArrayList<Segmento> display = new ArrayList<>();
-        Segmento A = new Segmento(0, 0);
-        Segmento B = new Segmento(0, 0);
-        Segmento C = new Segmento(0, 0);
-        Segmento D = new Segmento(0, 0);
-        Segmento E = new Segmento(0, 0);
-        Segmento F = new Segmento(0, 0);
-
-
-        A = new Segmento(300, 200);
-        E = new Segmento(300, 600);
-        F = new Segmento(300, 400);
-        display.addAll(Arrays.asList(A, B, C, D, E, F));
 
 
         Display d = new Display(display, numeros);
+        
+        d.ligaDisplay(display);
+
         d.desenharDisplay(desenho);
 
 

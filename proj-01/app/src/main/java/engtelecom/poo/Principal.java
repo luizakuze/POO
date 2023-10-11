@@ -47,6 +47,7 @@ public class Principal {
         Principal p = new Principal();
 
         RelogioDigital r = new RelogioDigital(550, 550, 10, 20, 30, "PINK", 1);
+
         p.desenhaRelogio(r);
         p.relogios.add(r);
     }

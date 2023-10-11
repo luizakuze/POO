@@ -26,17 +26,9 @@ public class RelogioDigital {
         this.displays = new ArrayList<>();
     }
 
-    // private void tamanhoRelogio(int tamanho, int largura, int altura) {
-    // switch (tamanho) {
-    // case 1:
-    // largura = 600
-    // altura = 200;
-    // break;
-
-    // default:
-    // break;
-    // }
-    // }
+    public void setDisplays(ArrayList<Display> displays) {
+        this.displays = displays;
+    }
 
     public void desenhaRelogio(Draw desenho) {
         int largura = 600; // Largura do retângulo (aumentado para 200)

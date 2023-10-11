@@ -10,14 +10,15 @@ public class Display {
     private int numero;                  // número que está aparecendo
 
     // analisa quais segmentos dos display devem acender a depender do número
-    private void analisaNumero(Integer numero, ArrayList<Segmento> display) {
+    
+    public void trocaEstadoDisplay() {
             for (Segmento segmento : display) {
                 segmento.reset(); // zera todos os segmentos
             }
         
             switch (numero) {
                 case 0:
-                    display.get(0).trocaEstado();  // Segmesnto A
+                    display.get(0).trocaEstado();  // Segmento A
                     display.get(1).trocaEstado();  // Segmento B
                     display.get(2).trocaEstado();  // Segmento C
                     display.get(3).trocaEstado();  // Segmento D
@@ -96,7 +97,7 @@ public class Display {
 
     public Display() {
         display = new ArrayList<>();
-        numero = 1;
+        numero = 4;
         inicializarSegmentos();
     }
 
@@ -104,29 +105,30 @@ public class Display {
         this.display = display;
     }
 
-    public void trocaEstadoDisplay() {
-        int i = 0;
-        for (Segmento s : display) {
-            analisaNumero(numero, display);
-            i++;
-        }
-    }
-
     // QUANDO MONTAR O DISPLAY, VAI FALAR P ONDE É CADA SEGMENTO
     // desenha um display, ou seja, 7 segmentos 
     public void desenharDisplay(Draw desenho) {
 
+        trocaEstadoDisplay();
         // analisa cada um dos segmentos do display
         for (int i = 0; i < display.size(); i++) {
 
             switch(i) {
                 case 0: 
-                    // segmento A (vertical)
-                    display.get(i).desenharSegmentoVertical(desenho);
+                    // segmento A (horizontal)
+                    display.get(i).desenharSegmentoHorizontal(desenho);
                     break;
                 case 1:
                     // segmento B (vertical)
                     display.get(i).desenharSegmentoVertical(desenho);
+                    break;
+                case 2:
+                    // display C (vertical)
+                    display.get(i).desenharSegmentoVertical(desenho);
+                    break;
+                case 3: 
+                    // display D (horizontal)
+                    display.get(i).desenharSegmentoHorizontal(desenho);
                     break;
                 case 4:
                     // segmento E (vertical)
@@ -136,8 +138,7 @@ public class Display {
                     // segmento F (vertical)
                     display.get(i).desenharSegmentoVertical(desenho);
                     break;
-                default:
-                    // todos os outros são horizontais
+                case 6:
                     display.get(i).desenharSegmentoHorizontal(desenho);
             }
         }

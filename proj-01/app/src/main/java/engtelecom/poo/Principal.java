@@ -19,7 +19,7 @@ public class Principal {
                                                (int) (CLARA.getBlue() * FATOR_COR));
 
     public static final int X_TESTE = 300;
-    public static final int Y_TESTE = 300;
+    public static final int Y_TESTE = 400;
 
     public Principal() {
         this.relogios = new ArrayList<>();
@@ -37,7 +37,7 @@ public class Principal {
         desenho.enableDoubleBuffering();
         desenho.clear(Draw.WHITE);
 
-        // Desenhando grade quadriculada
+        // desenhando grade quadriculada
         int grade = (int) FATOR / 10;
         desenho.setPenColor(Draw.LIGHT_GRAY);
         for (int i = 0; i <= dimensao; i += grade)
@@ -45,18 +45,40 @@ public class Principal {
         for (int j = 0; j <= dimensao; j += grade)
             desenho.line(0, j, dimensao, j);
 
-        r.desenhaRelogio(desenho);   
-        
+        r.desenhaRelogio(desenho);      
         desenho.show();
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Principal p = new Principal();
+        //Principal p = new Principal();
+        //RelogioDigital r = new RelogioDigital(X_TESTE, Y_TESTE, 11, 11, 11, "PINK", 1);
+        //p.desenhaRelogio(r);
+        //p.relogios.add(r);
 
-        RelogioDigital r = new RelogioDigital(X_TESTE, Y_TESTE, 11, 11, 11, "PINK", 1);
+        Display d = new Display();
+        int dimensao = 1000;
+        Draw desenho = new Draw();
+        desenho.setXscale(0, dimensao);
+        desenho.setYscale(0, dimensao);
+        desenho.setDefaultCloseOperation(3);
 
-        p.desenhaRelogio(r);
-        p.relogios.add(r);
+        desenho.enableDoubleBuffering();
+        desenho.clear(Draw.WHITE);
+
+        // desenhando grade quadriculada
+        int grade = (int) FATOR / 10;
+        desenho.setPenColor(Draw.LIGHT_GRAY);
+        for (int i = 0; i <= dimensao; i += grade)
+            desenho.line(i, 0, i, dimensao);
+        for (int j = 0; j <= dimensao; j += grade)
+            desenho.line(0, j, dimensao, j);
+
+
+        d.desenharDisplay(desenho);
+
+        
+        desenho.show();
+
 
 
       

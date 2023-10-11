@@ -60,9 +60,6 @@ public class RelogioDigital {
 
 
 
-
-
-
         // vai ter que desenhar 6 displays em posições diferentes, ou seja
         // os diplays devem ter coordenadas diferentes
         int x = 10;

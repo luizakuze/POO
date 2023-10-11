@@ -4,16 +4,15 @@ import edu.princeton.cs.algs4.Draw;
 import java.awt.Color;
 
 public class Segmento {
+    private char id;        // id: A, B, C, D, E, OU F
     private boolean estado; // pode estar ligado ou desligado
-    // private int coordenadaX;
-    // private int coordenadaY;
-    private final int FATOR = 200;
-    private final double FATOR_COR = 0.2;
+    private int coordenadaX;
+    private int coordenadaY;
 
-    public Segmento(int coordenadaX, int coordenada) {
+    public Segmento(char id, int coordenadaX, int coordenadaY) {
         this.estado = false; // inicia com o segmento desligado
-        // this.coordenadaX = coordenadaX;
-        // this.coordenadaY = coordenada;
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
     }
 
     public boolean isEstado() {
@@ -21,59 +20,51 @@ public class Segmento {
     }
 
     public void trocaEstado() {
+        this.estado = !this.estado;
+    }
+
+    // desliga um segmento
+    public void reset() {
+        this.estado = false;
+    }
+
+    // sseleciona a cor do segmento caso esteja ligado ou desligado
+    private void selecionaCor(Draw desenho) {
         if (this.estado) {
-            this.estado = false;
+            desenho.setPenColor(Principal.CLARA);  // segmento ligado
         } else {
-            this.estado = true;
+            desenho.setPenColor(Principal.ESCURA); // segmento desligado
         }
     }
 
-    // public void desenhaSegmentoHorizontal(Draw desenho) {
-    // // cores para diferentes estados do segmento
-    // Color clara = Draw.GREEN;
-    // Color escura = new Color((int) (clara.getRed() * FATOR_COR),
-    // (int) (clara.getGreen() * FATOR_COR), (int) (clara.getBlue() * FATOR_COR));
+    // desenha um segmento horizontal
+    public void desenharSegmentoHorizontal(Draw desenho) {
+        double[] x = { 0.1 * Principal.FATOR + coordenadaX, 0.2 * Principal.FATOR + coordenadaX,
+        1.0 * Principal.FATOR + coordenadaX, 1.1 * Principal.FATOR +
+        coordenadaX,
+        1.0 * Principal.FATOR + coordenadaX, 0.2 * Principal.FATOR + coordenadaX };
+        double[] y = { 0.2 * Principal.FATOR + coordenadaY, 0.3 * Principal.FATOR + coordenadaY,
+        0.3 * Principal.FATOR + coordenadaY, 0.2 * Principal.FATOR +
+        coordenadaY,
+        0.1 * Principal.FATOR + coordenadaY, 0.1 * Principal.FATOR + coordenadaY };
 
-    // // montando vetores com os pontos em X e em Y para desenhar um segmento
+        selecionaCor(desenho);
 
-    // double[] x = { 0.1 * FATOR + coordenadaX, 0.2 * FATOR + coordenadaX,
-    // 1.0 * FATOR + coordenadaX, 1.1 * FATOR +
-    // coordenadaX,
-    // 1.0 * FATOR + coordenadaX, 0.2 * FATOR + coordenadaX };
-    // double[] y = { 0.2 * FATOR + coordenadaY, 0.3 * FATOR + coordenadaY,
-    // 0.3 * FATOR + coordenadaY, 0.2 * FATOR +
-    // coordenadaY,
-    // 0.1 * FATOR + coordenadaY, 0.1 * FATOR + coordenadaY };
+        desenho.filledPolygon(x, y);
+    }
 
-    // if (this.estado) {
-    // desenho.setPenColor(clara); // segmento ligado
-    // } else {
-    // desenho.setPenColor(escura); // segmento desligado
-    // }
+    // desenha um segmento vertical
+    public void desenharSegmentoVertical(Draw desenho) {
+        double[] x = { 0.1 * Principal.FATOR + coordenadaX, 0.2 * Principal.FATOR + coordenadaX,
+        0.2 * Principal.FATOR + coordenadaX, 0.1 * Principal.FATOR + coordenadaX,
+        0 * Principal.FATOR + coordenadaX, 0 * Principal.FATOR + coordenadaX };
+        double[] y = { 0.2 * Principal.FATOR + coordenadaY, 0.3 * Principal.FATOR + coordenadaY,
+        1.0 * Principal.FATOR + coordenadaY, 1.1 * Principal.FATOR + coordenadaY,
+        1.0 * Principal.FATOR + coordenadaY, 0.3 * Principal.FATOR + coordenadaY };
 
-    // desenho.filledPolygon(x, y);
-    // }
+        selecionaCor(desenho);
 
-    // public void desenhaSegmentoVertical(Draw desenho) {
-    // // cores para diferentes estados do segmento
-    // Color clara = Draw.GREEN;
-    // Color escura = new Color((int) (clara.getRed() * FATOR_COR),
-    // (int) (clara.getGreen() * FATOR_COR), (int) (clara.getBlue() * FATOR_COR));
+        desenho.filledPolygon(x, y);
 
-    // double[] x = { 0.1 * FATOR + coordenadaX, 0.2 * FATOR + coordenadaX,
-    // 0.2 * FATOR + coordenadaX, 0.1 * FATOR + coordenadaX,
-    // 0 * FATOR + coordenadaX, 0 * FATOR + coordenadaX };
-    // double[] y = { 0.2 * FATOR + coordenadaY, 0.3 * FATOR + coordenadaY,
-    // 1.0 * FATOR + coordenadaY, 1.1 * FATOR + coordenadaY,
-    // 1.0 * FATOR + coordenadaY, 0.3 * FATOR + coordenadaY };
-
-    // if (this.estado) {
-    // desenho.setPenColor(clara); // segmento ligado
-    // } else {
-    // desenho.setPenColor(escura); // segmento desligado
-    // }
-
-    // desenho.filledPolygon(x, y);
-
-    // }
+    }
 }

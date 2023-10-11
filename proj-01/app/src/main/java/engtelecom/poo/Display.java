@@ -7,25 +7,91 @@ import java.awt.Color;
 
 public class Display {
     private ArrayList<Segmento> display; // segmentos A, B, C, D, E, F e G
-    private int numero;
+    private int numero;                  // número que está aparecendo
 
-    // incluir a coordenada dos segmentos dos displays
-
-    private void analisaNumero(Integer n, ArrayList<Segmento> display) {
-        if (n == 1) {
-            display.get(1).trocaEstado(); // B
-            display.get(2).trocaEstado(); // C
-        }
+    // analisa quais segmentos dos display devem acender a depender do número
+    private void analisaNumero(Integer numero, ArrayList<Segmento> display) {
+            for (Segmento segmento : display) {
+                segmento.reset(); // zera todos os segmentos
+            }
+        
+            switch (numero) {
+                case 0:
+                    display.get(0).trocaEstado();  // Segmesnto A
+                    display.get(1).trocaEstado();  // Segmento B
+                    display.get(2).trocaEstado();  // Segmento C
+                    display.get(3).trocaEstado();  // Segmento D
+                    display.get(4).trocaEstado();  // Segmento E
+                    display.get(5).trocaEstado();  // Segmento F
+                    break;
+                case 1:
+                    display.get(1).trocaEstado();  // Segmento B
+                    display.get(2).trocaEstado();  // Segmento C
+                    break;
+                case 2:
+                    display.get(0).trocaEstado();  // Segmento A
+                    display.get(1).trocaEstado();  // Segmento B
+                    display.get(3).trocaEstado();  // Segmento D
+                    display.get(4).trocaEstado();  // Segmento E
+                    display.get(6).trocaEstado();  // Segmento G
+                    break;
+                case 3:
+                    display.get(0).trocaEstado();  // Segmento A
+                    display.get(1).trocaEstado();  // Segmento B
+                    display.get(2).trocaEstado();  // Segmento C
+                    display.get(3).trocaEstado();  // Segmento D
+                    display.get(6).trocaEstado();  // Segmento G
+                    break;
+                case 4:
+                    display.get(1).trocaEstado();  // Segmento B
+                    display.get(2).trocaEstado();  // Segmento C
+                    display.get(5).trocaEstado();  // Segmento F
+                    display.get(6).trocaEstado();  // Segmento G
+                    break;
+                case 5:
+                    display.get(0).trocaEstado();  // Segmento A
+                    display.get(2).trocaEstado();  // Segmento C
+                    display.get(3).trocaEstado();  // Segmento D
+                    display.get(5).trocaEstado();  // Segmento F
+                    display.get(6).trocaEstado();  // Segmento G
+                    break;
+                case 6:
+                    display.get(0).trocaEstado();  // Segmento A
+                    display.get(2).trocaEstado();  // Segmento C
+                    display.get(3).trocaEstado();  // Segmento D
+                    display.get(4).trocaEstado();  // Segmento E
+                    display.get(5).trocaEstado();  // Segmento F
+                    display.get(6).trocaEstado();  // Segmento G
+                    break;
+                case 7:
+                    display.get(0).trocaEstado();  // Segmento A
+                    display.get(1).trocaEstado();  // Segmento B
+                    display.get(2).trocaEstado();  // Segmento C
+                    break;
+                case 8:
+                    for (Segmento segmento : display) {  // Segmento A, B, C, D, E, F, e G
+                        segmento.trocaEstado();
+                    }
+                    break;
+                case 9:
+                    display.get(0).trocaEstado();  // Segmento A
+                    display.get(1).trocaEstado();  // Segmento B
+                    display.get(2).trocaEstado();  // Segmento C
+                    display.get(4).trocaEstado();  // Segmento E
+                    display.get(5).trocaEstado();  // Segmento F
+                    display.get(6).trocaEstado();  // Segmento G
+                    break;
+                }
     }
 
     private void inicializarSegmentos() {
-        display.add(new Segmento(300, 200)); // Segmento A
-        display.add(new Segmento(300, 210)); // Segmento B
-        display.add(new Segmento(500, 210)); // Segmento C
-        display.add(new Segmento(300, 400)); // Segmento D
-        display.add(new Segmento(300, 410)); // Segmento E
-        display.add(new Segmento(500, 410)); // Segmento F
-        display.add(new Segmento(300, 600)); // Segmento G
+        display.add(new Segmento('A', 300, 200)); // Segmento A
+        display.add(new Segmento('B', 300, 210)); // Segmento B
+        display.add(new Segmento('C', 500, 210)); // Segmento C
+        display.add(new Segmento('D', 300, 400)); // Segmento D
+        display.add(new Segmento('E', 300, 410)); // Segmento E
+        display.add(new Segmento('F', 500, 410)); // Segmento F
+        display.add(new Segmento('G', 300, 600)); // Segmento G
     }
 
     public Display() {
@@ -38,7 +104,7 @@ public class Display {
         this.display = display;
     }
 
-    public void ligaDisplay() {
+    public void trocaEstadoDisplay() {
         int i = 0;
         for (Segmento s : display) {
             analisaNumero(numero, display);
@@ -46,62 +112,36 @@ public class Display {
         }
     }
 
-    // public void desenharDisplay(Draw desenho) {
-    // int i = 0;
-    // for (Segmento s : display) {
-    // if (i == 1 || i == 2 || i == 4 || i == 5) {
-    // s.desenhaSegmentoVertical(desenho);
-    // } else {
-    // s.desenhaSegmentoHorizontal(desenho);
-    // }
-    // i++;
-    // }
-    // }
+    // QUANDO MONTAR O DISPLAY, VAI FALAR P ONDE É CADA SEGMENTO
+    // desenha um display, ou seja, 7 segmentos 
     public void desenharDisplay(Draw desenho) {
-        double fator = 200;
-        double fatorCor = 0.2;
-        int dimensao = 800;
-        Color clara = Draw.GREEN;
-        Color escura = new Color((int) (clara.getRed() * fatorCor), (int) (clara.getGreen() * fatorCor),
-                (int) (clara.getBlue() * fatorCor));
-        desenho.enableDoubleBuffering();
-        desenho.clear(Draw.WHITE);
-        // Desenhando grade quadriculada
-        int grade = (int) fator / 10;
-        desenho.setPenColor(Draw.LIGHT_GRAY);
-        for (int i = 0; i <= dimensao; i += grade)
-            desenho.line(i, 0, i, dimensao);
-        for (int j = 0; j <= dimensao; j += grade)
-            desenho.line(0, j, dimensao, j);
-        double xInicial = 300;
-        double yInicial = 400;
-        // Montando vetores com os pontos em X e em Y para desenhar um segmento
-        // horizontal
-        yInicial = 180;
-        double[] xHorizontal = { 0.1 * fator + xInicial, 0.2 * fator + xInicial, 1.0 * fator + xInicial, 1.1 * fator +
-                xInicial, 1.0 * fator + xInicial, 0.2 * fator + xInicial };
-        double[] yHorizontal = { 0.2 * fator + yInicial, 0.3 * fator + yInicial, 0.3 * fator + yInicial, 0.2 * fator +
-                yInicial, 0.1 * fator + yInicial, 0.1 * fator + yInicial };
-        // Desenhando o segmento horizontal
-        desenho.setPenColor(clara);
-        desenho.filledPolygon(xHorizontal, yHorizontal);
-        // Montando vetores com os pontos em X e em Y para desenhar um segmento vertical
-        yInicial = 200;
-        double[] xVertical = { 0.1 * fator + xInicial, 0.2 * fator + xInicial, 0.2 * fator + xInicial,
-                0.1 * fator + xInicial,
-                0 * fator + xInicial, 0 * fator + xInicial };
-        double[] yVertical = { 0.2 * fator + yInicial, 0.3 * fator + yInicial, 1.0 * fator + yInicial,
-                1.1 * fator + yInicial,
-                1.0 * fator + yInicial, 0.3 * fator + yInicial };
-        // Desenhando o segmento vertical
-        desenho.setPenColor(escura);
-        desenho.filledPolygon(xVertical, yVertical);
-        // Desenhando outro segmento vertical, porém com x deslocado em 'fator' pixels
-        for (int i = 0; i < xVertical.length; i++) {
-            xVertical[i] += fator;
+
+        // analisa cada um dos segmentos do display
+        for (int i = 0; i < display.size(); i++) {
+
+            switch(i) {
+                case 0: 
+                    // segmento A (vertical)
+                    display.get(i).desenharSegmentoVertical(desenho);
+                    break;
+                case 1:
+                    // segmento B (vertical)
+                    display.get(i).desenharSegmentoVertical(desenho);
+                    break;
+                case 4:
+                    // segmento E (vertical)
+                    display.get(i).desenharSegmentoVertical(desenho);
+                    break;
+                case 5:
+                    // segmento F (vertical)
+                    display.get(i).desenharSegmentoVertical(desenho);
+                    break;
+                default:
+                    // todos os outros são horizontais
+                    display.get(i).desenharSegmentoHorizontal(desenho);
+            }
         }
-        desenho.filledPolygon(xVertical, yVertical);
-        // Trocando o buffer para exibir o que foi desenhado
+
     }
 
 }

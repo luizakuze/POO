@@ -1,9 +1,10 @@
 package engtelecom.poo;
+
 import edu.princeton.cs.algs4.Draw;
 import java.awt.Color;
 
 public class Segmento {
-    private char id;        // id: A, B, C, D, E, OU F
+    private char id; // id: A, B, C, D, E, OU F
     private boolean estado; // pode estar ligado ou desligado
     private int coordenadaX;
     private int coordenadaY;
@@ -27,10 +28,26 @@ public class Segmento {
         this.estado = false;
     }
 
+    public int getCoordenadaX() {
+        return coordenadaX;
+    }
+
+    public void setCoordenadaX(int coordenadaX) {
+        this.coordenadaX = coordenadaX;
+    }
+
+    public int getCoordenadaY() {
+        return coordenadaY;
+    }
+
+    public void setCoordenadaY(int coordenadaY) {
+        this.coordenadaY = coordenadaY;
+    }
+
     // sseleciona a cor do segmento caso esteja ligado ou desligado
     private void selecionaCor(Draw desenho) {
         if (this.estado) {
-            desenho.setPenColor(Principal.CLARA);  // segmento ligado
+            desenho.setPenColor(Principal.CLARA); // segmento ligado
         } else {
             desenho.setPenColor(Principal.ESCURA); // segmento desligado
         }
@@ -39,13 +56,13 @@ public class Segmento {
     // desenha um segmento horizontal
     public void desenharSegmentoHorizontal(Draw desenho) {
         double[] x = { 0.1 * Principal.FATOR + coordenadaX, 0.2 * Principal.FATOR + coordenadaX,
-        1.0 * Principal.FATOR + coordenadaX, 1.1 * Principal.FATOR +
-        coordenadaX,
-        1.0 * Principal.FATOR + coordenadaX, 0.2 * Principal.FATOR + coordenadaX };
+                1.0 * Principal.FATOR + coordenadaX, 1.1 * Principal.FATOR +
+                        coordenadaX,
+                1.0 * Principal.FATOR + coordenadaX, 0.2 * Principal.FATOR + coordenadaX };
         double[] y = { 0.2 * Principal.FATOR + coordenadaY, 0.3 * Principal.FATOR + coordenadaY,
-        0.3 * Principal.FATOR + coordenadaY, 0.2 * Principal.FATOR +
-        coordenadaY,
-        0.1 * Principal.FATOR + coordenadaY, 0.1 * Principal.FATOR + coordenadaY };
+                0.3 * Principal.FATOR + coordenadaY, 0.2 * Principal.FATOR +
+                        coordenadaY,
+                0.1 * Principal.FATOR + coordenadaY, 0.1 * Principal.FATOR + coordenadaY };
 
         selecionaCor(desenho);
 
@@ -55,11 +72,11 @@ public class Segmento {
     // desenha um segmento vertical
     public void desenharSegmentoVertical(Draw desenho) {
         double[] x = { 0.1 * Principal.FATOR + coordenadaX, 0.2 * Principal.FATOR + coordenadaX,
-        0.2 * Principal.FATOR + coordenadaX, 0.1 * Principal.FATOR + coordenadaX,
-        0 * Principal.FATOR + coordenadaX, 0 * Principal.FATOR + coordenadaX };
+                0.2 * Principal.FATOR + coordenadaX, 0.1 * Principal.FATOR + coordenadaX,
+                0 * Principal.FATOR + coordenadaX, 0 * Principal.FATOR + coordenadaX };
         double[] y = { 0.2 * Principal.FATOR + coordenadaY, 0.3 * Principal.FATOR + coordenadaY,
-        1.0 * Principal.FATOR + coordenadaY, 1.1 * Principal.FATOR + coordenadaY,
-        1.0 * Principal.FATOR + coordenadaY, 0.3 * Principal.FATOR + coordenadaY };
+                1.0 * Principal.FATOR + coordenadaY, 1.1 * Principal.FATOR + coordenadaY,
+                1.0 * Principal.FATOR + coordenadaY, 0.3 * Principal.FATOR + coordenadaY };
 
         selecionaCor(desenho);
 

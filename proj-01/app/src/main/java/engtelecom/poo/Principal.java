@@ -15,8 +15,8 @@ public class Principal {
     public static final int DIMENSAO = 800;
     public static final Color CLARA = Color.GREEN;
     public static final Color ESCURA = new Color((int) (CLARA.getRed() * FATOR_COR),
-                                               (int) (CLARA.getGreen() * FATOR_COR),
-                                               (int) (CLARA.getBlue() * FATOR_COR));
+            (int) (CLARA.getGreen() * FATOR_COR),
+            (int) (CLARA.getBlue() * FATOR_COR));
 
     public static final int X_TESTE = 300;
     public static final int Y_TESTE = 400;
@@ -45,15 +45,16 @@ public class Principal {
         for (int j = 0; j <= dimensao; j += grade)
             desenho.line(0, j, dimensao, j);
 
-        r.desenhaRelogio(desenho);      
+        r.desenhaRelogio(desenho);
         desenho.show();
     }
 
     public static void main(String[] args) throws InterruptedException {
-        //Principal p = new Principal();
-        //RelogioDigital r = new RelogioDigital(X_TESTE, Y_TESTE, 11, 11, 11, "PINK", 1);
-        //p.desenhaRelogio(r);
-        //p.relogios.add(r);
+        // Principal p = new Principal();
+        // RelogioDigital r = new RelogioDigital(X_TESTE, Y_TESTE, 11, 11, 11, "PINK",
+        // 1);
+        // p.desenhaRelogio(r);
+        // p.relogios.add(r);
 
         Display d = new Display();
         int dimensao = 1000;
@@ -73,15 +74,10 @@ public class Principal {
         for (int j = 0; j <= dimensao; j += grade)
             desenho.line(0, j, dimensao, j);
 
-
         d.desenharDisplay(desenho);
 
-        
         desenho.show();
 
-
-
-      
     }
 
 }

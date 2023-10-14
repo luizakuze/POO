@@ -26,6 +26,9 @@ public class RelogioDigital {
         this.cor = cor;
         this.tamanho = tamanho;
         this.displays = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            displays.add(new Display());
+        }
     }
 
     public int getCoordenadaX() {
@@ -48,23 +51,15 @@ public class RelogioDigital {
         this.displays = displays;
     }
 
+    // desenha 6 displays, "relógio"
     public void desenhaRelogio(Draw desenho) {
-        // int largura = 600; // Largura do retângulo (aumentado para 200)
-        // int altura = 200; // Altura do retângulo (aumentado para 100)
+        double xInicial = 300;
+        double yInicial = 400;
 
-        // // Definindo a cor do preenchimento para preto
-        // desenho.setPenColor(Draw.BLACK);
-        // desenho.filledRectangle(coordenadaX, coordenadaY, largura / 2.0, altura /
-        // 2.0);
-
-        // vai ter que desenhar 6 displays em posições diferentes, ou seja
-        // os diplays devem ter coordenadas diferentes
-        int x = 200;
-        int y = 200;
         for (Display display : displays) {
-            display.desenharDisplay(desenho);
-            coordenadaX += x;
-            coordenadaY += y;
+            display.desenharDisplay(desenho, xInicial, yInicial);
+            xInicial += 220;
+            yInicial += 220;
         }
     }
 

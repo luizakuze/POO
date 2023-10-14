@@ -50,33 +50,38 @@ public class Principal {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        // Principal p = new Principal();
-        // RelogioDigital r = new RelogioDigital(X_TESTE, Y_TESTE, 11, 11, 11, "PINK",
-        // 1);
-        // p.desenhaRelogio(r);
+        Principal p = new Principal();
+        RelogioDigital r = new RelogioDigital(X_TESTE, Y_TESTE, 11, 11, 11, "PINK",
+                1);
+        p.desenhaRelogio(r);
         // p.relogios.add(r);
 
-        Display d = new Display();
-        int dimensao = 1000;
-        Draw desenho = new Draw();
-        desenho.setXscale(0, dimensao);
-        desenho.setYscale(0, dimensao);
-        desenho.setDefaultCloseOperation(3);
+        // Display d = new Display();
+        // int dimensao = 1000;
+        // Draw desenho = new Draw();
+        // desenho.setXscale(0, dimensao);
+        // desenho.setYscale(0, dimensao);
+        // desenho.setDefaultCloseOperation(3);
 
-        desenho.enableDoubleBuffering();
-        desenho.clear(Draw.WHITE);
+        // desenho.enableDoubleBuffering();
+        // desenho.clear(Draw.WHITE);
 
-        // desenhando grade quadriculada
-        int grade = (int) FATOR / 10;
-        desenho.setPenColor(Draw.LIGHT_GRAY);
-        for (int i = 0; i <= dimensao; i += grade)
-            desenho.line(i, 0, i, dimensao);
-        for (int j = 0; j <= dimensao; j += grade)
-            desenho.line(0, j, dimensao, j);
+        // // desenhando grade quadriculada
+        // int grade = (int) FATOR / 10;
+        // desenho.setPenColor(Draw.LIGHT_GRAY);
+        // for (int i = 0; i <= dimensao; i += grade)
+        // desenho.line(i, 0, i, dimensao);
+        // for (int j = 0; j <= dimensao; j += grade)
+        // desenho.line(0, j, dimensao, j);
 
-        d.desenharDisplay(desenho);
+        // double xInicial = 300;
+        // double yInicial = 400;
 
-        desenho.show();
+        // d.desenharDisplay(desenho, xInicial, yInicial);
+
+        // d.desenharDisplay(desenho, xInicial + 300, yInicial + 300);
+
+        // desenho.show();
 
     }
 

@@ -11,7 +11,7 @@ public class Display {
 
     // analisa quais segmentos dos display devem acender a depender do número
 
-    public void trocaEstadoDisplay() {
+    private void trocaEstadoDisplay() {
         for (Segmento segmento : display) {
             segmento.reset(); // zera todos os segmentos
         }
@@ -28,6 +28,7 @@ public class Display {
             case 1:
                 display.get(1).trocaEstado(); // Segmento B
                 display.get(2).trocaEstado(); // Segmento C
+
                 break;
             case 2:
                 display.get(0).trocaEstado(); // Segmento A
@@ -86,13 +87,13 @@ public class Display {
     }
 
     private void inicializarSegmentos() {
-        display.add(new Segmento('A', 300, 200)); // Segmento A
-        display.add(new Segmento('B', 300, 210)); // Segmento B
-        display.add(new Segmento('C', 500, 210)); // Segmento C
-        display.add(new Segmento('D', 300, 400)); // Segmento D
-        display.add(new Segmento('E', 300, 410)); // Segmento E
-        display.add(new Segmento('F', 500, 410)); // Segmento F
-        display.add(new Segmento('G', 300, 600)); // Segmento G
+        display.add(new Segmento('A')); // Segmento A
+        display.add(new Segmento('B')); // Segmento B
+        display.add(new Segmento('C')); // Segmento C
+        display.add(new Segmento('D')); // Segmento D
+        display.add(new Segmento('E')); // Segmento E
+        display.add(new Segmento('F')); // Segmento F
+        display.add(new Segmento('G')); // Segmento G
     }
 
     public Display() {
@@ -101,48 +102,86 @@ public class Display {
         inicializarSegmentos();
     }
 
-    public Display(ArrayList<Segmento> display, ArrayList<Integer> numeros) {
-        this.display = display;
-    }
+    // public Display(ArrayList<Segmento> display, ArrayList<Integer> numeros) {
+    // numero = 4;
+    // inicializarSegmentos();
+    // }
 
-    // QUANDO MONTAR O DISPLAY, VAI FALAR P ONDE É CADA SEGMENTO
-    // desenha um display, ou seja, 7 segmentos
-    public void desenharDisplay(Draw desenho) {
-
-        trocaEstadoDisplay();
-        // analisa cada um dos segmentos do display
-        for (int i = 0; i < display.size(); i++) {
-
-            switch (i) {
-                case 0:
-                    // segmento A (horizontal)
-                    display.get(i).desenharSegmentoHorizontal(desenho);
-                    break;
-                case 1:
-                    // segmento B (vertical)
-                    display.get(i).desenharSegmentoVertical(desenho);
-                    break;
-                case 2:
-                    // display C (vertical)
-                    display.get(i).desenharSegmentoVertical(desenho);
-                    break;
-                case 3:
-                    // display D (horizontal)
-                    display.get(i).desenharSegmentoHorizontal(desenho);
-                    break;
-                case 4:
-                    // segmento E (vertical)
-                    display.get(i).desenharSegmentoVertical(desenho);
-                    break;
-                case 5:
-                    // segmento F (vertical)
-                    display.get(i).desenharSegmentoVertical(desenho);
-                    break;
-                case 6:
-                    display.get(i).desenharSegmentoHorizontal(desenho);
-            }
+    // seleciona a cor do segmento caso esteja ligado ou desligado
+    private void selecionaCor(Draw desenho, Segmento segmento) {
+        if (segmento.isEstado()) {
+            desenho.setPenColor(Principal.CLARA); // segmento ligado
+        } else {
+            desenho.setPenColor(Principal.ESCURA); // segmento desligado
         }
 
+    }
+
+    // desenha um display, ou seja, 7 segmentos
+    public void desenharDisplay(Draw desenho, double xInicial, double yInicial) {
+
+        trocaEstadoDisplay();
+        double fator = 200;
+        double fatorCor = 0.2;
+
+        double x2 = 300;
+        double y2 = 400;
+
+        // D
+        yInicial = y2 / 2.1;
+        double[] xHorizontal = { 0.1 * fator + xInicial, 0.2 * fator + xInicial, 1.0 * fator + xInicial, 1.1 * fator +
+                xInicial, 1.0 * fator + xInicial, 0.2 * fator + xInicial };
+        double[] yHorizontal = { 0.2 * fator + yInicial, 0.3 * fator + yInicial, 0.3 * fator + yInicial, 0.2 * fator +
+                yInicial, 0.1 * fator + yInicial, 0.1 * fator + yInicial };
+        selecionaCor(desenho, display.get(3));
+        desenho.filledPolygon(xHorizontal, yHorizontal);
+
+        // E
+        yInicial = y2 / 2.0;
+        double[] xVertical = { 0.1 * fator + xInicial, 0.2 * fator + xInicial, 0.2 * fator + xInicial,
+                0.1 * fator + xInicial,
+                0 * fator + xInicial, 0 * fator + xInicial };
+        double[] yVertical = { 0.2 * fator + yInicial, 0.3 * fator + yInicial, 1.0 * fator + yInicial,
+                1.1 * fator + yInicial,
+                1.0 * fator + yInicial, 0.3 * fator + yInicial };
+        selecionaCor(desenho, display.get(4));
+        desenho.filledPolygon(xVertical, yVertical);
+
+        // C
+        for (int i = 0; i < xVertical.length; i++) {
+            xVertical[i] += fator;
+        }
+        selecionaCor(desenho, display.get(2));
+        desenho.filledPolygon(xVertical, yVertical);
+
+        // B
+        for (int i = 0; i < yVertical.length; i++) {
+            yVertical[i] += fator;
+        }
+        selecionaCor(desenho, display.get(1));
+        desenho.filledPolygon(xVertical, yVertical);
+
+        // F
+        for (int i = 0; i < xVertical.length; i++) {
+            xVertical[i] -= fator;
+        }
+        selecionaCor(desenho, display.get(5));
+        desenho.filledPolygon(xVertical, yVertical);
+
+        // G
+        for (int i = 0; i < yHorizontal.length; i++) {
+            yHorizontal[i] += fator;
+        }
+        selecionaCor(desenho, display.get(6));
+        desenho.filledPolygon(xHorizontal, yHorizontal);
+
+        // A
+        for (int i = 0; i < yHorizontal.length; i++) {
+            yHorizontal[i] += fator;
+        }
+        selecionaCor(desenho, display.get(0));
+        desenho.filledPolygon(xHorizontal, yHorizontal);
+        desenho.show();
     }
 
 }

@@ -14,7 +14,7 @@ public class RelogioDigital {
     private int tamanho; // 1, 2 e 3
     private ArrayList<Display> displays;
 
-    public RelogioDigital(int coordenadaX, int coordenadaY, int segundos, int minutos, int horas, String cor,
+    public RelogioDigital(int coordenadaX, int coordenadaY, int horas, int minutos, int segundos, String cor,
             int tamanho) {
         if (setHoras(horas) && setMinutos(minutos) && setSegundos(segundos)) {
             this.horas = horas;
@@ -25,41 +25,52 @@ public class RelogioDigital {
         this.coordenadaY = coordenadaY;
         this.cor = cor;
         this.tamanho = tamanho;
-        this.displays = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            displays.add(new Display());
+        setTamanho();
+        this.displays = new ArrayList<Display>();
+        setDisplay();
+    }
+
+    public void setTamanho() {
+        if (tamanho == 1) {
+            Principal.FATOR = 50;
+        } else if (tamanho == 2) {
+            Principal.FATOR = 100;
+        } else {
+            Principal.FATOR = 150;
         }
     }
 
-    public int getCoordenadaX() {
-        return coordenadaX;
-    }
+    public void setDisplay() {
+        // limpa a lista de displays
+        displays.clear();
 
-    public void setCoordenadaX(int coordenadaX) {
-        this.coordenadaX = coordenadaX;
-    }
+        // converte os segundos, minutos e horas em números de dois dígitos
+        int segundosDezena = this.segundos / 10;
+        int segundosUnidade = this.segundos % 10;
+        int minutosDezena = this.minutos / 10;
+        int minutosUnidade = this.minutos % 10;
+        int horasDezena = this.horas / 10;
+        int horasUnidade = this.horas % 10;
 
-    public int getCoordenadaY() {
-        return coordenadaY;
-    }
-
-    public void setCoordenadaY(int coordenadaY) {
-        this.coordenadaY = coordenadaY;
-    }
-
-    public void setDisplays(ArrayList<Display> displays) {
-        this.displays = displays;
+        // adiciona os displays correspondentes aos segundos, minutos e horas
+        displays.add(new Display(horasDezena));
+        displays.add(new Display(horasUnidade));
+        displays.add(new Display(minutosDezena));
+        displays.add(new Display(minutosUnidade));
+        displays.add(new Display(segundosDezena));
+        displays.add(new Display(segundosUnidade));
     }
 
     // desenha 6 displays, "relógio"
     public void desenhaRelogio(Draw desenho) {
-        double xInicial = 300;
-        double yInicial = 400;
+
+        setDisplay();
 
         for (Display display : displays) {
-            display.desenharDisplay(desenho, xInicial, yInicial);
-            xInicial += 220;
-            yInicial += 220;
+
+            display.desenharDisplay(desenho, this.coordenadaX, this.coordenadaY);
+            this.coordenadaX += 100;
+            this.coordenadaY += 100;
         }
     }
 

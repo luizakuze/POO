@@ -9,17 +9,13 @@ public class Principal {
     private ArrayList<RelogioDigital> relogios;
     private Draw desenho;
 
-    // constantes para os desenhos
-    public static final double FATOR = 200.0;
+    public static double FATOR = 200.0;
     public static final double FATOR_COR = 0.2;
     public static final int DIMENSAO = 800;
     public static final Color CLARA = Color.GREEN;
     public static final Color ESCURA = new Color((int) (CLARA.getRed() * FATOR_COR),
             (int) (CLARA.getGreen() * FATOR_COR),
             (int) (CLARA.getBlue() * FATOR_COR));
-
-    public static final int X_TESTE = 300;
-    public static final int Y_TESTE = 400;
 
     public Principal() {
         this.relogios = new ArrayList<>();
@@ -44,44 +40,49 @@ public class Principal {
             desenho.line(i, 0, i, dimensao);
         for (int j = 0; j <= dimensao; j += grade)
             desenho.line(0, j, dimensao, j);
-
+        r.setDisplay();
         r.desenhaRelogio(desenho);
+        desenho.show();
+    }
+
+    public void desenhaRelogios() {
+        int dimensao = 1000;
+
+        desenho.setXscale(0, dimensao);
+        desenho.setYscale(0, dimensao);
+        desenho.setDefaultCloseOperation(3);
+
+        desenho.enableDoubleBuffering();
+        desenho.clear(Draw.WHITE);
+
+        // desenhando grade quadriculada
+        int grade = (int) FATOR / 10;
+        desenho.setPenColor(Draw.LIGHT_GRAY);
+        for (int i = 0; i <= dimensao; i += grade)
+            desenho.line(i, 0, i, dimensao);
+        for (int j = 0; j <= dimensao; j += grade)
+            desenho.line(0, j, dimensao, j);
+
+        for (RelogioDigital relogio : relogios) {
+            relogio.desenhaRelogio(desenho);
+            ;
+        }
         desenho.show();
     }
 
     public static void main(String[] args) throws InterruptedException {
         Principal p = new Principal();
-        RelogioDigital r = new RelogioDigital(X_TESTE, Y_TESTE, 11, 11, 11, "PINK",
+        RelogioDigital r = new RelogioDigital(300, 400, 12, 34, 56, "PINK",
                 1);
-        p.desenhaRelogio(r);
-        // p.relogios.add(r);
+        // p.desenhaRelogio(r);
 
-        // Display d = new Display();
-        // int dimensao = 1000;
-        // Draw desenho = new Draw();
-        // desenho.setXscale(0, dimensao);
-        // desenho.setYscale(0, dimensao);
-        // desenho.setDefaultCloseOperation(3);
+        RelogioDigital r2 = new RelogioDigital(100, 400, 12, 34, 56, "PINK",
+                1);
+        // p.desenhaRelogio(r2);
 
-        // desenho.enableDoubleBuffering();
-        // desenho.clear(Draw.WHITE);
-
-        // // desenhando grade quadriculada
-        // int grade = (int) FATOR / 10;
-        // desenho.setPenColor(Draw.LIGHT_GRAY);
-        // for (int i = 0; i <= dimensao; i += grade)
-        // desenho.line(i, 0, i, dimensao);
-        // for (int j = 0; j <= dimensao; j += grade)
-        // desenho.line(0, j, dimensao, j);
-
-        // double xInicial = 300;
-        // double yInicial = 400;
-
-        // d.desenharDisplay(desenho, xInicial, yInicial);
-
-        // d.desenharDisplay(desenho, xInicial + 300, yInicial + 300);
-
-        // desenho.show();
+        p.relogios.add(r);
+        p.relogios.add(r2);
+        p.desenhaRelogios();
 
     }
 

@@ -63,14 +63,14 @@ public class RelogioDigital {
 
     // desenha 6 displays, "relógio"
     public void desenhaRelogio(Draw desenho) {
-
         setDisplay();
 
         for (Display display : displays) {
 
             display.desenharDisplay(desenho, this.coordenadaX, this.coordenadaY);
-            this.coordenadaX += 100;
-            this.coordenadaY += 100;
+
+            this.coordenadaX += 80;
+
         }
     }
 

@@ -120,11 +120,7 @@ public class Display {
     public void desenharDisplay(Draw desenho, double xInicial, double yInicial) {
         trocaEstadoDisplay();
 
-        double x2 = 300;
-        double y2 = 400;
-
         // D
-        yInicial = y2 / 2.1;
         double[] xHorizontal = { 0.1 * Principal.FATOR + xInicial, 0.2 * Principal.FATOR + xInicial,
                 1.0 * Principal.FATOR + xInicial, 1.1 * Principal.FATOR +
                         xInicial,
@@ -137,7 +133,6 @@ public class Display {
         desenho.filledPolygon(xHorizontal, yHorizontal);
 
         // E
-        yInicial = y2 / 2.0;
         double[] xVertical = { 0.1 * Principal.FATOR + xInicial, 0.2 * Principal.FATOR + xInicial,
                 0.2 * Principal.FATOR + xInicial,
                 0.1 * Principal.FATOR + xInicial,
@@ -183,7 +178,6 @@ public class Display {
         }
         selecionaCor(desenho, display.get(0));
         desenho.filledPolygon(xHorizontal, yHorizontal);
-        desenho.show();
     }
 
 }

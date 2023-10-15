@@ -9,7 +9,7 @@ public class Principal {
     private ArrayList<RelogioDigital> relogios;
     private Draw desenho;
 
-    public static double FATOR = 200.0;
+    public static double FATOR = 200;
     public static final double FATOR_COR = 0.2;
     public static final int DIMENSAO = 800;
     public static final Color CLARA = Color.GREEN;
@@ -65,23 +65,21 @@ public class Principal {
 
         for (RelogioDigital relogio : relogios) {
             relogio.desenhaRelogio(desenho);
-            ;
         }
         desenho.show();
     }
 
     public static void main(String[] args) throws InterruptedException {
         Principal p = new Principal();
-        RelogioDigital r = new RelogioDigital(300, 400, 12, 34, 56, "PINK",
+        RelogioDigital r = new RelogioDigital(200, 200, 12, 34, 56, "PINK",
                 1);
         // p.desenhaRelogio(r);
 
-        RelogioDigital r2 = new RelogioDigital(100, 400, 12, 34, 56, "PINK",
-                1);
+        // RelogioDigital r2 = new RelogioDigital(100, 400, 12, 34, 56, "PINK", 1);
         // p.desenhaRelogio(r2);
 
         p.relogios.add(r);
-        p.relogios.add(r2);
+        // p.relogios.add(r2);
         p.desenhaRelogios();
 
     }

@@ -8,8 +8,9 @@ import java.awt.Color;
 public class Display {
     private ArrayList<Segmento> display; // segmentos A, B, C, D, E, F e G
     private int numero; // número que está aparecendo
+    private double fator_tamanho;
 
-    public static double FATOR;
+    public static double FATOR_TAMANHO;
     public static final double FATOR_COR = 0.2;
 
     // analisa quais segmentos dos display devem acender a depender do número
@@ -97,18 +98,6 @@ public class Display {
         }
     }
 
-    private Color selecionaCor(String cor) {
-        if (cor.equals("rosa")) {
-            return Color.PINK;
-        } else if (cor.equals("azul")) {
-            return Color.BLUE;
-        } else if (cor.equals("verde")) {
-            return Color.GREEN;
-        } else {
-            return Color.BLACK;
-        }
-    }
-
     // seleciona a cor do segmento caso esteja ligado ou desligado
     private void selecionaCorEstado(Draw desenho, Segmento segmento, Color cor) {
         if (segmento.getEstado()) {
@@ -119,71 +108,81 @@ public class Display {
         }
     }
 
+    public void tamanhoDisplay(int tamanho) {
+        if (tamanho == 1) {
+            Display.FATOR_TAMANHO = 30;
+        } else if (tamanho == 3) {
+            Display.FATOR_TAMANHO = 60;
+        } else {
+            Display.FATOR_TAMANHO = 90;
+        }
+    }
+
     // desenha um display, ou seja, 7 segmentos
-    public void desenharDisplay(Draw desenho, double xInicial, double yInicial, String cor) {
+    public void desenharDisplay(Draw desenho, double xInicial, double yInicial, Color cor, int tamanho) {
         trocaEstadoDisplay();
         // double fator = 200;
         // double fatorCor = 0.2;
 
-        Color c = selecionaCor(cor);
+        tamanhoDisplay(tamanho);
 
         // D
-        double[] xHorizontal = { 0.1 * Principal.FATOR + xInicial, 0.2 * Principal.FATOR + xInicial,
-                1.0 * Principal.FATOR + xInicial, 1.1 * Principal.FATOR +
+        double[] xHorizontal = { 0.1 * FATOR_TAMANHO + xInicial, 0.2 * FATOR_TAMANHO + xInicial,
+                1.0 * FATOR_TAMANHO + xInicial, 1.1 * FATOR_TAMANHO +
                         xInicial,
-                1.0 * Principal.FATOR + xInicial, 0.2 * Principal.FATOR + xInicial };
-        double[] yHorizontal = { 0.2 * Principal.FATOR + yInicial, 0.3 * Principal.FATOR + yInicial,
-                0.3 * Principal.FATOR + yInicial, 0.2 * Principal.FATOR +
+                1.0 * FATOR_TAMANHO + xInicial, 0.2 * FATOR_TAMANHO + xInicial };
+        double[] yHorizontal = { 0.2 * FATOR_TAMANHO + yInicial, 0.3 * FATOR_TAMANHO + yInicial,
+                0.3 * FATOR_TAMANHO + yInicial, 0.2 * FATOR_TAMANHO +
                         yInicial,
-                0.1 * Principal.FATOR + yInicial, 0.1 * Principal.FATOR + yInicial };
-        selecionaCorEstado(desenho, display.get(3), c);
+                0.1 * FATOR_TAMANHO + yInicial, 0.1 * FATOR_TAMANHO + yInicial };
+        selecionaCorEstado(desenho, display.get(3), cor);
         desenho.filledPolygon(xHorizontal, yHorizontal);
 
         // E
-        double[] xVertical = { 0.1 * Principal.FATOR + xInicial, 0.2 * Principal.FATOR + xInicial,
-                0.2 * Principal.FATOR + xInicial,
-                0.1 * Principal.FATOR + xInicial,
-                0 * Principal.FATOR + xInicial, 0 * Principal.FATOR + xInicial };
-        double[] yVertical = { 0.2 * Principal.FATOR + yInicial, 0.3 * Principal.FATOR + yInicial,
-                1.0 * Principal.FATOR + yInicial,
-                1.1 * Principal.FATOR + yInicial,
-                1.0 * Principal.FATOR + yInicial, 0.3 * Principal.FATOR + yInicial };
-        selecionaCorEstado(desenho, display.get(4), c);
+        double[] xVertical = { 0.1 * FATOR_TAMANHO + xInicial, 0.2 * FATOR_TAMANHO + xInicial,
+                0.2 * FATOR_TAMANHO + xInicial,
+                0.1 * FATOR_TAMANHO + xInicial,
+                0 * FATOR_TAMANHO + xInicial, 0 * FATOR_TAMANHO + xInicial };
+        double[] yVertical = { 0.2 * FATOR_TAMANHO + yInicial, 0.3 * FATOR_TAMANHO + yInicial,
+                1.0 * FATOR_TAMANHO + yInicial,
+                1.1 * FATOR_TAMANHO + yInicial,
+                1.0 * FATOR_TAMANHO + yInicial, 0.3 * FATOR_TAMANHO + yInicial };
+        selecionaCorEstado(desenho, display.get(4), cor);
         desenho.filledPolygon(xVertical, yVertical);
 
         // C
         for (int i = 0; i < xVertical.length; i++) {
-            xVertical[i] += Principal.FATOR;
+            xVertical[i] += FATOR_TAMANHO;
         }
-        selecionaCorEstado(desenho, display.get(2), c);
+        selecionaCorEstado(desenho, display.get(2), cor);
         desenho.filledPolygon(xVertical, yVertical);
 
         // B
         for (int i = 0; i < yVertical.length; i++) {
-            yVertical[i] += Principal.FATOR;
+            yVertical[i] += FATOR_TAMANHO;
         }
-        selecionaCorEstado(desenho, display.get(1), c);
+        selecionaCorEstado(desenho, display.get(1), cor);
         desenho.filledPolygon(xVertical, yVertical);
 
         // F
         for (int i = 0; i < xVertical.length; i++) {
-            xVertical[i] -= Principal.FATOR;
+            xVertical[i] -= FATOR_TAMANHO;
         }
-        selecionaCorEstado(desenho, display.get(5), c);
+        selecionaCorEstado(desenho, display.get(5), cor);
         desenho.filledPolygon(xVertical, yVertical);
 
         // G
         for (int i = 0; i < yHorizontal.length; i++) {
-            yHorizontal[i] += Principal.FATOR;
+            yHorizontal[i] += FATOR_TAMANHO;
         }
-        selecionaCorEstado(desenho, display.get(6), c);
+        selecionaCorEstado(desenho, display.get(6), cor);
         desenho.filledPolygon(xHorizontal, yHorizontal);
 
         // A
         for (int i = 0; i < yHorizontal.length; i++) {
-            yHorizontal[i] += Principal.FATOR;
+            yHorizontal[i] += FATOR_TAMANHO;
         }
-        selecionaCorEstado(desenho, display.get(0), c);
+        selecionaCorEstado(desenho, display.get(0), cor);
         desenho.filledPolygon(xHorizontal, yHorizontal);
     }
 

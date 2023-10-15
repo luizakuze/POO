@@ -1,8 +1,5 @@
 package engtelecom.poo;
 
-import edu.princeton.cs.algs4.Draw;
-import java.awt.Color;
-
 public class Segmento {
     private boolean estado; // pode estar ligado ou desligado
 

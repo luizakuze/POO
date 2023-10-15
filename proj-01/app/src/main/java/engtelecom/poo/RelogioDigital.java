@@ -7,19 +7,21 @@ import java.awt.Color;
 public class RelogioDigital {
     private int coordenadaX;
     private int coordenadaY;
-    private String cor;
+    private Color cor;
     private Horario horario;
     private int tamanho; // 1, 2 e 3
     private ArrayList<Display> displays;
+
+    public static final int MIN_TAM = 1;
+    public static final int MAX_TAM = 3;
 
     public RelogioDigital(int coordenadaX, int coordenadaY, int horas, int minutos, int segundos, String cor,
             int tamanho) {
         this.coordenadaX = coordenadaX;
         this.coordenadaY = coordenadaY;
-        this.cor = cor;
-        this.tamanho = tamanho;
+        setCor(cor);
         this.horario = new Horario(horas, minutos, segundos);
-        setTamanho();
+        setTamanho(tamanho);
         setDisplay();
     }
 
@@ -28,19 +30,39 @@ public class RelogioDigital {
         setDisplay();
     }
 
-    public void setTamanho() {
-        if (tamanho == 1) {
-            Principal.FATOR = 50;
-        } else if (tamanho == 3) {
-            Principal.FATOR = 150;
+    public void setTamanho(int tamanho) {
+        if (tamanho >= MIN_TAM && tamanho <= MAX_TAM) {
+            this.tamanho = tamanho;
         } else {
-            Principal.FATOR = 100;
+            this.tamanho = 2;
+        }
+        // alteraFator();
+    }
+
+    private void setCor(String cor) {
+        if (cor.equals("rosa")) {
+            this.cor = Color.PINK;
+        } else if (cor.equals("azul")) {
+            this.cor = Color.BLUE;
+        } else if (cor.equals("verde")) {
+            this.cor = Color.GREEN;
+        } else {
+            // qualquer outra cor foi considerada inválida
+            this.cor = Color.WHITE;
+        }
+    }
+
+    public void alteraFator() {
+        if (this.tamanho == 1) {
+            Display.FATOR_TAMANHO = 30;
+        } else if (this.tamanho == 3) {
+            Display.FATOR_TAMANHO = 60;
+        } else {
+            Display.FATOR_TAMANHO = 90;
         }
     }
 
     public void setDisplay() {
-        // limpa a lista de displays
-
         displays = new ArrayList<Display>();
 
         // converte os segundos, minutos e horas em números de dois dígitos
@@ -60,19 +82,14 @@ public class RelogioDigital {
         displays.add(new Display(segundosUnidade));
     }
 
-    // desenha os pontos de separação entre os segundos, minutos e horas
-    // private void desenhaPontosDeSeparacao() {
-
-    // }
-
     // desenha 6 displays, "relógio"
     public void desenhaRelogio(Draw desenho) {
         int coordenadaInicialX = this.coordenadaX;
 
         for (Display display : displays) {
-            display.desenharDisplay(desenho, this.coordenadaX, this.coordenadaY, cor);
+            display.desenharDisplay(desenho, this.coordenadaX, this.coordenadaY, cor, tamanho);
 
-            this.coordenadaX += 80;
+            this.coordenadaX += Display.FATOR_TAMANHO / 0.5;
 
         }
 

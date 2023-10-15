@@ -49,19 +49,16 @@ public class Horario {
         return false;
     }
 
-    public boolean atualizaHorario(int segundos) {
-        if (segundos >= 0) {
-            // 1 hora são 60 minutos
-            while (segundos >= 3600) {
+    public boolean atualizaUmSegundo() {
+        this.segundos++;
+
+        if (segundos >= 60) {
+            this.segundos = 0;
+            this.minutos++;
+            if (minutos >= 60) {
+                this.minutos = 0;
                 this.horas++;
-                segundos -= 3600;
             }
-            // 1 minuto são 60 segundos
-            while (segundos >= 60) {
-                this.minutos++;
-                segundos -= 60;
-            }
-            this.segundos += segundos;
             return true;
         }
         return false;

@@ -3,7 +3,6 @@ package engtelecom.poo;
 import edu.princeton.cs.algs4.Draw;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Principal {
     private ArrayList<RelogioDigital> relogios;
@@ -20,7 +19,6 @@ public class Principal {
         this.desenho.setYscale(0, DIMENSAO);
         this.desenho.setDefaultCloseOperation(3);
         this.desenho.enableDoubleBuffering();
-        desenho.clear(Draw.BLACK);
     }
 
     // desenha todos os relógios
@@ -37,7 +35,25 @@ public class Principal {
         RelogioDigital r = new RelogioDigital(200, 200, 12, 34, 56, "rosa", 1);
         p.relogios.add(r);
 
-        p.desenhaRelogios();
+        RelogioDigital r2 = new RelogioDigital(200, 600, 12, 34, 56, "verde", 1);
+        p.relogios.add(r2);
+
+        for (int i = 1; i <= 10; i++) {
+            // limpando a área de desenho
+            p.desenho.clear(Draw.BLACK);
+
+            p.desenhaRelogios();
+
+            for (RelogioDigital relogio : p.relogios) {
+                relogio.atualizaHorario();
+            }
+
+            // trocando o buffer para exibir o que foi escrito
+            p.desenho.show();
+
+            // Dormindo por 1 segundo
+            Thread.sleep(1000);
+        }
 
     }
 

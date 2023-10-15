@@ -23,16 +23,9 @@ public class RelogioDigital {
         setDisplay();
     }
 
-    private Color selecionaCor(String cor) {
-        if (cor.equals("rosa")) {
-            return Color.PINK;
-        } else if (cor.equals("azul")) {
-            return Color.BLUE;
-        } else if (cor.equals("verde")) {
-            return Color.GREEN;
-        } else {
-            return Color.BLACK;
-        }
+    public void atualizaHorario() {
+        this.horario.atualizaUmSegundo();
+        setDisplay();
     }
 
     public void setTamanho() {
@@ -47,7 +40,6 @@ public class RelogioDigital {
 
     public void setDisplay() {
         // limpa a lista de displays
-        // displays.clear();
 
         displays = new ArrayList<Display>();
 
@@ -68,15 +60,23 @@ public class RelogioDigital {
         displays.add(new Display(segundosUnidade));
     }
 
+    // desenha os pontos de separação entre os segundos, minutos e horas
+    // private void desenhaPontosDeSeparacao() {
+
+    // }
+
     // desenha 6 displays, "relógio"
     public void desenhaRelogio(Draw desenho) {
-        for (Display display : displays) {
+        int coordenadaInicialX = this.coordenadaX;
 
-            display.desenharDisplay(desenho, this.coordenadaX, this.coordenadaY, selecionaCor(cor));
+        for (Display display : displays) {
+            display.desenharDisplay(desenho, this.coordenadaX, this.coordenadaY, cor);
 
             this.coordenadaX += 80;
 
         }
+
+        this.coordenadaX = coordenadaInicialX;
     }
 
 }

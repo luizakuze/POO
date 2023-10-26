@@ -17,11 +17,11 @@ public class Calculadora {
 
     /**
      * Verifica se o triângulo tem valores para os lados válidos. É valido todos os lados forem positivos e
-     * a soma de dois lados for maior que o valor do terceiro lado.
+     * a soma de dois lados for maior que o valor de um terceiro lado.
      * @param ladoA dimensão do ladoA
      * @param ladoB dimensão do ladoB
      * @param ladoC dimensão do ladoC
-     * @return verdadeiro para um triângulo válido e falso caso contrário.
+     * @return verdadeiro para triângulo válido e falso caso contrário.
      */
     private static boolean verificaTriangulo(int ladoA, int ladoB, int ladoC) {
         return ((ladoA > 0 && ladoB > 0 && ladoC > 0) && (ladoA + ladoB > ladoC && ladoB + ladoC > ladoA && ladoA + ladoC > ladoB));
@@ -48,7 +48,7 @@ public class Calculadora {
             } else {
                 return "Escaleno";
             }
-            
+
         } 
         return "Não é um triângulo";
     }

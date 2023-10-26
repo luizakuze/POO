@@ -48,9 +48,8 @@ public class Calculadora {
             } else {
                 return "Escaleno";
             }
-
+            
         } 
-    
         return "Não é um triângulo";
     }
 }

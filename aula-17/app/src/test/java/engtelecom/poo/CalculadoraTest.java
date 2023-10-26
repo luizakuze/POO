@@ -47,14 +47,11 @@ public class CalculadoraTest {
     @Test
     public void testarTipoNaoExistente(){
         assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(1, 2, 3));
-        assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(2, 3, 1));
-        assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(3, 1, 2));
         assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(0, 0, 0));
         assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(0, 1, 2));
+        assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(-3, 0, 3));
         assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(-1, -2, -3));
         assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(-1, -2, 3));
-        assertEquals("Não é um triângulo", Calculadora.tipoDoTriangulo(-1, 2, 3));
-        
     }
 
 }

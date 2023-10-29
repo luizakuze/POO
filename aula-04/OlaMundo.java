@@ -2,7 +2,7 @@ public class OlaMundo {
 
     public static void main(String[] args) {
 
-        if (args.length == 3 ) {
+        if (args.length == 3 ) { // argumentos do programa
             int a = Integer.parseInt(args[0]);
             int b = Integer.parseInt(args[2]);
             double resultado; 

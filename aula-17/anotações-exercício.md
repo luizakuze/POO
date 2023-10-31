@@ -17,3 +17,4 @@
 - coordenada Y
 - status (se já foi coletado)
 - 10x10
+- (canto esquerdo sup vale a coordenada)

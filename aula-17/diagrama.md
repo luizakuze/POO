@@ -5,20 +5,21 @@
 - Robô tem um identificador
 - Ao descartar um tesouro para pegar outro mais valioso, o robô pode descartar o tesouro na área de exploração
 
+// dependencia nunca tem um atributo d tipo massa (m: mapa)
+
 ## Diagrama 🤖
 ```mermaid
 classDiagram
     direction LR
 
     class Robo {
-        -id: char
         -velocidadeX: int
         -velocidadeY: int
         -coordenadaX: int
         -coordenadaY: int
         -armazenamento: ArrayList < Tesouro >
-        +tamanho: int
-        +Robo(id: char, x: int, y: int)
+        -capacidade: int
+        +Robo(x: int, y: int, N: int)
         +totalTesouros()
         +movimentarRobo(o: string)
         +coletarTesouro(t: Tesouro)
@@ -29,7 +30,6 @@ classDiagram
         -coordenadaX: int
         -coordenadaY: int
         -valor: int
-        +tamanho: int
         +Tesouro(x: int, y: int)
         +mostraValor()
     }
@@ -41,14 +41,14 @@ classDiagram
         +AreaExploracao(l: int, a: int)
         -registrarTesouros()
         +receberTesouro(t: Tesouro)
-        +removerTesouro(x: int, y: int)
+        +removerTesouro(t: Tesouro)
     }
 
     class Principal {
         -area: AreaExploracao
         -robos: ArrayList < Robo >
-        +movimentaRobo(id: char)
-        -encontrouTesouro(id: char, t: Tesouro)
+        +movimentaRobo(o: string, r: Robo)
+        -encontrouTesouro(r: Robo)
         +descartarTesouro()
         +exibirPontuacao()
     }

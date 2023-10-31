@@ -37,6 +37,8 @@ public class Robo {
     public boolean posicionarRoboNoMapa(Mapa mapa){
         Random r = new Random();
 
+        int x = r.nextInt(posicaoX); // de 0 a posicaoX-1
+        int y = r.nextInt(posicaoY);
         
         return false;
     }

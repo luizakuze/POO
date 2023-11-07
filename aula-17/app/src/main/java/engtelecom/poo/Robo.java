@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Robo {
-    
+
     public static final int LARGURA = 20;
     public static final int ALTURA = 20;
 
@@ -33,38 +33,96 @@ public class Robo {
         this.mochila = new ArrayList<>();
     }
 
-    // Coloca robô em uma coordenada aleátoria no mapa de uma fase
-    public boolean posicionarRoboNoMapa(Mapa mapa){
+    /**
+     * Sorteia uma posição aleatória dentro dos limtes do mapa para o robô.
+     * 
+     * @param mapa Mapa que o robô está.
+     * @return True se o robô for posicionado com sucesso e
+     *         False caso contrário.
+     */
+    public boolean posicionarRoboNoMapa(Mapa mapa) {
         Random r = new Random();
 
-        int x = r.nextInt(posicaoX); // de 0 a posicaoX-1
-        int y = r.nextInt(posicaoY);
-        
+        int x = r.nextInt(mapa.getLargura());
+        int y = r.nextInt(mapa.getAltura());
+
+        this.posicaoX = x;
+        this.posicaoY = y;
+
+        return true; // ?
+    }
+
+    /**
+     * Adiciona um tesouro a mochila.
+     * 
+     * @param t O tesouro que vai ser adicionado.
+     * @return True se for o tesouro for adicionado com sucesso ou
+     *         False caso contrário.
+     */
+    public boolean adicionarTesouro(Tesouro t) {
+        if (mochila.size() < this.capacidadeMochila) {
+            mochila.add(t);
+            return true;
+        }
         return false;
     }
 
-    public boolean adicionarTesouro(Tesouro t){
-        // TODO implementar
-        return false;
-    }
-    
-    public Tesouro removerTesouro(){
-        // TODO implementar
-        return null;
-    }
-
-    public int pontuacao(){
-        // TODO implementar
-        return -1;
+    /**
+     * Remove um tesouro da mochila.
+     * 
+     * @return O tesouro removido.
+     */
+    public Tesouro removerTesouro() {
+        Tesouro t = null;
+        if (!mochila.isEmpty()) {
+            t = mochila.remove(mochila.size() - 1);
+        }
+        return t;
     }
 
-    // pode encostar na borda, se apertar p andar mais, vai continuar na borda
-    // andou -> true (mesmo que ande um pouco menos que deveria), não andou -> false
+    public int pontuacao() {
+        return this.pontuacao;
+    }
+
+    /**
+     * Movimenta o robô de acordo com a direção informada.
+     * 
+     * @param direcao A direção para onde o robô deve se mover.
+     *                0 para cima, 1 para a direita, 2 para baixo e 3 para a
+     *                esquerda.
+     * @return True se o robô conseguiu se mover com sucesso dentro dos limites do
+     *         mapa e False caso contrário (quando está fora dos limites do mapa).
+     */
     public boolean movimentar(int direcao) {
-        // TODO implementar
-        return false;
+        // novas posições
+        int posX = this.posicaoX;
+        int posY = this.posicaoY;
+
+        // desloca o robô de acordo com a direção
+        if (direcao == 0) {
+            posY += this.velocidadeY;
+        } else if (direcao == 1) {
+            posX += this.velocidadeX;
+        } else if (direcao == 2) {
+            posY -= this.velocidadeY;
+        } else if (direcao == 3) {
+            posX -= this.velocidadeX;
+        }
+
+        // verifica se a nova posição está nos limites
+        if (posX >= 0 && posX <= mapa.getLargura() && posY >= 0 && posY <= mapa.getAltura()) {
+            // pode atualizar as coordenadas reais do robô
+            this.posicaoX = posX;
+            this.posicaoY = posY;
+            return true;
+        } else {
+            // não atualiza as coordenadas, está fora do mapa
+            return false;
+        }
     }
 
-
+    public int getCapacidadeMochila() {
+        return capacidadeMochila;
+    }
 
 }

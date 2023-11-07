@@ -21,6 +21,8 @@ public class Robo {
     private int capacidadeMochila;
     private ArrayList<Tesouro> mochila;
 
+    public static final int MAX_TENTATIVAS = 5;
+
     public Robo(Mapa mapa, int velocidadeX, int velocidadeY, int capacidadeMochila) {
         this.mapa = mapa;
         this.velocidadeX = velocidadeX;
@@ -43,13 +45,18 @@ public class Robo {
     public boolean posicionarRoboNoMapa(Mapa mapa) {
         Random r = new Random();
 
-        int x = r.nextInt(mapa.getLargura());
-        int y = r.nextInt(mapa.getAltura());
+        for (int i = 0; i < MAX_TENTATIVAS; i++) {
+            // sorteia as posições, considerando a dimensão do robô
+            this.posicaoX = r.nextInt(mapa.getLargura());
+            this.posicaoY = r.nextInt(mapa.getAltura());
 
-        this.posicaoX = x;
-        this.posicaoY = y;
-
-        return true; // ?
+            // verifica se o robô cabe no mapa sem sair dos limites
+            if (this.posicaoX >= 0 && this.posicaoX + LARGURA <= mapa.getLargura() &&
+                    this.posicaoY >= 0 && this.posicaoY + ALTURA <= mapa.getAltura()) {
+                return true; // o robô cabe no mapa
+            }
+        }
+        return false;
     }
 
     /**
@@ -110,15 +117,19 @@ public class Robo {
         }
 
         // verifica se a nova posição está nos limites
-        if (posX >= 0 && posX <= mapa.getLargura() && posY >= 0 && posY <= mapa.getAltura()) {
+        // tem que ser maior que zero
+        if (posX >= 0 && posX + LARGURA <= mapa.getLargura() && posY >= 0 && posY + ALTURA <= mapa.getAltura()) {
             // pode atualizar as coordenadas reais do robô
             this.posicaoX = posX;
             this.posicaoY = posY;
             return true;
-        } else {
-            // não atualiza as coordenadas, está fora do mapa
-            return false;
+        } else if (posX < 0 && this.posicaoX != 0 || posY < 0 && this.posicaoY != 0) {
+            this.posicaoX = 0;
+            this.posicaoY = LARGURA;
         }
+        // não atualiza as coordenadas, está fora do mapa
+        return false;
+
     }
 
     public int getCapacidadeMochila() {

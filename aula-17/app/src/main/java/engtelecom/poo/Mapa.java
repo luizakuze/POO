@@ -1,6 +1,7 @@
 package engtelecom.poo;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Mapa {
 
@@ -18,12 +19,26 @@ public class Mapa {
         this.posicionaTesouros();
     }
 
-    public void posicionaTesouros(){
-        //TODO implementar
+    public void posicionaTesouros() {
+        Random random = new Random();
+        for (int i = 0; i < totalDeTesouros; i++) {
+
+            int posX = random.nextInt(largura);
+            int posY = random.nextInt(altura);
+            int valor = random.nextInt(11); // tesouros de 0 a 10
+
+            Tesouro tesouro = new Tesouro(posX, posY, valor);
+            tesouros.add(tesouro);
+        }
     }
 
-    public Tesouro coletarTesouro(int x, int y){
-        //TODO implementar, se n encontrar é nulo
+    public Tesouro coletarTesouro(int x, int y) {
+        for (Tesouro tesouro : tesouros) {
+            if (tesouro.getPosicaoX() == x && tesouro.getPosicaoY() == y) {
+                tesouros.remove(tesouro);
+                return tesouro;
+            }
+        }
         return null;
     }
 
@@ -35,5 +50,7 @@ public class Mapa {
         return altura;
     }
 
-    
+    public ArrayList<Tesouro> getTesouros() {
+        return tesouros;
+    }
 }

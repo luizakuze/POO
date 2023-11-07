@@ -30,15 +30,16 @@ public class App {
 
         App app = new App();
 
-        int x = 300;
-        int y = 300;
+        int x = 150;
+        int y = 150;
         int raio = 10;
         int vx = 1;
         int vy = 2;
 
+
         while (true) {
             app.desenharQuadrado(300, 300, 20); 
-            app.desenharQuadrado(x, y, raio); 
+            app.desenharCirculo(x, y, raio); 
 
             x += vx;
             y += vy;
@@ -53,14 +54,16 @@ public class App {
 
             // verificar intersecção com quadrado
             // nesse retângulo x,y está na ponto superior esquerdo
-            Rectangle r = new Rectangle(10,10,20,20);
-            Rectangle outro = new Rectangle(20,20,10,10);
+            Rectangle quadrado = new Rectangle(300-20,300-20,40,40);
+            Rectangle circulo = new Rectangle(x-raio,y-raio,2*raio,2*raio);
 
-            if (r.intersects(outro)) {
-                System.out.println("Sim, bateram");
+            if (quadrado.intersects(circulo)) {
+                vx *= -1;
+                vy *= -1;
             }
 
-            app.desenho.pause(20);
+
+            app.desenho.pause(10);
             app.desenho.show();
             app.desenho.clear(Color.WHITE);
         }

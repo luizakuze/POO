@@ -42,6 +42,10 @@ public class Mapa {
         return null;
     }
 
+    public boolean temTesouroAqui(int x, int y){
+        return false;
+    }
+
     public int getLargura() {
         return largura;
     }

@@ -23,13 +23,18 @@ public class Robo {
 
     public static final int MAX_TENTATIVAS = 5;
 
-    public Robo(Mapa mapa, int velocidadeX, int velocidadeY, int capacidadeMochila) {
+    public Robo(Mapa mapa, int posicaoX, int posicaoY, int velocidadeX, int velocidadeY, int capacidadeMochila) {
         this.mapa = mapa;
         this.velocidadeX = velocidadeX;
         this.velocidadeY = velocidadeY;
-        this.pontuacao = 0;
 
+        /// TODO garantir que x,y está dentro dos limites do mapa
+        // se não estiver, posicionar o robo no centro do mapa
+        this.posicaoX = posicaoX;
+        this.posicaoY = posicaoY;
         this.posicionarRoboNoMapa(this.mapa);
+
+        this.pontuacao = 0;
 
         this.capacidadeMochila = capacidadeMochila;
         this.mochila = new ArrayList<>();
@@ -60,22 +65,23 @@ public class Robo {
     }
 
     /**
-     * Adiciona um tesouro a mochila.
-     * 
-     * @param t O tesouro que vai ser adicionado.
-     * @return True se for o tesouro for adicionado com sucesso ou
-     *         False caso contrário.
+     * O robô cava na posição que está se tiver espaço na mochila.
+     * @return True se encontrar um tesouro e False caso contrário.
      */
-    public boolean adicionarTesouro(Tesouro t) {
-        if (mochila.size() < this.capacidadeMochila) {
-            mochila.add(t);
-            return true;
+    public boolean cavar(){
+        if (!mochilaCheia()) {
+            Tesouro t = mapa.coletarTesouro(posicaoX, posicaoY);
+            // achou um tesouro!
+            if (t != null) {
+                this.mochila.add(t);
+            }
         }
-        return false;
+        return false; // não encontrou tesouro
     }
 
+
     /**
-     * Remove um tesouro da mochila.
+     * Remove o último tesouro colocado na mochila.
      * 
      * @return O tesouro removido.
      */
@@ -83,12 +89,18 @@ public class Robo {
         Tesouro t = null;
         if (!mochila.isEmpty()) {
             t = mochila.remove(mochila.size() - 1);
+            this.pontuacao -= t.getValor();
         }
         return t;
     }
 
     public int pontuacao() {
         return this.pontuacao;
+    }
+
+    // isFull
+    public boolean mochilaCheia(){
+        return this.mochila.size() == this.capacidadeMochila;
     }
 
     /**
@@ -101,35 +113,7 @@ public class Robo {
      *         mapa e False caso contrário (quando está fora dos limites do mapa).
      */
     public boolean movimentar(int direcao) {
-        // novas posições
-        int posX = this.posicaoX;
-        int posY = this.posicaoY;
-
-        // desloca o robô de acordo com a direção
-        if (direcao == 0) {
-            posY += this.velocidadeY;
-        } else if (direcao == 1) {
-            posX += this.velocidadeX;
-        } else if (direcao == 2) {
-            posY -= this.velocidadeY;
-        } else if (direcao == 3) {
-            posX -= this.velocidadeX;
-        }
-
-        // verifica se a nova posição está nos limites
-        // tem que ser maior que zero
-        if (posX >= 0 && posX + LARGURA <= mapa.getLargura() && posY >= 0 && posY + ALTURA <= mapa.getAltura()) {
-            // pode atualizar as coordenadas reais do robô
-            this.posicaoX = posX;
-            this.posicaoY = posY;
-            return true;
-        } else if (posX < 0 && this.posicaoX != 0 || posY < 0 && this.posicaoY != 0) {
-            this.posicaoX = 0;
-            this.posicaoY = LARGURA;
-        }
-        // não atualiza as coordenadas, está fora do mapa
         return false;
-
     }
 
     public int getCapacidadeMochila() {

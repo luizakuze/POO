@@ -13,10 +13,17 @@ public class MapaTest {
         assertEquals(5, totalTesouros);
     }
 
-    // @Test
-    // public void testarColetarTesouro() {
-    // Mapa mapa = new Mapa(10, 10, 1);
-    // Tesouro tesouro = new Tesouro(5, 5, 100);
+    @Test
+    public void testarColetarTesouro() {
+        // Mapa mapa = new Mapa(10, 10, 1);
+        // Tesouro tesouro = new Tesouro(5, 5, 5);
 
-    // }
+        // int posX = 5;
+        // int posY = 5;
+
+        // // coleta tesouro
+        // assertEquals(5, mapa.coletarTesouro(posX, posY));
+    
+        
+    }
 }

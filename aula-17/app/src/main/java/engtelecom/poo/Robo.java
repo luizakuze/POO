@@ -3,7 +3,7 @@ package engtelecom.poo;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Robo {
+public class Robo extends ElementoDoJogo {
 
     public static final int LARGURA = 20;
     public static final int ALTURA = 20;
@@ -15,23 +15,18 @@ public class Robo {
 
     private Mapa mapa;
 
-    private int posicaoX;
-    private int posicaoY;
-
     private int capacidadeMochila;
     private ArrayList<Tesouro> mochila;
 
     public static final int MAX_TENTATIVAS = 5;
 
     public Robo(Mapa mapa, int posicaoX, int posicaoY, int velocidadeX, int velocidadeY, int capacidadeMochila) {
+        super(posicaoX, posicaoY);
+
         this.mapa = mapa;
         this.velocidadeX = velocidadeX;
         this.velocidadeY = velocidadeY;
 
-        /// TODO garantir que x,y está dentro dos limites do mapa
-        // se não estiver, posicionar o robo no centro do mapa
-        this.posicaoX = posicaoX;
-        this.posicaoY = posicaoY;
         this.posicionarRoboNoMapa(this.mapa);
 
         this.pontuacao = 0;
@@ -66,9 +61,10 @@ public class Robo {
 
     /**
      * O robô cava na posição que está se tiver espaço na mochila.
+     * 
      * @return True se encontrar um tesouro e False caso contrário.
      */
-    public boolean cavar(){
+    public boolean cavar() {
         if (!mochilaCheia()) {
             Tesouro t = mapa.coletarTesouro(posicaoX, posicaoY);
             // achou um tesouro!
@@ -78,7 +74,6 @@ public class Robo {
         }
         return false; // não encontrou tesouro
     }
-
 
     /**
      * Remove o último tesouro colocado na mochila.
@@ -99,7 +94,7 @@ public class Robo {
     }
 
     // isFull
-    public boolean mochilaCheia(){
+    public boolean mochilaCheia() {
         return this.mochila.size() == this.capacidadeMochila;
     }
 
@@ -113,6 +108,57 @@ public class Robo {
      *         mapa e False caso contrário (quando está fora dos limites do mapa).
      */
     public boolean movimentar(int direcao) {
+        int novoX = posicaoX;
+        int novoY = posicaoY;
+
+        int espacoRestante;
+
+        // define a nova posição com base na direção
+        switch (direcao) {
+            case 0: // cima
+                espacoRestante = novoY + velocidadeY - mapa.getAltura();
+                novoY += velocidadeY;
+                break;
+            case 1: // direita
+                espacoRestante = (novoX + velocidadeX + LARGURA) - mapa.getLargura();
+                novoX += velocidadeX;
+                break;
+            case 2: // baixo
+                espacoRestante = novoY - velocidadeY;
+                novoY -= velocidadeY;
+                break;
+            case 3: // esquerda
+                espacoRestante = novoX - velocidadeX;
+                novoX -= velocidadeX;
+                break;
+            default:
+                System.out.println("Direção inválida.");
+                return false;
+        }
+
+        // verifica se a nova posição está dentro dos limites do mapa
+        if (novoX >= 0 && novoX + LARGURA <= mapa.getLargura() && novoY >= 0 && novoY + ALTURA <= mapa.getAltura()) {
+            posicaoX = novoX;
+            posicaoY = novoY;
+            return true;
+        }
+
+        // verifica se há espaço suficiente para continuar a movimentação
+        if (novoX < 0 && posicaoX - espacoRestante >= 0) {
+            posicaoX -= espacoRestante;
+            return true;
+        } else if (novoX + LARGURA > mapa.getLargura() && posicaoX + espacoRestante <= mapa.getLargura()) {
+            posicaoX += espacoRestante;
+            return true;
+        } else if (novoY < 0 && posicaoY - espacoRestante >= 0) {
+            posicaoY -= espacoRestante;
+            return true;
+        } else if (novoY + ALTURA > mapa.getAltura() && posicaoY + espacoRestante <= mapa.getAltura()) {
+            posicaoY += espacoRestante;
+            return true;
+        }
+
+        // se não, está fora dos limites
         return false;
     }
 

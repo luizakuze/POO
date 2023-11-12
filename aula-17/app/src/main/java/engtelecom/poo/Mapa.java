@@ -21,11 +21,13 @@ public class Mapa {
 
     public void posicionaTesouros() {
         Random random = new Random();
+        tesouros.clear(); // "limpar a lista"
+
         for (int i = 0; i < totalDeTesouros; i++) {
 
             int posX = random.nextInt(largura);
             int posY = random.nextInt(altura);
-            int valor = random.nextInt(11); // tesouros de 0 a 10
+            int valor = random.nextInt(5) + 1; // tesouros de 1 a 5
 
             Tesouro tesouro = new Tesouro(posX, posY, valor);
             tesouros.add(tesouro);
@@ -42,7 +44,7 @@ public class Mapa {
         return null;
     }
 
-    public boolean temTesouroAqui(int x, int y){
+    public boolean temTesouroAqui(int x, int y) {
         return false;
     }
 

@@ -1,6 +1,9 @@
 package engtelecom.poo;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 
 public class MapaTest {
@@ -23,7 +26,6 @@ public class MapaTest {
 
         // // coleta tesouro
         // assertEquals(5, mapa.coletarTesouro(posX, posY));
-    
-        
+
     }
 }

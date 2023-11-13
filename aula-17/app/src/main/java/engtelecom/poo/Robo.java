@@ -45,6 +45,7 @@ public class Robo extends ElementoDoJogo {
     public boolean posicionarRoboNoMapa(Mapa mapa) {
         Random r = new Random();
 
+
         for (int i = 0; i < MAX_TENTATIVAS; i++) {
             // sorteia as posições, considerando a dimensão do robô
             this.posicaoX = r.nextInt(mapa.getLargura());
@@ -67,9 +68,11 @@ public class Robo extends ElementoDoJogo {
     public boolean cavar() {
         if (!mochilaCheia()) {
             Tesouro t = mapa.coletarTesouro(posicaoX, posicaoY);
+
             // achou um tesouro!
             if (t != null) {
                 this.mochila.add(t);
+                return true;
             }
         }
         return false; // não encontrou tesouro
@@ -112,52 +115,57 @@ public class Robo extends ElementoDoJogo {
         int novoY = posicaoY;
 
         int espacoRestante;
+        int espacoPercorrido;
 
         // define a nova posição com base na direção
         switch (direcao) {
             case 0: // cima
-                espacoRestante = novoY + velocidadeY - mapa.getAltura();
-                novoY += velocidadeY;
+                espacoPercorrido = posicaoY + velocidadeY;
+                espacoRestante = mapa.getAltura() - espacoPercorrido;
                 break;
             case 1: // direita
-                espacoRestante = (novoX + velocidadeX + LARGURA) - mapa.getLargura();
-                novoX += velocidadeX;
+                espacoPercorrido = posicaoX + velocidadeX;
+                espacoRestante =  mapa.getLargura() - espacoPercorrido;
                 break;
             case 2: // baixo
-                espacoRestante = novoY - velocidadeY;
-                novoY -= velocidadeY;
+                espacoPercorrido = posicaoY - velocidadeY;
+                espacoRestante =  mapa.getAltura() - espacoPercorrido;
                 break;
             case 3: // esquerda
-                espacoRestante = novoX - velocidadeX;
-                novoX -= velocidadeX;
+                espacoPercorrido = posicaoX - velocidadeX;
+                espacoRestante =  mapa.getLargura() - espacoPercorrido;
                 break;
             default:
-                System.out.println("Direção inválida.");
-                return false;
+                return false; // orientação inválida
         }
 
-        // verifica se a nova posição está dentro dos limites do mapa
-        if (novoX >= 0 && novoX + LARGURA <= mapa.getLargura() && novoY >= 0 && novoY + ALTURA <= mapa.getAltura()) {
+        // verifica se conseguiu andar tudo
+        if (espacoRestante > 0) {
             posicaoX = novoX;
             posicaoY = novoY;
             return true;
         }
 
-        // verifica se há espaço suficiente para continuar a movimentação
-        if (novoX < 0 && posicaoX - espacoRestante >= 0) {
-            posicaoX -= espacoRestante;
-            return true;
-        } else if (novoX + LARGURA > mapa.getLargura() && posicaoX + espacoRestante <= mapa.getLargura()) {
-            posicaoX += espacoRestante;
-            return true;
-        } else if (novoY < 0 && posicaoY - espacoRestante >= 0) {
-            posicaoY -= espacoRestante;
-            return true;
-        } else if (novoY + ALTURA > mapa.getAltura() && posicaoY + espacoRestante <= mapa.getAltura()) {
-            posicaoY += espacoRestante;
-            return true;
-        }
+        // verifica se há espaço suficiente para continuar a movimentação, se tiver um pouco de espaço mesmo que 
+        // não a velocidade inteira, anda esse espaço
+        if (espacoRestante != 0) {
 
+            switch(direcao) {
+                case 0: //cima
+                    posicaoY -= espacoRestante;
+                    break;
+                case 1: //direita
+                    posicaoX += espacoRestante;
+                    break;
+                case 2: // baixo
+                    posicaoY -= espacoRestante;
+                    break;
+                case 3: // esquerda
+                    posicaoX -= espacoRestante;            
+            } 
+            return true;
+
+        }
         // se não, está fora dos limites
         return false;
     }

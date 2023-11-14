@@ -1,76 +1,71 @@
 package engtelecom.poo;
 
+//https://www.flaticon.com/
 import edu.princeton.cs.algs4.Draw;
-import engtelecom.poo.elementos.Robo;
 
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 public class App {
-    // private Draw desenho;
-    private Mapa mapa;
-    private Robo robo;
 
-    public App(Robo r, Mapa m) {
-        this.mapa = m;
-        this.robo = r;
+    private Draw desenho;
 
-        // this.desenho = new Draw();
-        // this.desenho.setXscale(0,600);
-        // this.desenho.setYscale(0,600);
-        // this.desenho.enableDoubleBuffering();
-        // this.desenho.setDefaultCloseOperation(3);
+    public App() {
+        this.desenho = new Draw();
+        this.desenho.setXscale(0,600);
+        this.desenho.setYscale(0,600);
+        this.desenho.enableDoubleBuffering();
+        this.desenho.setDefaultCloseOperation(3);
     }
 
-    // public void desenharQuadrado(int x, int y, int dimensao){
-    // desenho.setPenColor(Color.RED);
-    // desenho.filledSquare(x, y, dimensao);
+    public void desenharQuadrado(int x, int y, int dimensao){
+    desenho.setPenColor(Color.RED);
+    desenho.filledSquare(x, y, dimensao);
 
-    // }
+    }
 
-    // public void desenharCirculo(int x, int y, int raio) {
-    // desenho.setPenColor(Color.BLUE);
-    // desenho.filledCircle(x, y, raio);
-    // }
+    public void desenharCirculo(int x, int y, int raio) {
+    desenho.setPenColor(Color.BLUE);
+    desenho.filledCircle(x, y, raio);
+    }
 
     public static void main(String[] args) {
 
-        // App app = new App();
+        App app = new App();
 
-        // int x = 150;
-        // int y = 150;
-        // int raio = 10;
-        // int vx = 1;
-        // int vy = 2;
+        ArrayList<ElementoDoJogo> elementos = new ArrayList<>();
 
-        // while (true) {
-        // app.desenharQuadrado(300, 300, 20);
-        // app.desenharCirculo(x, y, raio);
+        elementos.add(new Tesouro(1,10,100));
+        elementos.add(new Robo(null, 300,300,1,2,10));
+        elementos.add(new Parede(200, 200));
+        //Elemento e = new ElementoDoJogo(); É UMA CLASSE ABSTRATA!!
 
-        // x += vx;
-        // y += vy;
+        app.desenho.show();
 
-        // if ((x+raio > 600) || (x+raio < 0)) {
-        // vx *= -1;
-        // }
+        while (true) {
+            for (var e: elementos) { // var = auto 
+                // erro em tempo de execução
+                // Robo r = (Robo) e;
+                // r.movimentar(1);
+                // tem que haver certeza que é um robo, só de for uma instancia
 
-        // if ((y+raio > 600) || (y+raio < 0)) {
-        // vy *= -1;
-        // }
 
-        // // verificar intersecção com quadrado
-        // // nesse retângulo x,y está na ponto superior esquerdo
-        // Rectangle quadrado = new Rectangle(300-20,300-20,40,40);
-        // Rectangle circulo = new Rectangle(x-raio,y-raio,2*raio,2*raio);
+                if (e instanceof Robo) {
+                    Robo r = (Robo) e;
+                    /// TODO atualizar coordenadas somente do robo! movimentar do robo
 
-        // if (quadrado.intersects(circulo)) {
-        // vx *= -1;
-        // vy *= -1;
-        // }
+                    r.movimentar(1);
+                }
 
-        // app.desenho.pause(10);
-        // app.desenho.show();
-        // app.desenho.clear(Color.WHITE);
-        // }
+            }
+
+            //desenha os elementos
+            elementos.forEach(e->e.desenhar(app.desenho));
+
+            app.desenho.pause(100);
+            app.desenho.show();
+            app.desenho.clear(Color.WHITE);
+        }
     }
 }

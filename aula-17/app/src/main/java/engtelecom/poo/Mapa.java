@@ -3,8 +3,6 @@ package engtelecom.poo;
 import java.util.ArrayList;
 import java.util.Random;
 
-import engtelecom.poo.elementos.Tesouro;
-
 public class Mapa {
 
     private int largura;

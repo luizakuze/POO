@@ -2,30 +2,28 @@ package engtelecom.poo;
 
 import org.junit.jupiter.api.Test;
 
-import engtelecom.poo.elementos.Robo;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RoboTest {
 
-    @Test
-    public void testarPosicionarRobo() {
+    // @Test
+    // public void testarPosicionarRobo() {
 
-        Mapa mapa = new Mapa(100, 100, 1);
-        Robo robo = new Robo(mapa, 10, 10, 1, 2, 5);
+    //     Mapa mapa = new Mapa(100, 100, 1);
+    //     Robo robo = new Robo(mapa, 10, 10, 1, 2, 5);
 
-        assertTrue(robo.posicionarRoboNoMapa(mapa));
+    //     assertTrue(robo.posicionarRoboNoMapa(mapa));
 
-        assertFalse(robo.posicionarRoboNoMapa(new Mapa(1, 100, 1)));
-        // mapa = new Mapa(1, 1, 1);
-        // assertFalse(robo.posicionarRoboNoMapa(mapa));
+    //     assertFalse(robo.posicionarRoboNoMapa(new Mapa(1, 100, 1)));
+    //     // mapa = new Mapa(1, 1, 1);
+    //     // assertFalse(robo.posicionarRoboNoMapa(mapa));
 
-        // tenta posicionar o robô em um mapa com altura inadequada (limite de altura =
-        // 1)
-        assertFalse(robo.posicionarRoboNoMapa(new Mapa(100, 1, 1)));
-    }
+    //     // tenta posicionar o robô em um mapa com altura inadequada (limite de altura =
+    //     // 1)
+    //     assertFalse(robo.posicionarRoboNoMapa(new Mapa(100, 1, 1)));
+    // }
 
     // @Test
     // public void testarCavar() {

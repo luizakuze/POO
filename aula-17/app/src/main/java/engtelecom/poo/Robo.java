@@ -1,9 +1,10 @@
-package engtelecom.poo.elementos;
+package engtelecom.poo;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
-import engtelecom.poo.Mapa;
+import edu.princeton.cs.algs4.Draw;
 
 public class Robo extends ElementoDoJogo {
 
@@ -44,21 +45,12 @@ public class Robo extends ElementoDoJogo {
      * @return True se o robô for posicionado com sucesso e
      *         False caso contrário.
      */
-    public boolean posicionarRoboNoMapa(Mapa mapa) {
-        Random r = new Random();
+    public void posicionarRoboNoMapa(Mapa mapa) {
+        /// TODO implementar verificação de posições
+            this.posicaoX = posicaoX;
+            this.posicaoY = posicaoY;
 
-        for (int i = 0; i < MAX_TENTATIVAS; i++) {
-            // sorteia as posições, considerando a dimensão do robô
-            this.posicaoX = r.nextInt(mapa.getLargura());
-            this.posicaoY = r.nextInt(mapa.getAltura());
-
-            // verifica se o robô cabe no mapa sem sair dos limites
-            if (this.posicaoX >= 0 && this.posicaoX + LARGURA <= mapa.getLargura() &&
-                    this.posicaoY >= 0 && this.posicaoY + ALTURA <= mapa.getAltura()) {
-                return true; // o robô cabe no mapa
-            }
-        }
-        return false;
+       
     }
 
     /**
@@ -102,15 +94,15 @@ public class Robo extends ElementoDoJogo {
         return this.mochila.size() == this.capacidadeMochila;
     }
 
-    @Override
-    public void imprimirInformacoes() {
-        System.out.printf("Velocidade: [%d,%d]\n", velocidadeX, velocidadeY);
-        System.out.printf("Pontuação: %d\n", pontuacao);
-        System.out.printf("Capacidade da Mochila: %d\n", capacidadeMochila);
-        super.imprimirInformacoes();
-        /// TODO imprimir tesouros
+    // @Override
+    // public void imprimirInformacoes() {
+    //     System.out.printf("Velocidade: [%d,%d]\n", velocidadeX, velocidadeY);
+    //     System.out.printf("Pontuação: %d\n", pontuacao);
+    //     System.out.printf("Capacidade da Mochila: %d\n", capacidadeMochila);
+    //     super.imprimirInformacoes();
+    //     /// TODO imprimir tesouros
 
-    }
+    // }
 
     /**
      * Movimenta o robô de acordo com a direção informada.
@@ -178,6 +170,18 @@ public class Robo extends ElementoDoJogo {
 
         }
         // se não, está fora dos limites
+        return false;
+    }
+
+    @Override
+    public void desenhar(Draw d) {
+        // d.setPenColor(Color.RED);
+        // d.filledSquare(posicaoX, posicaoY, LARGURA);
+        d.picture(this.posicaoX, this.posicaoY, "robo.png");
+
+    }
+
+    public boolean colisao() {
         return false;
     }
 

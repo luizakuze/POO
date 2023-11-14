@@ -23,8 +23,7 @@ public class Tesouro extends ElementoDoJogo {
 
     @Override
     public void desenhar(Draw d) {
-        d.setPenColor(Color.BLUE);
-        d.filledCircle(this.posicaoX, this.posicaoY, RAIO);
+        d.picture(this.posicaoX, this.posicaoY, "tesouro.png");
     }
 
 

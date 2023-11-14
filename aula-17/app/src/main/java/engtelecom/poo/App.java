@@ -51,12 +51,12 @@ public class App {
                 // tem que haver certeza que é um robo, só de for uma instancia
 
 
-                if (e instanceof Robo) {
-                    Robo r = (Robo) e;
-                    /// TODO atualizar coordenadas somente do robo! movimentar do robo
+                // if (e instanceof Robo) {
+                //     Robo r = (Robo) e;
+                //     /// TODO atualizar coordenadas somente do robo! movimentar do robo
 
-                    r.movimentar(1);
-                }
+                //     r.movimentar(1);
+                // }
 
             }
 

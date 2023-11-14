@@ -15,7 +15,6 @@ public class Parede extends ElementoDoJogo{
 
     @Override
     public void desenhar(Draw d) {
-        d.setPenColor(Color.GREEN);
-        d.filledRectangle(this.posicaoX, this.posicaoY, LARGURA, ALTURA);
+        d.picture(this.posicaoX, this.posicaoY, "parede.png");
     }
 }

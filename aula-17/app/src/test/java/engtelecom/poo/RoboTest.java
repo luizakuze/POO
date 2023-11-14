@@ -1,6 +1,9 @@
 package engtelecom.poo;
 
 import org.junit.jupiter.api.Test;
+
+import engtelecom.poo.elementos.Robo;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -19,63 +22,63 @@ public class RoboTest {
         // mapa = new Mapa(1, 1, 1);
         // assertFalse(robo.posicionarRoboNoMapa(mapa));
 
-        // tenta posicionar o robô em um mapa com altura inadequada (limite de altura = 1)
+        // tenta posicionar o robô em um mapa com altura inadequada (limite de altura =
+        // 1)
         assertFalse(robo.posicionarRoboNoMapa(new Mapa(100, 1, 1)));
     }
 
-    //@Test
+    // @Test
     // public void testarCavar() {
-    //     Mapa mapa = new Mapa(100, 100, 1);
+    // Mapa mapa = new Mapa(100, 100, 1);
 
-    //     // adicionando um robô na posição do tesouro
-    //     Robo robo = new Robo(mapa, mapa.getLargura(), mapa.getAltura(), 1, 2, 5);
+    // // adicionando um robô na posição do tesouro
+    // Robo robo = new Robo(mapa, mapa.getLargura(), mapa.getAltura(), 1, 2, 5);
 
+    // Tesouro tesouro = new Tesouro(10, 10, 10);
 
-    //     Tesouro tesouro = new Tesouro(10, 10, 10);
+    // // adiciona tesouros até a capacidade máxima da mochila
+    // for (int i = 0; i < robo.getCapacidadeMochila(); i++) {
+    // assertTrue(robo.cavar());
+    // }
 
-    //     // adiciona tesouros até a capacidade máxima da mochila
-    //     for (int i = 0; i < robo.getCapacidadeMochila(); i++) {
-    //         assertTrue(robo.cavar());
-    //     }
-
-    //     // tenta adicionar um tesouro extra
-    //     assertFalse(robo.adicionarTesouro(tesouro));
+    // // tenta adicionar um tesouro extra
+    // assertFalse(robo.adicionarTesouro(tesouro));
     // }
 
     // @Test
     // public void testarRemoverTesouro() {
-    //     Mapa mapa = new Mapa(100, 100, 1);
-    //     Robo robo = new Robo(mapa, 1, 2, 5);
-        
-    //     // adiciona um tesouro à mochila
-    //     Tesouro tesouro = new Tesouro(10, 10, 10);
-    //     robo.adicionarTesouro(tesouro);
+    // Mapa mapa = new Mapa(100, 100, 1);
+    // Robo robo = new Robo(mapa, 1, 2, 5);
 
-    //     // remove com tesouros na mochila
-    //     assertEquals(tesouro, robo.removerTesouro());
+    // // adiciona um tesouro à mochila
+    // Tesouro tesouro = new Tesouro(10, 10, 10);
+    // robo.adicionarTesouro(tesouro);
 
-    //     // remover com mochila vazia
-    //     assertEquals(null, robo.removerTesouro());
+    // // remove com tesouros na mochila
+    // assertEquals(tesouro, robo.removerTesouro());
+
+    // // remover com mochila vazia
+    // assertEquals(null, robo.removerTesouro());
     // }
 
     // @Test
     // public void testarPontuacao() {
-    //     Mapa mapa = new Mapa(100, 100, 1);
-    //     Robo robo = new Robo(mapa, 1, 2, 5);
-    //     Tesouro tesouro = new Tesouro(10, 10, 10);
+    // Mapa mapa = new Mapa(100, 100, 1);
+    // Robo robo = new Robo(mapa, 1, 2, 5);
+    // Tesouro tesouro = new Tesouro(10, 10, 10);
 
-    //     // verifica se a pontuação inicial é zero
-    //     assertEquals(0, robo.pontuacao());
+    // // verifica se a pontuação inicial é zero
+    // assertEquals(0, robo.pontuacao());
 
-    //     // pontuação do robô com um tesouro
-    //     robo.adicionarTesouro(tesouro);
-    //     assertEquals(10, robo.pontuacao());
+    // // pontuação do robô com um tesouro
+    // robo.adicionarTesouro(tesouro);
+    // assertEquals(10, robo.pontuacao());
     // }
 
     @Test
     public void testarMovimentar() {
-        Mapa mapa = new Mapa(9, 9, 1);
-        Robo robo = new Robo(mapa, 5, 5, 5, 0, 0);
+        Mapa mapa = new Mapa(7, 7, 1);
+        Robo robo = new Robo(mapa, 1, 1, 4, 4, 0);
 
         // para cima com sucesso
         assertTrue(robo.movimentar(0));

@@ -1,4 +1,4 @@
-package engtelecom.poo;
+package engtelecom.poo.elementos;
 
 public class Tesouro extends ElementoDoJogo {
 

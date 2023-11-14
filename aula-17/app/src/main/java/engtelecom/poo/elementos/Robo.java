@@ -1,7 +1,9 @@
-package engtelecom.poo;
+package engtelecom.poo.elementos;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import engtelecom.poo.Mapa;
 
 public class Robo extends ElementoDoJogo {
 
@@ -44,7 +46,6 @@ public class Robo extends ElementoDoJogo {
      */
     public boolean posicionarRoboNoMapa(Mapa mapa) {
         Random r = new Random();
-
 
         for (int i = 0; i < MAX_TENTATIVAS; i++) {
             // sorteia as posições, considerando a dimensão do robô
@@ -101,6 +102,16 @@ public class Robo extends ElementoDoJogo {
         return this.mochila.size() == this.capacidadeMochila;
     }
 
+    @Override
+    public void imprimirInformacoes() {
+        System.out.printf("Velocidade: [%d,%d]\n", velocidadeX, velocidadeY);
+        System.out.printf("Pontuação: %d\n", pontuacao);
+        System.out.printf("Capacidade da Mochila: %d\n", capacidadeMochila);
+        super.imprimirInformacoes();
+        /// TODO imprimir tesouros
+
+    }
+
     /**
      * Movimenta o robô de acordo com a direção informada.
      * 
@@ -111,9 +122,8 @@ public class Robo extends ElementoDoJogo {
      *         mapa e False caso contrário (quando está fora dos limites do mapa).
      */
     public boolean movimentar(int direcao) {
-        int novoX = posicaoX;
-        int novoY = posicaoY;
 
+        /// TODO considerar tamanho do robô! para não cair do mapa
         int espacoRestante;
         int espacoPercorrido;
 
@@ -125,15 +135,15 @@ public class Robo extends ElementoDoJogo {
                 break;
             case 1: // direita
                 espacoPercorrido = posicaoX + velocidadeX;
-                espacoRestante =  mapa.getLargura() - espacoPercorrido;
+                espacoRestante = mapa.getLargura() - espacoPercorrido;
                 break;
             case 2: // baixo
                 espacoPercorrido = posicaoY - velocidadeY;
-                espacoRestante =  mapa.getAltura() - espacoPercorrido;
+                espacoRestante = mapa.getAltura() - espacoPercorrido;
                 break;
             case 3: // esquerda
                 espacoPercorrido = posicaoX - velocidadeX;
-                espacoRestante =  mapa.getLargura() - espacoPercorrido;
+                espacoRestante = mapa.getLargura() - espacoPercorrido;
                 break;
             default:
                 return false; // orientação inválida
@@ -141,28 +151,29 @@ public class Robo extends ElementoDoJogo {
 
         // verifica se conseguiu andar tudo
         if (espacoRestante > 0) {
-            posicaoX = novoX;
-            posicaoY = novoY;
+            this.posicaoX = espacoPercorrido;
+            this.posicaoY = espacoPercorrido;
             return true;
         }
 
-        // verifica se há espaço suficiente para continuar a movimentação, se tiver um pouco de espaço mesmo que 
+        // verifica se há espaço suficiente para continuar a movimentação, se tiver um
+        // pouco de espaço mesmo que
         // não a velocidade inteira, anda esse espaço
-        if (espacoRestante != 0) {
+        if (espacoRestante < 0 && posicaoX != 0 && posicaoY != 0) {
 
-            switch(direcao) {
-                case 0: //cima
-                    posicaoY -= espacoRestante;
+            switch (direcao) {
+                case 0: // cima
+                    posicaoY = this.mapa.getAltura() - 1;
                     break;
-                case 1: //direita
-                    posicaoX += espacoRestante;
+                case 1: // direita
+                    posicaoX = this.mapa.getLargura() - 1;
                     break;
                 case 2: // baixo
-                    posicaoY -= espacoRestante;
+                    posicaoY = 0;
                     break;
                 case 3: // esquerda
-                    posicaoX -= espacoRestante;            
-            } 
+                    posicaoX = 0;
+            }
             return true;
 
         }

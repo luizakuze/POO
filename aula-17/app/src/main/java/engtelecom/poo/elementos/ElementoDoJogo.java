@@ -1,4 +1,4 @@
-package engtelecom.poo;
+package engtelecom.poo.elementos;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,9 +20,8 @@ public class ElementoDoJogo {
         return posicaoY;
     }
 
-    public void mover(int fatorX, int fatorY) {
-        this.posicaoX += fatorX;
-        this.posicaoY += fatorY;
+    public void imprimirInformacoes() {
+        System.out.printf("Coordenada: [%d,%d]\n", posicaoX, posicaoY);
     }
 
 }

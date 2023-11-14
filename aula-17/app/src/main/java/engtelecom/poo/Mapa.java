@@ -3,6 +3,8 @@ package engtelecom.poo;
 import java.util.ArrayList;
 import java.util.Random;
 
+import engtelecom.poo.elementos.Tesouro;
+
 public class Mapa {
 
     private int largura;
@@ -19,24 +21,25 @@ public class Mapa {
         this.posicionaTesouros();
     }
 
+    /// TODO posicionar tesouros
     public void posicionaTesouros() {
         Random random = new Random();
         tesouros.clear(); // "limpar a lista"
 
-        int posX = largura/2;
-        int posY = altura/2;
+        int posX = largura / 2;
+        int posY = altura / 2;
 
         for (int i = 0; i < TOTAL_TESOUROS; i++) {
-            
+
             int valor = random.nextInt(5) + 1; // tesouros de 1 a 5
 
             Tesouro tesouro = new Tesouro(posX, posY, valor);
             tesouros.add(tesouro);
 
-            posX/=2;
-            posY/=2;
+            posX /= 2;
+            posY /= 2;
         }
-        
+
     }
 
     public Tesouro coletarTesouro(int x, int y) {

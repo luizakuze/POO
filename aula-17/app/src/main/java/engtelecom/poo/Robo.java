@@ -47,10 +47,9 @@ public class Robo extends ElementoDoJogo {
      */
     public void posicionarRoboNoMapa(Mapa mapa) {
         /// TODO implementar verificação de posições
-            this.posicaoX = posicaoX;
-            this.posicaoY = posicaoY;
+        this.posicaoX = posicaoX;
+        this.posicaoY = posicaoY;
 
-       
     }
 
     /**
@@ -94,16 +93,6 @@ public class Robo extends ElementoDoJogo {
         return this.mochila.size() == this.capacidadeMochila;
     }
 
-    // @Override
-    // public void imprimirInformacoes() {
-    //     System.out.printf("Velocidade: [%d,%d]\n", velocidadeX, velocidadeY);
-    //     System.out.printf("Pontuação: %d\n", pontuacao);
-    //     System.out.printf("Capacidade da Mochila: %d\n", capacidadeMochila);
-    //     super.imprimirInformacoes();
-    //     /// TODO imprimir tesouros
-
-    // }
-
     /**
      * Movimenta o robô de acordo com a direção informada.
      * 
@@ -115,62 +104,68 @@ public class Robo extends ElementoDoJogo {
      */
     public boolean movimentar(int direcao) {
 
-        /// TODO considerar tamanho do robô! para não cair do mapa
-        int espacoRestante;
-        int espacoPercorrido;
+        // Verifica se a direção é válida
+        if (direcao < 0 || direcao > 3) {
+            return false; // Direção inválida
+        }
 
-        // define a nova posição com base na direção
+        // Calcula a nova posição com base na direção e velocidade
+        int novaPosX = posicaoX;
+        int novaPosY = posicaoY;
+
         switch (direcao) {
             case 0: // cima
-                espacoPercorrido = posicaoY + velocidadeY;
-                espacoRestante = mapa.getAltura() - espacoPercorrido;
+                novaPosY += velocidadeY;
                 break;
             case 1: // direita
-                espacoPercorrido = posicaoX + velocidadeX;
-                espacoRestante = mapa.getLargura() - espacoPercorrido;
+                novaPosX += velocidadeX;
                 break;
             case 2: // baixo
-                espacoPercorrido = posicaoY - velocidadeY;
-                espacoRestante = mapa.getAltura() - espacoPercorrido;
+                novaPosY -= velocidadeY;
                 break;
             case 3: // esquerda
-                espacoPercorrido = posicaoX - velocidadeX;
-                espacoRestante = mapa.getLargura() - espacoPercorrido;
+                novaPosX -= velocidadeX;
                 break;
-            default:
-                return false; // orientação inválida
         }
 
-        // verifica se conseguiu andar tudo
-        if (espacoRestante > 0) {
-            this.posicaoX = espacoPercorrido;
-            this.posicaoY = espacoPercorrido;
-            return true;
+        // verifica se a nova posição está dentro dos limites do mapa
+        if (novaPosX >= 0 && novaPosX <= mapa.getLargura() - LARGURA &&
+                novaPosY >= 0 && novaPosY <= mapa.getAltura() - ALTURA) {
+
+            // Atualiza a posição do robô
+            posicaoX = novaPosX;
+            posicaoY = novaPosY;
+
+            return true; // Movimento bem-sucedido
         }
 
-        // verifica se há espaço suficiente para continuar a movimentação, se tiver um
-        // pouco de espaço mesmo que
-        // não a velocidade inteira, anda esse espaço
-        if (espacoRestante < 0 && posicaoX != 0 && posicaoY != 0) {
+        int resto = 10;
+        if (posicaoX <= 0 || posicaoY <= 0 || novaPosX > mapa.getLargura() - LARGURA
+                || novaPosY > mapa.getLargura() - ALTURA) {
+            resto = 0;
+        }
 
+        // se não estiver, pode pelo menos andar um pouquinho
+        else if (resto == 0) {
             switch (direcao) {
                 case 0: // cima
-                    posicaoY = this.mapa.getAltura() - 1;
+                    novaPosY = ALTURA;
                     break;
                 case 1: // direita
-                    posicaoX = this.mapa.getLargura() - 1;
+                    novaPosX = LARGURA;
                     break;
                 case 2: // baixo
-                    posicaoY = 0;
+                    novaPosY = 0;
                     break;
                 case 3: // esquerda
-                    posicaoX = 0;
+                    novaPosX = 0;
+                    break;
             }
             return true;
-
         }
-        // se não, está fora dos limites
-        return false;
+
+        // Se a nova posição estiver fora dos limites, ajusta para a borda do mapa
+        return false; // Movimento sem sucesso
     }
 
     @Override

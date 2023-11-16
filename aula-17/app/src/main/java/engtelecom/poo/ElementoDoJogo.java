@@ -2,7 +2,7 @@ package engtelecom.poo;
 
 import edu.princeton.cs.algs4.Draw;
 
-// classe abstrata p não poder instanciar objetos do tipo ELementoDoJogo no App!
+// classe abstrata p não poder instanciar objetos do tipo ElementoDoJogo no App!
 public abstract class ElementoDoJogo {
     protected int posicaoX;
     protected int posicaoY;

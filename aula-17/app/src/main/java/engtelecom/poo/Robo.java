@@ -8,8 +8,8 @@ import edu.princeton.cs.algs4.Draw;
 
 public class Robo extends ElementoDoJogo {
 
-    public static final int LARGURA = 20;
-    public static final int ALTURA = 20;
+    public static final int LARGURA = 40;
+    public static final int ALTURA = 40;
 
     private int velocidadeX;
     private int velocidadeY;
@@ -84,13 +84,22 @@ public class Robo extends ElementoDoJogo {
         return t;
     }
 
+    /**
+     * Retorna a pontuação do jogo.
+     * 
+     * @return A pontuação.
+     */
     public int pontuacao() {
         return this.pontuacao;
     }
 
-    // isFull
+    /**
+     * Verifica se a mochila está cheia.
+     * 
+     * @return True se a mochial estiver cheia e False caso contrário.
+     */
     public boolean mochilaCheia() {
-        return this.mochila.size() == this.capacidadeMochila;
+        return this.mochila.size() == this.capacidadeMochila; // "isFull"
     }
 
     /**
@@ -104,70 +113,47 @@ public class Robo extends ElementoDoJogo {
      */
     public boolean movimentar(int direcao) {
 
-        // Verifica se a direção é válida
+        // verifica se a direção é válida
         if (direcao < 0 || direcao > 3) {
-            return false; // Direção inválida
+            return false;
         }
 
-        // Calcula a nova posição com base na direção e velocidade
-        int novaPosX = posicaoX;
-        int novaPosY = posicaoY;
+        int novoX = posicaoX;
+        int novoY = posicaoY;
 
+        // calcula a nova posição
         switch (direcao) {
             case 0: // cima
-                novaPosY += velocidadeY;
+                novoY += velocidadeY;
                 break;
             case 1: // direita
-                novaPosX += velocidadeX;
+                novoX += velocidadeX;
                 break;
             case 2: // baixo
-                novaPosY -= velocidadeY;
+                novoY -= velocidadeY;
                 break;
             case 3: // esquerda
-                novaPosX -= velocidadeX;
+                novoX -= velocidadeX;
                 break;
+
         }
 
-        // verifica se a nova posição está dentro dos limites do mapa
-        if (novaPosX >= 0 && novaPosX <= mapa.getLargura() - LARGURA &&
-                novaPosY >= 0 && novaPosY <= mapa.getAltura() - ALTURA) {
-
-            // Atualiza a posição do robô
-            posicaoX = novaPosX;
-            posicaoY = novaPosY;
-
-            return true; // Movimento bem-sucedido
-        }
-
-        int resto = 10;
-        if (posicaoX <= 0 || posicaoY <= 0 || novaPosX > mapa.getLargura() - LARGURA
-                || novaPosY > mapa.getLargura() - ALTURA) {
-            resto = 0;
-        }
-
-        // se não estiver, pode pelo menos andar um pouquinho
-        else if (resto == 0) {
-            switch (direcao) {
-                case 0: // cima
-                    novaPosY = ALTURA;
-                    break;
-                case 1: // direita
-                    novaPosX = LARGURA;
-                    break;
-                case 2: // baixo
-                    novaPosY = 0;
-                    break;
-                case 3: // esquerda
-                    novaPosX = 0;
-                    break;
-            }
+        // há espaço restante para andar
+        if ((novoX < mapa.getLargura() - LARGURA) && (novoY < mapa.getAltura() - ALTURA) && (novoX > LARGURA)
+                && (novoY > ALTURA)) {
+            posicaoX = novoX;
+            posicaoY = novoY;
             return true;
+
         }
 
-        // Se a nova posição estiver fora dos limites, ajusta para a borda do mapa
-        return false; // Movimento sem sucesso
+        return false;
+
+        /// TODO considerar a movimentação até a borda! mesmo que não seja a
+        /// movimentação desejada completa!
     }
 
+    /// TODO coloco documentação??
     @Override
     public void desenhar(Draw d) {
         // d.setPenColor(Color.RED);

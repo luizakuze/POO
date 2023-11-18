@@ -54,9 +54,6 @@ public class App {
             // obtem direção da movimentação do robô
             // int direcao = app.obterDirecaoDoUsuario();
 
-            // Desenha os elementos
-            elementos.forEach(e -> e.desenhar(app.desenho));
-
             // Obtém a direção do usuário e move o robô
             for (var e : elementos) {
                 if (e instanceof Robo) {
@@ -65,6 +62,9 @@ public class App {
                     // r.movimentar(direcao);
                 }
             }
+
+            // Desenha os elementos
+            elementos.forEach(e -> e.desenhar(app.desenho));
 
             app.desenho.pause(80);
             app.desenho.show();

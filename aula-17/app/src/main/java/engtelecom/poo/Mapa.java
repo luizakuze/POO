@@ -3,48 +3,43 @@ package engtelecom.poo;
 import java.util.ArrayList;
 import java.util.Random;
 
+import edu.princeton.cs.algs4.TwoPersonZeroSumGame;
+
 public class Mapa {
 
     private int largura;
     private int altura;
 
-    private ArrayList<Tesouro> tesouros;
+    // private ArrayList<Parede> paredes;
+    // private ArrayList<Tesouro> tesouros;
+    private ArrayList<ElementoDoJogo> elementos;
 
     public static final int TOTAL_TESOUROS = 2;
 
     public Mapa(int largura, int altura, int totalDeTesouros) {
         this.largura = largura;
         this.altura = altura;
-        this.tesouros = new ArrayList<>();
-        this.posicionaTesouros();
+        this.elementos = new ArrayList<>();
+        this.posicionaElementos();
     }
 
     /// TODO posicionar tesouros
-    public void posicionaTesouros() {
-        Random random = new Random();
-        tesouros.clear(); // "limpar a lista"
+    public void posicionaElementos() {
+        elementos.add(new Tesouro(100, 100, 10));
+        elementos.add(new Tesouro(200, 200, 20));
+        elementos.add(new Tesouro(300, 300, 30));
 
-        int posX = largura / 2;
-        int posY = altura / 2;
-
-        for (int i = 0; i < TOTAL_TESOUROS; i++) {
-
-            int valor = random.nextInt(5) + 1; // tesouros de 1 a 5
-
-            Tesouro tesouro = new Tesouro(posX, posY, valor);
-            tesouros.add(tesouro);
-
-            posX /= 2;
-            posY /= 2;
-        }
-
+        elementos.add(new Parede(200, 400));
+        elementos.add(new Parede(300, 500));
     }
 
     public Tesouro coletarTesouro(int x, int y) {
-        for (Tesouro tesouro : tesouros) {
-            if (tesouro.getPosicaoX() == x && tesouro.getPosicaoY() == y) {
-                tesouros.remove(tesouro);
-                return tesouro;
+        for (ElementoDoJogo e : elementos) {
+            if (e instanceof Tesouro) {
+                if (e.getPosicaoX() == x && e.getPosicaoY() == y) {
+                    elementos.remove(e);
+                    return (Tesouro) e;
+                }
             }
         }
         return null;
@@ -63,6 +58,12 @@ public class Mapa {
     }
 
     public ArrayList<Tesouro> getTesouros() {
+        ArrayList<Tesouro> tesouros = new ArrayList<>();
+        for (var e : elementos) {
+            if (e instanceof Tesouro) {
+                tesouros.add((Tesouro) e);
+            }
+        }
         return tesouros;
     }
 }

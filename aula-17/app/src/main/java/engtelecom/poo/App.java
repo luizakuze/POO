@@ -27,14 +27,14 @@ public class App {
      * 
      * @return Direção de movimentação.
      */
-    public int obterDirecaoDoUsuario() {
-        System.out.println("0 - Cima");
-        System.out.println("1 - Direita");
-        System.out.println("2 - Baixo");
-        System.out.println("3 - Esquerda");
+    // public int obterDirecaoDoUsuario() {
+    // System.out.println("0 - Cima");
+    // System.out.println("1 - Direita");
+    // System.out.println("2 - Baixo");
+    // System.out.println("3 - Esquerda");
 
-        return scanner.nextInt();
-    }
+    // return scanner.nextInt();
+    // }
 
     public static void main(String[] args) {
         App app = new App();
@@ -52,7 +52,7 @@ public class App {
         while (true) {
 
             // obtem direção da movimentação do robô
-            int direcao = app.obterDirecaoDoUsuario();
+            // int direcao = app.obterDirecaoDoUsuario();
 
             // Desenha os elementos
             elementos.forEach(e -> e.desenhar(app.desenho));
@@ -61,7 +61,8 @@ public class App {
             for (var e : elementos) {
                 if (e instanceof Robo) {
                     Robo r = (Robo) e;
-                    r.movimentar(direcao);
+                    r.movimentar(1);
+                    // r.movimentar(direcao);
                 }
             }
 

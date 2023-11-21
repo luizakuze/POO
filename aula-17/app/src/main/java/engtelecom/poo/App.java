@@ -2,15 +2,14 @@ package engtelecom.poo;
 
 //https://www.flaticon.com/
 import edu.princeton.cs.algs4.Draw;
-import edu.princeton.cs.algs4.DrawListener;
+import java.awt.Color;
 
 import java.util.Scanner;
-import java.awt.Color;
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
-public class App implements DrawListener{
+import java.awt.event.KeyEvent;
+import edu.princeton.cs.algs4.DrawListener;
+
+public class App implements DrawListener{ 
 
     private Draw desenho;
     private Robo robo;
@@ -31,7 +30,7 @@ public class App implements DrawListener{
         desenho.setPenColor(Color.RED);
         desenho.filledSquare(x, y, dimensao);
     
-        }
+    }
     
     public void desenharCirculo(int x, int y, int raio) {
         desenho.setPenColor(Color.BLUE);
@@ -54,12 +53,11 @@ public class App implements DrawListener{
     @Override
     public void keyPressed(int keycode) { 
 
-        System.out.println("apertou algo");
+        System.out.println("apertou: " + keycode);
 
-        switch (keycode) {
-            case KeyEvent.VK_M:
-                System.out.println("apertou M");        
-                break;
+        if (keycode == KeyEvent.VK_M) {
+            desenho.setPenColor(Color.BLACK);
+            desenho.text(100, 100, "Tecla M!");
         }
 
         //this.robo.movimentar(keycode);
@@ -72,8 +70,25 @@ public class App implements DrawListener{
         this.desenharCirculo((int) x, (int) y, 30);
     }
 
+    @Override
+    public void mouseDragged(double x, double y) {
+    }
 
+    @Override
+    public void mouseReleased(double x, double y) {
+    }
 
+    @Override
+    public void mouseClicked(double x, double y) {
+    }
+
+    @Override
+    public void keyTyped(char c) {
+    }
+
+    @Override
+    public void keyReleased(int keycode) {
+    }
 
     public static void main(String[] args) {
         App app = new App();

@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 import edu.princeton.cs.algs4.Draw;
 import edu.princeton.cs.algs4.DrawListener;
 
-public class Robo extends ElementoDoJogo implements Personagem{
+public class Robo extends ElementoDoJogo{
 
     public static final int LARGURA = 40;
     public static final int ALTURA = 40;

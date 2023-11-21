@@ -5,7 +5,6 @@ import edu.princeton.cs.algs4.Draw;
 import edu.princeton.cs.algs4.DrawListener;
 
 import java.util.Scanner;
-
 import java.awt.Color;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -50,42 +49,20 @@ public class App implements DrawListener{
         }
     }
 
-    public static void main(String[] args) {
-        App app = new App();
-        app.jogo();
-    }
-
-
-    @Override
-    protected void finalize() throws Throwable {
-  
-    }
 
     //ctrl + shift + p / >Java Help Center / Student / Enable AWT Dev
     @Override
     public void keyPressed(int keycode) { 
+
+        System.out.println("apertou algo");
+
         switch (keycode) {
             case KeyEvent.VK_M:
                 System.out.println("apertou M");        
                 break;
         }
+
         //this.robo.movimentar(keycode);
-    }
-
-    @Override
-    public void keyReleased(int keycode) {
-    }
-
-    @Override
-    public void keyTyped(char c) {
-    }
-
-    @Override
-    public void mouseClicked(double x, double y) {
-    }
-
-    @Override
-    public void mouseDragged(double x, double y) {
     }
 
     @Override
@@ -95,12 +72,12 @@ public class App implements DrawListener{
         this.desenharCirculo((int) x, (int) y, 30);
     }
 
-    @Override
-    public void mouseReleased(double x, double y) {
-    }
 
-    @Override
-    public void update() {
+
+
+    public static void main(String[] args) {
+        App app = new App();
+        app.jogo();
     }
 
 

@@ -124,7 +124,7 @@ public class Robo extends ElementoDoJogo implements Personagem{
                 this.posicaoY += 1;
                 break;
             case KeyEvent.VK_LEFT:
-                this.posicaoX-=1;
+                this.posicaoX -=1;
                 break;
             case KeyEvent.VK_DOWN:
                 this.posicaoY -=1;
@@ -135,7 +135,7 @@ public class Robo extends ElementoDoJogo implements Personagem{
 
         return true;
     }
-
+    
     /// TODO coloco documentação??
     @Override
     public void desenhar(Draw d) {

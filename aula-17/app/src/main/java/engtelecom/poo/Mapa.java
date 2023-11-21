@@ -32,14 +32,14 @@ public class Mapa {
     }
 
     public Tesouro coletarTesouro(int x, int y) {
-        // for (ElementoDoJogo e : elementos) {
-        //     if (e instanceof Tesouro) {
-        //         if (e.getPosicaoX() == x && e.getPosicaoY() == y) {
-        //             elementos.remove(e);
-        //             return (Tesouro) e;
-        //         }
-        //     }
-        // }
+        for (ElementoDoJogo e : elementos) {
+            if (e instanceof Tesouro) {
+                if (e.getPosicaoX() == x && e.getPosicaoY() == y) {
+                    elementos.remove(e);
+                    return (Tesouro) e;
+                }
+            }
+        }
         return null;
     }
 

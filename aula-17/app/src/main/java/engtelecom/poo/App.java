@@ -6,11 +6,8 @@ import edu.princeton.cs.algs4.DrawListener;
 
 import java.util.Scanner;
 
-import javax.sound.midi.Soundbank;
-
 import java.awt.Color;
 import java.awt.Rectangle;
-import java.awt.RenderingHints.Key;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -55,35 +52,8 @@ public class App implements DrawListener{
 
     public static void main(String[] args) {
         App app = new App();
-
         app.jogo();
-
-        // Mapa m = new Mapa(600, 600, 1);
-        // ArrayList<ElementoDoJogo> elementos = new ArrayList<>();
-
-        // elementos.add(new Robo(m, 300, 300, 60, 60, 10));
-
-        // app.desenho.show();
-
-        // System.out.println("..: Iniciando jogo do robôzinho :..");
-
-        // while (true) {
-        //     // Obtém a direção do usuário e move o robô
-        //     for (var e : elementos) {
-        //         if (e instanceof Robo) {
-        //             Robo r = (Robo) e;
-        //             r.movimentar(1);
-        //         }
-        //     }
-
-        //     // Desenha os elementos
-        //     elementos.forEach(e -> e.desenhar(app.desenho));
-        //     //mapa.desenhar(app.desenho);
-
-
-        //}
     }
-
 
 
     @Override
@@ -93,8 +63,13 @@ public class App implements DrawListener{
 
     //ctrl + shift + p / >Java Help Center / Student / Enable AWT Dev
     @Override
-    public void keyPressed(int keycode) { // tecla
-        this.robo.movimentar(keycode);
+    public void keyPressed(int keycode) { 
+        switch (keycode) {
+            case KeyEvent.VK_M:
+                System.out.println("apertou M");        
+                break;
+        }
+        //this.robo.movimentar(keycode);
     }
 
     @Override
@@ -107,12 +82,10 @@ public class App implements DrawListener{
 
     @Override
     public void mouseClicked(double x, double y) {
-      DrawListener.super.mouseClicked(x, y);
     }
 
     @Override
     public void mouseDragged(double x, double y) {
-       DrawListener.super.mouseDragged(x, y);
     }
 
     @Override

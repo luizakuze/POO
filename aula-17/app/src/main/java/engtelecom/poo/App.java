@@ -1,6 +1,7 @@
 package engtelecom.poo;
 
 //https://www.flaticon.com/
+
 import edu.princeton.cs.algs4.Draw;
 import java.awt.Color;
 
@@ -52,7 +53,7 @@ public class App implements DrawListener{
     //ctrl + shift + p / >Java Help Center / Student / Enable AWT Dev
     @Override
     public void keyPressed(int keycode) { 
-
+        int keycode = e.getKeyCode();
         System.out.println("apertou: " + keycode);
 
         if (keycode == KeyEvent.VK_M) {

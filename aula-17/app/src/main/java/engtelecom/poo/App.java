@@ -47,7 +47,7 @@ public class App implements DrawListener{
         while(true) {
             robo.desenhar(this.desenho);
 
-            this.desenho.pause(80);
+            this.desenho.pause(60);
             this.desenho.show();
             this.desenho.clear(Color.WHITE);
         }

@@ -1,5 +1,6 @@
 # Polimorfismo
 
+- Principal conceito em POO;
 - Estudamos o polimorfismo do tipo `herança`.
 
 ```java

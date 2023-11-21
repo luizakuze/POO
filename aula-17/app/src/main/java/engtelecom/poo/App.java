@@ -2,14 +2,22 @@ package engtelecom.poo;
 
 //https://www.flaticon.com/
 import edu.princeton.cs.algs4.Draw;
+import edu.princeton.cs.algs4.DrawListener;
+
 import java.util.Scanner;
+
+import javax.sound.midi.Soundbank;
+
 import java.awt.Color;
 import java.awt.Rectangle;
+import java.awt.RenderingHints.Key;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class App {
+public class App implements DrawListener{
 
     private Draw desenho;
+    private Robo robo;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -19,56 +27,109 @@ public class App {
         this.desenho.setYscale(0, 600);
         this.desenho.enableDoubleBuffering();
         this.desenho.setDefaultCloseOperation(3);
+        this.desenho.addListener(this);
+        this.robo = new Robo(null, 300, 300, 1, 2, 10);
     }
 
-    /**
-     * Exibe um menu de direções ao usuário que
-     * seleciona a movimentação do robô.
-     * 
-     * @return Direção de movimentação.
-     */
-    // public int obterDirecaoDoUsuario() {
-    // System.out.println("0 - Cima");
-    // System.out.println("1 - Direita");
-    // System.out.println("2 - Baixo");
-    // System.out.println("3 - Esquerda");
+    public void desenharQuadrado(int x, int y, int dimensao){
+        desenho.setPenColor(Color.RED);
+        desenho.filledSquare(x, y, dimensao);
+    
+        }
+    
+    public void desenharCirculo(int x, int y, int raio) {
+        desenho.setPenColor(Color.BLUE);
+        desenho.filledCircle(x, y, raio);
+    }
 
-    // return scanner.nextInt();
-    // }
+    // loop do jogo
+    public void jogo(){
+        while(true) {
+            robo.desenhar(this.desenho);
+
+            this.desenho.pause(80);
+            this.desenho.show();
+            this.desenho.clear(Color.WHITE);
+        }
+    }
 
     public static void main(String[] args) {
         App app = new App();
-        ArrayList<ElementoDoJogo> elementos = new ArrayList<>();
-        Mapa m = new Mapa(600, 600, 1);
 
-        elementos.add(new Tesouro(1, 10, 100));
-        elementos.add(new Robo(m, 300, 300, 60, 60, 10));
-        elementos.add(new Parede(200, 200));
+        app.jogo();
 
-        app.desenho.show();
+        // Mapa m = new Mapa(600, 600, 1);
+        // ArrayList<ElementoDoJogo> elementos = new ArrayList<>();
 
-        System.out.println("..: Iniciando jogo do robôzinho :..");
+        // elementos.add(new Robo(m, 300, 300, 60, 60, 10));
 
-        while (true) {
+        // app.desenho.show();
 
-            // obtem direção da movimentação do robô
-            // int direcao = app.obterDirecaoDoUsuario();
+        // System.out.println("..: Iniciando jogo do robôzinho :..");
 
-            // Obtém a direção do usuário e move o robô
-            for (var e : elementos) {
-                if (e instanceof Robo) {
-                    Robo r = (Robo) e;
-                    r.movimentar(1);
-                    // r.movimentar(direcao);
-                }
-            }
+        // while (true) {
+        //     // Obtém a direção do usuário e move o robô
+        //     for (var e : elementos) {
+        //         if (e instanceof Robo) {
+        //             Robo r = (Robo) e;
+        //             r.movimentar(1);
+        //         }
+        //     }
 
-            // Desenha os elementos
-            elementos.forEach(e -> e.desenhar(app.desenho));
+        //     // Desenha os elementos
+        //     elementos.forEach(e -> e.desenhar(app.desenho));
+        //     //mapa.desenhar(app.desenho);
 
-            app.desenho.pause(80);
-            app.desenho.show();
-            app.desenho.clear(Color.WHITE);
-        }
+
+        //}
     }
+
+
+
+    @Override
+    protected void finalize() throws Throwable {
+  
+    }
+
+    //ctrl + shift + p / >Java Help Center / Student / Enable AWT Dev
+    @Override
+    public void keyPressed(int keycode) { // tecla
+        this.robo.movimentar(keycode);
+    }
+
+    @Override
+    public void keyReleased(int keycode) {
+    }
+
+    @Override
+    public void keyTyped(char c) {
+    }
+
+    @Override
+    public void mouseClicked(double x, double y) {
+      DrawListener.super.mouseClicked(x, y);
+    }
+
+    @Override
+    public void mouseDragged(double x, double y) {
+       DrawListener.super.mouseDragged(x, y);
+    }
+
+    @Override
+    public void mousePressed(double x, double y) {
+        System.out.println("x: " + x + "y " + y);
+        this.desenho.setPenColor(Color.RED);
+        this.desenharCirculo((int) x, (int) y, 30);
+    }
+
+    @Override
+    public void mouseReleased(double x, double y) {
+    }
+
+    @Override
+    public void update() {
+    }
+
+
+    
 }

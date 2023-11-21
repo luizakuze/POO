@@ -27,3 +27,9 @@
 
     }
 ```
+
+### Exemplo de Aula
+
+`FormaGeometrica <- Retângulo <- Cubo`
+- Retângulo precisa implementar desenhar()
+- Cubo não precisa obrigatoriamente implementar desenhar(), já que herda o desenhar() de retângulo

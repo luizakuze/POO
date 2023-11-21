@@ -10,8 +10,6 @@ public class Mapa {
     private int largura;
     private int altura;
 
-    // private ArrayList<Parede> paredes;
-    // private ArrayList<Tesouro> tesouros;
     private ArrayList<ElementoDoJogo> elementos;
 
     public static final int TOTAL_TESOUROS = 2;
@@ -34,14 +32,14 @@ public class Mapa {
     }
 
     public Tesouro coletarTesouro(int x, int y) {
-        for (ElementoDoJogo e : elementos) {
-            if (e instanceof Tesouro) {
-                if (e.getPosicaoX() == x && e.getPosicaoY() == y) {
-                    elementos.remove(e);
-                    return (Tesouro) e;
-                }
-            }
-        }
+        // for (ElementoDoJogo e : elementos) {
+        //     if (e instanceof Tesouro) {
+        //         if (e.getPosicaoX() == x && e.getPosicaoY() == y) {
+        //             elementos.remove(e);
+        //             return (Tesouro) e;
+        //         }
+        //     }
+        // }
         return null;
     }
 

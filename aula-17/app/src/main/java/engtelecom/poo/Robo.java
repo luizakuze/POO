@@ -3,6 +3,7 @@ package engtelecom.poo;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
+import java.awt.event.KeyEvent;
 
 import edu.princeton.cs.algs4.Draw;
 
@@ -113,44 +114,25 @@ public class Robo extends ElementoDoJogo {
      */
     public boolean movimentar(int direcao) {
 
-        // verifica se a direção é válida
-        if (direcao < 0 || direcao > 3) {
-            return false;
-        }
-
-        int novoX = posicaoX;
-        int novoY = posicaoY;
-
         // calcula a nova posição
         switch (direcao) {
-            case 0: // cima
-                novoY += velocidadeY;
+            case KeyEvent.VK_RIGHT:
+                this.posicaoX += 1;
                 break;
-            case 1: // direita
-                novoX += velocidadeX;
+            case KeyEvent.VK_UP:
+                this.posicaoY += 1;
                 break;
-            case 2: // baixo
-                novoY -= velocidadeY;
+            case KeyEvent.VK_LEFT:
+                this.posicaoX-=1;
                 break;
-            case 3: // esquerda
-                novoX -= velocidadeX;
+            case KeyEvent.VK_DOWN:
+                this.posicaoY -=1;
                 break;
-
+         
         }
 
-        // há espaço restante para andar
-        if ((novoX < mapa.getLargura() - LARGURA) && (novoY < mapa.getAltura() - ALTURA) && (novoX > LARGURA)
-                && (novoY > ALTURA)) {
-            posicaoX = novoX;
-            posicaoY = novoY;
-            return true;
 
-        }
-
-        return false;
-
-        /// TODO considerar a movimentação até a borda! mesmo que não seja a
-        /// movimentação desejada completa!
+        return true;
     }
 
     /// TODO coloco documentação??

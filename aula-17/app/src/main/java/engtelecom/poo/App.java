@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.awt.event.KeyEvent;
 import edu.princeton.cs.algs4.DrawListener;
 
-public class App implements DrawListener{ 
+public class App implements DrawListener {
 
     private Draw desenho;
     private Robo robo;
@@ -27,20 +27,20 @@ public class App implements DrawListener{
         this.robo = new Robo(null, 300, 300, 1, 2, 10);
     }
 
-    public void desenharQuadrado(int x, int y, int dimensao){
+    public void desenharQuadrado(int x, int y, int dimensao) {
         desenho.setPenColor(Color.RED);
         desenho.filledSquare(x, y, dimensao);
-    
+
     }
-    
+
     public void desenharCirculo(int x, int y, int raio) {
         desenho.setPenColor(Color.BLUE);
         desenho.filledCircle(x, y, raio);
     }
 
     // loop do jogo
-    public void jogo(){
-        while(true) {
+    public void jogo() {
+        while (true) {
             robo.desenhar(this.desenho);
 
             this.desenho.pause(60);
@@ -49,11 +49,9 @@ public class App implements DrawListener{
         }
     }
 
-
-    //ctrl + shift + p / >Java Help Center / Student / Enable AWT Dev
+    // ctrl + shift + p / >Java Help Center / Student / Enable AWT Dev
     @Override
-    public void keyPressed(int keycode) { 
-        int keycode = e.getKeyCode();
+    public void keyPressed(int keycode) {
         System.out.println("apertou: " + keycode);
 
         if (keycode == KeyEvent.VK_M) {
@@ -61,7 +59,7 @@ public class App implements DrawListener{
             desenho.text(100, 100, "Tecla M!");
         }
 
-        //this.robo.movimentar(keycode);
+        // this.robo.movimentar(keycode);
     }
 
     @Override
@@ -96,6 +94,4 @@ public class App implements DrawListener{
         app.jogo();
     }
 
-
-    
 }

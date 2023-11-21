@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 import edu.princeton.cs.algs4.Draw;
 import edu.princeton.cs.algs4.DrawListener;
 
-public class Robo extends ElementoDoJogo{
+public class Robo extends ElementoDoJogo {
 
     public static final int LARGURA = 40;
     public static final int ALTURA = 40;
@@ -124,18 +124,17 @@ public class Robo extends ElementoDoJogo{
                 this.posicaoY += 1;
                 break;
             case KeyEvent.VK_LEFT:
-                this.posicaoX -=1;
+                this.posicaoX -= 1;
                 break;
             case KeyEvent.VK_DOWN:
-                this.posicaoY -=1;
+                this.posicaoY -= 1;
                 break;
-         
-        }
 
+        }
 
         return true;
     }
-    
+
     /// TODO coloco documentação??
     @Override
     public void desenhar(Draw d) {

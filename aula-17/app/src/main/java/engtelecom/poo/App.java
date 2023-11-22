@@ -43,7 +43,7 @@ public class App implements DrawListener {
         while (true) {
             robo.desenhar(this.desenho);
 
-            this.desenho.pause(60);
+            this.desenho.pause(1060);
             this.desenho.show();
             this.desenho.clear(Color.WHITE);
         }
@@ -55,8 +55,10 @@ public class App implements DrawListener {
         System.out.println("apertou: " + keycode);
 
         if (keycode == KeyEvent.VK_M) {
-            desenho.setPenColor(Color.BLACK);
-            desenho.text(100, 100, "Tecla M!");
+            System.out.println("apertou M!");
+            // desenho.setPenColor(Color.BLACK);
+            // desenho.text(100, 100, "Tecla M!");
+            // desenho.show();
         }
 
         // this.robo.movimentar(keycode);

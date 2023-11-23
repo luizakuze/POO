@@ -10,6 +10,8 @@
 
 ## Anotações 🌱 
 
+- Criar projeto rep projeto 2 - aula
+
 - Funcionamento do método `intersects`
 ```
 x - the X coordinate of the upper-left corner of the specified rectangular area

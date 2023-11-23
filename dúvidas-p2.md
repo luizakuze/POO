@@ -4,6 +4,8 @@
 
 - Exercício da aula anterior
 
+- Som
+
 - Toolkit - linha 163 - quando é preciso sincronizar
 
 - IOException, try/catch - linha 400

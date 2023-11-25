@@ -90,7 +90,8 @@ classDiagram
     }
 
     class Jogo{
-        -mapa: ArrayList < Areas >
+        -mapa: ArrayList < Area >
+        -elementos: ArrayList < Elemento >
         -jogador: Jogador
         +iniciarJogo()
         -analisarTipoTijolo(t:Tijolo)
@@ -135,7 +136,10 @@ classDiagram
     Jogo --* AreaJogo
     Jogo --* AreaMenu
     Jogo --* AreaFinal
-
+    Jogo --* Plataforma
+    Jogo --* Bolinha
+    Jogo --* Tijolo
+    Jogo --* Poderj
 
 
 

@@ -4,20 +4,21 @@
 classDiagram
     direction LR
 
+
+
+
     class Principal {
-        -mapa: AreaJogo
-        -mapa: AreaMenu
-        -mapa: AreaFinal
-        -jogador: Jogador
-        +desenharAreas(): void
-        +jogar()
-        +desenharFinalizacao(): void
+        +main()
     }
 
     class Plataforma{
         -VELOCIDADE_X: final int
         -VELOCIDADE_Y: final int
-        
+        -MAX_VX: final int
+        -MAX_VY: final int
+        +rebaterBolinha()
+        +aumentarTamanho()
+        +diminuirTamanho()
     } 
     
     class Bolinha {
@@ -28,12 +29,14 @@ classDiagram
     class Tijolo {
         -estado: boolean
         -tipo: Tijolos
+        +rebaterBolinha()
     }
 
     class Poder {
-        -velocidadeX: int
-        -velocidadeY: int
+        -VELOCIDADE_X: final int
+        -VELOCIDADE_Y: int
         -tipo: Poderes
+        +getTipo()
     }
 
     class Elemento {
@@ -50,22 +53,32 @@ classDiagram
 
     class Area {
         << Abstract >>
+        -coordenadaX: int
+        -coordenadaY: int
         -largura: int
         -altura: int
-        -estado: boolen
+        -estado: boolean
+        +desenhaArea()
     }
 
     class AreaJogo {
         -elementos: ArrayList< Elemento >
-        +desenharElementos(): void
-        +desenharAreaJogo(): void
-
+        -desenharElementos()
     }
 
     class Jogador {
+        -nome: int
         -nivel: int
         -vidas: int
         -pontuacao: int  
+        +Jogador()
+        +jogar(j: Jogo)
+        +pausar(j: Jogo)
+        +sair()
+        +adicionarVida()
+        +removerVida()
+        +getPontuacao()
+
     }
 
     class AreaMenu {
@@ -73,8 +86,17 @@ classDiagram
     }
 
     class AreaFinal {
+        +analisaPontuacaoFinal()
     }
 
+    class Jogo{
+        -mapa: ArrayList < Areas >
+        -jogador: Jogador
+        +iniciarJogo()
+        -analisarTipoTijolo(t:Tijolo)
+        -analisarTipoPoder(p: Poder)
+        +terminarJogo()
+    }
     class Tijolos {
         <<Enumeration>>
         FRACO
@@ -94,9 +116,9 @@ classDiagram
         +movimentar(x: int, y: int, vx: int, vy: int)
     }
 
-    Tijolo --|> Elemento 
-    Poder --|> Elemento 
-    Bolinha --|> Elemento 
+    Tijolo --|> Elemento
+    Poder --|> Elemento
+    Bolinha --|> Elemento
     Plataforma --|> Elemento
 
     Poder ..|> Movimento 
@@ -107,11 +129,13 @@ classDiagram
     AreaMenu --|> Area 
     AreaFinal --|> Area 
 
-    Principal --* AreaJogo
-    Principal --* AreaMenu
-    Principal --* AreaFinal
+    Principal --* Jogo
     Principal --* Jogador
-    
+
+    Jogo --* AreaJogo
+    Jogo --* AreaMenu
+    Jogo --* AreaFinal
+
 
 
 

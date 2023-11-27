@@ -1,4 +1,4 @@
-
+{
 ```mermaid
 classDiagram
     direction LR
@@ -41,10 +41,10 @@ classDiagram
         +desenhaArea()
     }
 
-    class AreaMenu {
+    class AreaPlacar {
         +vidas: int
         +pontuacao: int
-        +AreaMenu()
+        +AreaPlacar()
         +atualizarPlacar(): void
         -atualizarVida(): void
         -atualizarPontuacao(): void
@@ -139,12 +139,13 @@ classDiagram
     AreaJogo --* Tijolo
 
     Jogo --* AreaJogo
-    Jogo --* AreaMenu
+    Jogo --* AreaPlacar
 
     AreaJogo --|> Area 
-    AreaMenu --|> Area 
+    AreaPlacar --|> Area 
 
     Principal --* Jogo
 
     
 ```
+}

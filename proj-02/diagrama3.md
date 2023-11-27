@@ -3,24 +3,32 @@
 classDiagram
     direction LR
 
-    class Jogador {
-        vidas: int
-        pontuacao: int
-        nivel: int
-        +Jogador()
+    class Principal{
+        +jogar()
     }
 
-    note for Jogo "Nota: \nContém uma área de menu e uma área de jogo"
     class Jogo {
+        -nivel: int
         -areas: ArrayList ~Area~
-        -pausado: boolean
+        -pausado: booleana
         -somLigado: boolean
         +Jogo()
-        -desenharAreas()
-        +jogar()
-        +pausar()
-        +fechar()
+        -desenharAreas(): void
+        +jogar(): void
+        +pausar(): boolean
+        +fechar(): void
+        +keyPressed(e: KeyEvent): void
+        +keyReleased(e: KeyEvent): void
+        +keyTyped(e: KeyEvent): void
+        +processaTeclaPressionada(e: KeyEvent): void
+    }
 
+    class AreaJogo {
+        -Mapa: Tijolos[][]
+        -elementos: ArrayList ~Elementos~
+        +AreaJogo()
+        +posicionarTijolos()
+        +avancarProximaAreaJogo(t: Tijolos[][]): boolean
     }
 
     class Area {
@@ -31,41 +39,24 @@ classDiagram
         -altura: int
         -estado: boolean
         +desenhaArea()
-        +fecharArea()
     }
 
     class AreaMenu {
-        -vidaJogador: int
-        -nivelJogador: int
+        +vidas: int
+        +pontuacao: int
         +AreaMenu()
         +atualizarPlacar(): void
-    }
-
-    note for AreaJogo "Nota: \nEssa classe já tem a lógica do jogo!"
-   class AreaJogo {
-        -Mapa: Tijolos[][]
-        -elementos: ArrayList ~Elementos~
-        +AreaJogo()
-        +posicionarTijolos()
-        +avancarProximaAreaJogo(n: Tijolos[][]): boolean
-    }
-
-    class Niveis {
-        -desenhoDosNiveis: ArrayList ~Tijolos[][]~
-        +Nivel()
-        +avancarProximaAreaJogo(n: int): short[][]
-
+        -atualizarVida(): void
+        -atualizarPontuacao(): void
     }
 
     class Tijolos {
         <<Enumeration>>
-        FRACO(Blue)
-        FORTE(Pink)
-        INDESTRUTIVEL(Green)
+        FRACO
+        FORTE
+        INDESTRUTIVEL
         +cor(c: Color)
-        +getCor(): Color
     }
-
 
     class Plataforma{
         -VELOCIDADE_X: final int
@@ -121,9 +112,9 @@ classDiagram
     }
 
     class Mapas {
-        -desenhosDosNiveis: ArrayList ~short[][]~
+        -desenhosDosMapas: ArrayList ~Tijolos[][]~
         +Nivel()
-        +avancarProximaAreaJogo(n: int): short[][]
+        +avancarProximaAreaJogo(n: int): Tijolos[][]
 
     }
 
@@ -152,5 +143,8 @@ classDiagram
 
     AreaJogo --|> Area 
     AreaMenu --|> Area 
+
+    Principal --* Jogo
+
     
 ```

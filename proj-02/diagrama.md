@@ -4,39 +4,92 @@
 classDiagram
     direction LR
 
-
-
-
     class Principal {
+
         +main()
+    }
+
+    class TelaCompleta {
+        -mapa: ArrayList ~Area~
+        -jogador: Jogador
+        -desenharAreas()
+        -desenharElementos()
+        +Jogo()
+        +iniciarJogo()
+        +jogarJogo(j: Jogo)
+        +pausarJogo()
+        +sairJogo()
+        +moverPlataforma(k: keycode, p: plataforma)
+        +processaTeclaPrecissionada(Keycode e)
+        +processaTeclaSolta(Keycode e)
+        +avancarNivel(j: Jogador)
+    }
+
+    class Jogo {
+        -mapaAtual: AreaJogo
+        -jogador: Jogador
+        -pausado: boolean
+        -somLigado: boolean
+        -Timer: timer
+        Jogo()
+        +verificaColisaoBolinha(): boolean
+        +verificaQuantidadeTijolos(): boolean
+        +ReproduzirSom()
+    }
+
+    class Jogador {
+        -nome: int
+        -nivel: int
+        -vidas: int
+        -pontuacao: int  
+        -MAX_NIVEL: final int
+        -MIN_NIVEL: final int
+        +Jogador()
+        +jogar(j: Jogo): boolean
+        +pausar(j: Jogo): boolean
+        +sair(j: Jogo): boolean
+        +inserirNome(): void
+        +adicionarVida(): void
+        +removerVida(): boolean
+        +avancarNivel(): boolean
+        +AumentarPontuacao(t: Tijolo): void
+        +getPontuacao(): void
     }
 
     class Plataforma{
         -VELOCIDADE_X: final int
         -VELOCIDADE_Y: final int
-        -MAX_VX: final int
-        -MAX_VY: final int
-        +rebaterBolinha()
-        +aumentarTamanho()
-        +diminuirTamanho()
+        -MIN_TAM: final int
+        -MAX_TAM: final int
+        +verificaColisao(b: Bolinha): boolean
+        +aumentarTamanho(): boolean
+        +diminuirTamanho(): boolean
+        -capturarPoder(p: Poder): boolean
     } 
     
     class Bolinha {
         -VELOCIDADE_X: final int
         -VELOCIDADE_Y: final int
+        +verificaColisao(t: Tijolo): boolean
     } 
 
     class Tijolo {
         -estado: boolean
+        -poder: boolean
         -tipo: Tijolos
-        +rebaterBolinha()
+        -valor: int
+        +Tijolo()
+        +rebaterBolinha(): boolean
+        +derrubarPoder(p: Poder)
     }
 
     class Poder {
         -VELOCIDADE_X: final int
         -VELOCIDADE_Y: int
         -tipo: Poderes
+        +Poder
         +getTipo()
+        +encostarNaPlataforma()
     }
 
     class Elemento {
@@ -45,10 +98,9 @@ classDiagram
         -coordenadaY: int
         -altura: int
         -largura: int
-
         -cor: Color
-    
-        +desenhar(a: AreaJogo): 
+        -imagem: Image
+        +desenhar(a: AreaJogo)
     }
 
     class Area {
@@ -59,45 +111,35 @@ classDiagram
         -altura: int
         -estado: boolean
         +desenhaArea()
-    }
-
-    class AreaJogo {
-        -elementos: ArrayList< Elemento >
-        -desenharElementos()
-    }
-
-    class Jogador {
-        -nome: int
-        -nivel: int
-        -vidas: int
-        -pontuacao: int  
-        +Jogador()
-        +jogar(j: Jogo)
-        +pausar(j: Jogo)
-        +sair()
-        +adicionarVida()
-        +removerVida()
-        +getPontuacao()
-
+        +fecharArea()
     }
 
     class AreaMenu {
-        -resultados: Jogador
+        -vidaJogador
+        -pontuacaoJogador
+        -nivelJogador
+        +AreaMenu(j: Jogador)
+        +atualizarPlacar(j: Jogador)
     }
 
-    class AreaFinal {
-        +analisaPontuacaoFinal()
+    class AreaPontuacao {
+        +analisaClassificacaoJogador(j: Jogador)
+        +inserirNomeVencedor()
     }
 
-    class Jogo{
-        -mapa: ArrayList < Area >
-        -elementos: ArrayList < Elemento >
-        -jogador: Jogador
-        +iniciarJogo()
-        -analisarTipoTijolo(t:Tijolo)
-        -analisarTipoPoder(p: Poder)
-        +terminarJogo()
+    class AreaJogo {
+        -desenhoDoNivel: short[][]
+        +AreaJogo()
+        +avancarProximaAreaJogo(n: short[][]): boolean
     }
+
+    class Niveis {
+        -desenhosDosNiveis: ArrayList ~short[][]~
+        +Nivel()
+        +avancarProximaAreaJogo(n: int): short[][]
+        -colocarValorTijolo(t: tijolo)
+    }
+
     class Tijolos {
         <<Enumeration>>
         FRACO
@@ -117,6 +159,8 @@ classDiagram
         +movimentar(x: int, y: int, vx: int, vy: int)
     }
 
+
+
     Tijolo --|> Elemento
     Poder --|> Elemento
     Bolinha --|> Elemento
@@ -128,18 +172,19 @@ classDiagram
 
     AreaJogo --|> Area 
     AreaMenu --|> Area 
-    AreaFinal --|> Area 
+    AreaPontuacao --|> Area 
 
-    Principal --* Jogo
-    Principal --* Jogador
+    TelaCompleta --* AreaMenu
+    TelaCompleta --* AreaPontuacao
+    TelaCompleta --* Jogo
 
-    Jogo --* AreaJogo
-    Jogo --* AreaMenu
-    Jogo --* AreaFinal
+    Jogo --* Jogador
     Jogo --* Plataforma
     Jogo --* Bolinha
+    Jogo --* Poder
     Jogo --* Tijolo
-    Jogo --* Poderj
+    Jogo --* AreaJogo
+
 
 
 

@@ -23,6 +23,17 @@ classDiagram
 
     }
 
+    class Area {
+        << Abstract >>
+        -coordenadaX: int
+        -coordenadaY: int
+        -largura: int
+        -altura: int
+        -estado: boolean
+        +desenhaArea()
+        +fecharArea()
+    }
+
     class AreaMenu {
         -vidaJogador: int
         -nivelJogador: int
@@ -138,4 +149,8 @@ classDiagram
 
     Jogo --* AreaJogo
     Jogo --* AreaMenu
+
+    AreaJogo --|> Area 
+    AreaMenu --|> Area 
+    
 ```

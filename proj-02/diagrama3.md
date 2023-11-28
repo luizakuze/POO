@@ -11,21 +11,22 @@ classDiagram
         -vidas: int
         -pontuacao: int
         +Jogador()
-        +pausar() : boolean
-        +sair() : boolean
-        +inserirNome() : void
-        +adicionarVida() : void
-        +removerVida() : boolean
-        +avancarNivel() : boolean
-        +AumentarPontuacao(t: Tijolo) : void
-        +getPontuacao() : void
-        +moverPlataforma(): boolean
+        +pausarJogo(e: KeyEvent): boolean
+        +sairDoJogo(e: KeyEvent): boolean
+        +inserirNome(): void
+        +adicionarVida(): void
+        +removerVida(): boolean
+        +avancarNivel(): boolean
+        +AumentarPontuacao(t: Tijolo): void
+        +getPontuacao(): void
+        +moverPlataforma(e: KeyEvent): boolean
     }
 
     class JavanoidOO {
         -menu: AreaMenu
+        -mapa: AreaDeJogo
         -jogador: Jogador
-        -pausado: booleana
+        -pausado: boolean
         -somLigado: boolean
         +JavanoidOO()
         +pausar(): boolean
@@ -41,7 +42,8 @@ classDiagram
         -Mapa: Tijolos[][]
         -elementos: ArrayList ~Elementos~
         +AreaJogo()
-        -posicionarTijolos()
+        -posicionarTijolos(): void
+        +pausarElementos(): boolean
         +avancarProximaAreaJogo(t: Tijolos[][]): boolean
         -reiniciarNivel(v: int): boolean
     }
@@ -52,17 +54,14 @@ classDiagram
         -coordenadaY: int
         -largura: int
         -altura: int
-        -estado: boolean
-        +desenhaArea()
+        +desenharArea()
     }
 
     class AreaMenu {
-        +vidas: int
-        +pontuacao: int
         +AreaMenu()
-        +atualizarPlacar(): void
-        -atualizarVida(): void
-        -atualizarPontuacao(): void
+        +atualizarPlacar(j: Jogador): void
+        -atualizarVida(j: Jogador): void
+        -atualizarPontuacao(j: Jogador): void
     }
 
     class Tijolos {

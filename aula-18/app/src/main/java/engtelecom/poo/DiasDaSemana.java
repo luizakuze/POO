@@ -2,7 +2,7 @@ package engtelecom.poo;
 
 public enum DiasDaSemana {
 
-    DOMINGO(0),
+    DOMINGO(0), 
     SEGUNDA(1),
     TERCA(2),
     QUARTA(3),
@@ -14,6 +14,16 @@ public enum DiasDaSemana {
 
     DiasDaSemana(int cod) {
         codigo = cod;
+    }
+
+    public static DiasDaSemana getByCodigo(int cod) {
+
+        for (DiasDaSemana d : DiasDaSemana.values()) {
+            if (cod == d.codigo) {
+                return d;
+            }
+        }
+        return null;
     }
 
 }

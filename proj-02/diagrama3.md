@@ -3,17 +3,14 @@
 classDiagram
     direction LR
 
-    class Principal{
-        +jogar()
-    }
 
-    class Jogo {
-        -nivel: int
-        -areas: ArrayList ~Area~
+    class JavanoidOO {
+        -areas: ArrayList~Area~
         -pausado: booleana
         -somLigado: boolean
-        +Jogo()
+        +JavanoidOO()
         -desenharAreas(): void
+        +main()
         +jogar(): void
         +pausar(): boolean
         +fechar(): void
@@ -23,12 +20,18 @@ classDiagram
         +processaTeclaPressionada(e: KeyEvent): void
     }
 
-    class AreaJogo {
+    class AreaDeJogo {
+        -nivel: int
+
         -Mapa: Tijolos[][]
         -elementos: ArrayList ~Elementos~
         +AreaJogo()
-        +posicionarTijolos()
+        -posicionarTijolos()
+        +movimentarPlataforma(e: KeyEvent): void
+        -colisaoBolinha(): void
+
         +avancarProximaAreaJogo(t: Tijolos[][]): boolean
+        -reiniciarNivel(v: int): boolean
     }
 
     class Area {
@@ -78,12 +81,13 @@ classDiagram
 
     class Tijolo {
         -estado: boolean
+        -durabilidade: int
         -poder: boolean
         -tipo: Tijolos
         -valor: int
         +Tijolo()
         +rebaterBolinha(): boolean
-        -derrubarPoder(p: Poder): boolean
+        -derrubarPoder(): boolean
     }
 
     class Poder {
@@ -104,11 +108,12 @@ classDiagram
         -cor: Color
         -imagem: Image
         +desenhar(a: AreaJogo): void
+        +carregarImagem(a: String): Image
     }
 
     class Movimento {
         <<Interface>>
-        +movimentar(x: int, y: int, vx: int, vy: int)
+        +movimentar()
     }
 
     class Mapas {
@@ -126,6 +131,7 @@ classDiagram
     }
 
     Tijolo --|> Elemento
+    Tijolo --* Poder
     Poder --|> Elemento
     Bolinha --|> Elemento
     Plataforma --|> Elemento
@@ -133,18 +139,14 @@ classDiagram
     Poder ..|> Movimento 
     Bolinha ..|> Movimento 
     Plataforma ..|> Movimento
-    AreaJogo --* Plataforma
-    AreaJogo --* Bolinha
-    AreaJogo --* Poder
-    AreaJogo --* Tijolo
+    AreaDeJogo --* Plataforma
+    AreaDeJogo --* Bolinha
+    AreaDeJogo --* Tijolo
 
-    Jogo --* AreaJogo
-    Jogo --* AreaMenu
+    JavanoidOO --* AreaDeJogo
+    JavanoidOO --* AreaMenu
 
-    AreaJogo --|> Area 
+    AreaDeJogo --|> Area 
     AreaMenu --|> Area 
 
-    Principal --* Jogo
-
-    
 ```

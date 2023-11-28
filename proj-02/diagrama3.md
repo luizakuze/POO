@@ -2,15 +2,32 @@
 classDiagram
     direction LR
 
+    class Principal {
+        +main()
+    }
+
+    class Jogador {
+        -nome: int
+        -vidas: int
+        -pontuacao: int
+        +Jogador()
+        +pausar() : boolean
+        +sair() : boolean
+        +inserirNome() : void
+        +adicionarVida() : void
+        +removerVida() : boolean
+        +avancarNivel() : boolean
+        +AumentarPontuacao(t: Tijolo) : void
+        +getPontuacao() : void
+        +moverPlataforma(): boolean
+    }
 
     class JavanoidOO {
-        -areas: ArrayList~Area~
+        -menu: AreaMenu
+        -jogador: Jogador
         -pausado: booleana
         -somLigado: boolean
         +JavanoidOO()
-        -desenharAreas(): void
-        +main()
-        +jogar(): void
         +pausar(): boolean
         +fechar(): void
         +keyPressed(e: KeyEvent): void
@@ -21,14 +38,10 @@ classDiagram
 
     class AreaDeJogo {
         -nivel: int
-
         -Mapa: Tijolos[][]
         -elementos: ArrayList ~Elementos~
         +AreaJogo()
         -posicionarTijolos()
-        +movimentarPlataforma(e: KeyEvent): void
-        -colisaoBolinha(): void
-
         +avancarProximaAreaJogo(t: Tijolos[][]): boolean
         -reiniciarNivel(v: int): boolean
     }
@@ -144,8 +157,12 @@ classDiagram
 
     JavanoidOO --* AreaDeJogo
     JavanoidOO --* AreaMenu
+    JavanoidOO --* Jogador
 
     AreaDeJogo --|> Area 
     AreaMenu --|> Area 
+
+    Principal --* JavanoidOO
+    
 
 ```

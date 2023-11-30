@@ -1,50 +1,33 @@
+# Diagrama 
+
+- Lógica do jogo;
+- Onde receber as informações do teclado. (AreaJogo ou JavanoidOO).
+
+
+
 ```mermaid
 classDiagram
     direction LR
 
     class Principal {
-        +main()
-    }
-
-    class Jogador {
-        -nome: int
-        -vidas: int
-        -pontuacao: int
-        +Jogador()
-        +pausarJogo(e: KeyEvent): boolean
-        +sairDoJogo(e: KeyEvent): boolean
-        +inserirNome(): void
-        +adicionarVida(): void
-        +removerVida(): boolean
-        +avancarNivel(): boolean
-        +AumentarPontuacao(t: Tijolo): void
-        +getPontuacao(): void
-        +moverPlataforma(e: KeyEvent): boolean
-    }
-
-    class JavanoidOO {
-        -areas: ArrayList~Areas~
-        -jogador: Jogador
+        -areas: ArrayList~Area~
         -pausado: boolean
         -somLigado: boolean
-        +JavanoidOO()
-        +pausar(): boolean
-        +fechar(): void
-        +keyPressed(e: KeyEvent): void
-        +keyReleased(e: KeyEvent): void
-        +keyTyped(e: KeyEvent): void
-        +processaTeclaPressionada(e: KeyEvent): void
+        +main()
+        +pausar(e: KeyEvent): boolean
+        +fechar(e: KeyEvent): void
+        +desativ
+
     }
 
     class AreaDeJogo {
-        -nivel: int
-        -Mapa: Tijolos[][]
-        -elementos: ArrayList ~Elementos~
-        +AreaJogo()
-        -posicionarTijolos(): void
-        +pausarElementos(): boolean
-        +avancarProximaAreaJogo(t: Tijolos[][]): boolean
-        -reiniciarNivel(v: int): boolean
+        +AreaDeJogo()
+
+    }
+
+
+    class JavanoidOO {
+        
     }
 
     class Area {
@@ -57,6 +40,8 @@ classDiagram
     }
 
     class AreaPlacar {
+        -vidas: int
+        -pontuacao: int
         +AreaPlacar()
         +atualizarPlacar(j: Jogador): void
         -atualizarVida(j: Jogador): void
@@ -144,18 +129,17 @@ classDiagram
     Poder ..|> Movimento 
     Bolinha ..|> Movimento 
     Plataforma ..|> Movimento
-    AreaDeJogo --* Plataforma
-    AreaDeJogo --* Bolinha
-    AreaDeJogo --* Tijolo
+    Plataforma --* JavanoidOO
+    Bolinha --* JavanoidOO
+    Tijolo --* JavanoidOO
 
     JavanoidOO --* AreaDeJogo
-    JavanoidOO --* AreaPlacar
-    JavanoidOO --* Jogador
 
     AreaDeJogo --|> Area 
     AreaPlacar --|> Area 
 
-    Principal --* JavanoidOO
+    Principal --* AreaPlacar
+    Principal --* AreaDeJogo
     
 
 ```

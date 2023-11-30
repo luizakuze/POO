@@ -1,3 +1,5 @@
+# Diagrama JavanoidOO 🎮🎯
+
 ```mermaid
 classDiagram
     direction LR
@@ -23,7 +25,8 @@ classDiagram
     }
 
     class JavanoidOO {
-        -areas: ArrayList~Areas~
+        -elementos: ArrayList~Elemento~
+        -mapa: AreaDeJogo
         -jogador: Jogador
         -pausado: boolean
         -somLigado: boolean
@@ -37,38 +40,18 @@ classDiagram
     }
 
     class AreaDeJogo {
-        -nivel: int
-        -Mapa: Tijolos[][]
-        -elementos: ArrayList ~Elementos~
-        +AreaJogo()
-        -posicionarTijolos(): void
-        +pausarElementos(): boolean
-        +avancarProximaAreaJogo(t: Tijolos[][]): boolean
-        -reiniciarNivel(v: int): boolean
-    }
-
-    class Area {
-        << Abstract >>
         -coordenadaX: int
         -coordenadaY: int
         -largura: int
         -altura: int
         +desenharArea()
-    }
+        -nivel: int
+        -Mapa: Tijolos[][]
 
-    class AreaPlacar {
-        +AreaPlacar()
-        +atualizarPlacar(j: Jogador): void
-        -atualizarVida(j: Jogador): void
-        -atualizarPontuacao(j: Jogador): void
-    }
-
-    class Tijolos {
-        <<Enumeration>>
-        FRACO
-        FORTE
-        INDESTRUTIVEL
-        +cor(c: Color)
+        +AreaJogo()
+        -posicionarTijolos(): void
+        +avancarProximaAreaJogo(t: Tijolos[][]): boolean
+        -reiniciarNivel(v: int): boolean
     }
 
     class Plataforma{
@@ -87,19 +70,25 @@ classDiagram
         -VELOCIDADE_X: final int
         -VELOCIDADE_Y: final int
         +Bolinha()
-        +ReiniciarPosicao()
     } 
 
     class Tijolo {
         -estado: boolean
-        -durabilidade: int
         -poder: boolean
-        -tipo: Tijolos
-        -valor: int
+        -tipo: TipoTijolo
         +Tijolo()
+        +rebaterBolinha(): boolean
         -derrubarPoder(): boolean
-        +getDurabilidade(): int
-        +colisaoBolinha(): void
+    }
+
+    class TipoTijolo {
+        <<Enumeration>>
+        FRACO
+        FORTE
+        INDESTRUTIVEL
+        +cor: Color
+        +durabilidade: int
+        +valor: int
     }
 
     class Poder {
@@ -108,7 +97,7 @@ classDiagram
         -tipo: Poderes
         +Poder()
         +getTipo(): void
-        +encostarNaPlataforma(): boolean
+        +colisaoPlataforma(): boolean
     }
 
     class Elemento {
@@ -117,7 +106,6 @@ classDiagram
         -coordenadaY: int
         -altura: int
         -largura: int
-        -cor: Color
         -imagem: Image
         +desenhar(a: AreaJogo): void
         +carregarImagem(a: String): Image
@@ -128,11 +116,12 @@ classDiagram
         +movimentar()
     }
 
-    class Poderes {
+    class TipoPoder {
         <<Enumeration>>
         MAX_VELOCIDADE
         MIN_VELOCIDADE
         VIDA_EXTRA
+        NULO
     }
 
     Tijolo --|> Elemento
@@ -140,6 +129,7 @@ classDiagram
     Poder --|> Elemento
     Bolinha --|> Elemento
     Plataforma --|> Elemento
+
 
     Poder ..|> Movimento 
     Bolinha ..|> Movimento 
@@ -149,11 +139,7 @@ classDiagram
     AreaDeJogo --* Tijolo
 
     JavanoidOO --* AreaDeJogo
-    JavanoidOO --* AreaPlacar
     JavanoidOO --* Jogador
-
-    AreaDeJogo --|> Area 
-    AreaPlacar --|> Area 
 
     Principal --* JavanoidOO
     

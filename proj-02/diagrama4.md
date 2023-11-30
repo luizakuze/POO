@@ -22,13 +22,10 @@ classDiagram
 
     class AreaDeJogo {
         +AreaDeJogo()
+        +elementos: ArrayList~Elemento~
 
     }
 
-
-    class JavanoidOO {
-        
-    }
 
     class Area {
         << Abstract >>
@@ -129,11 +126,10 @@ classDiagram
     Poder ..|> Movimento 
     Bolinha ..|> Movimento 
     Plataforma ..|> Movimento
-    Plataforma --* JavanoidOO
-    Bolinha --* JavanoidOO
-    Tijolo --* JavanoidOO
+    Plataforma --* AreaDeJogo
+    Bolinha --* AreaDeJogo
+    Tijolo --* AreaDeJogo
 
-    JavanoidOO --* AreaDeJogo
 
     AreaDeJogo --|> Area 
     AreaPlacar --|> Area 

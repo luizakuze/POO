@@ -31,6 +31,7 @@ classDiagram
         -pausado: boolean
         -somLigado: boolean
         +JavanoidOO()
+        +mostrarPlacar()
         +pausar(): boolean
         +fechar(): void
         +keyPressed(e: KeyEvent): void

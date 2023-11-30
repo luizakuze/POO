@@ -1,4 +1,5 @@
-# Diagrama JavanoidOO 🎮🎯
+- KeyListener ----> Jogador/JavanoidOO
+- Elementos ----> AreaDeJogo/JavanoidOO
 
 ```mermaid
 classDiagram
@@ -31,6 +32,7 @@ classDiagram
         -pausado: boolean
         -somLigado: boolean
         +JavanoidOO()
+        +atualizaPlacar()
         +pausar(): boolean
         +fechar(): void
         +keyPressed(e: KeyEvent): void
@@ -60,7 +62,7 @@ classDiagram
         -MIN_TAM: final int
         -MAX_TAM: final int
         +Plataforma(l: largura)
-        +rebaterBolinha(b: Bolinha): boolean
+        +colisaoBolinha(b: Bolinha): boolean
         +aumentarTamanho(): boolean
         +diminuirTamanho(): boolean
         -capturarPoder(p: Poder): boolean

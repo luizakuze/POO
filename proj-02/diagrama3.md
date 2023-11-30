@@ -1,5 +1,6 @@
-JavanoidOO tem um "jogo" que tem área de jogo (?)
-
+- Lógica do jogo em JavanoidOO (?), uma classe para a lógica do jogo.
+- Elementos em JavanoidOO ou AreaDeJogo
+- TelaCompleta ----> AreaDeJogo -----> Jogo (?)
 
 ```mermaid
 classDiagram

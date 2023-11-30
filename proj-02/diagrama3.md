@@ -1,3 +1,6 @@
+JavanoidOO tem um "jogo" que tem área de jogo (?)
+
+
 ```mermaid
 classDiagram
     direction LR

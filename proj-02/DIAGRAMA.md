@@ -22,8 +22,8 @@ classDiagram
         +AumentarPontuacao(t: Tijolo): void
         +getPontuacao(): void
         +moverPlataforma(e: KeyEvent): boolean
-        +mudarEstadoSom(e: KeyEvent)
-        +mudarEstadoPausa(e: KeyEvent)
+        +mudarEstadoSom(e: KeyEvent): boolean
+        +mudarEstadoPausa(e: KeyEvent): boolean
     }
 
     class JavanoidOO {
@@ -32,9 +32,10 @@ classDiagram
         -pausado: boolean
         -somLigado: boolean
         +JavanoidOO()
-        +pausar(): boolean
+        +desenharAreas(): void
+        +mudarEstadoSom(e: KeyEvent): boolean
+        +mudarEstadoPausa(e: KeyEvent): boolean
         +fechar(): void
-
     }
 
     class AreaDeJogo {

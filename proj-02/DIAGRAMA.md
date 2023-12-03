@@ -1,6 +1,4 @@
-- Lógica do jogo em JavanoidOO (?), uma classe para a lógica do jogo.
-- Elementos em JavanoidOO ou AreaDeJogo
-- TelaCompleta ----> AreaDeJogo -----> Jogo (?)
+
 
 ```mermaid
 classDiagram
@@ -41,7 +39,7 @@ classDiagram
 
     class AreaDeJogo {
         -nivel: int
-        -Mapa: Tijolos[][]
+        -Mapa: Tijolo[][]
         -elementos: ArrayList ~Elementos~
         +AreaJogo()
         -posicionarTijolos(): void
@@ -72,6 +70,8 @@ classDiagram
         FORTE
         INDESTRUTIVEL
         +cor(c: Color)
+        +valor(v: int)
+        +Poder(p: Poder)
     }
 
     class Plataforma{
@@ -95,11 +95,10 @@ classDiagram
 
     class Tijolo {
         -estado: boolean
-        -durabilidade: int
         -poder: boolean
         -tipo: Tijolos
-        -valor: int
         +Tijolo()
+        +durabilidade(d: int)
         -derrubarPoder(): boolean
         +getDurabilidade(): int
         +colisaoBolinha(): void

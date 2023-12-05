@@ -1,0 +1,159 @@
+package engtelecom.poo;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+public class JavanoidOO extends JPanel implements KeyListener {
+    private static final int FPS = 60;
+    private final int LARGURA_TELA = 800;
+    private final int ALTURA_TELA = 600;
+
+    private AreaJogo areaJogo;
+    private AreaPlacar areaPlacar;
+    private boolean pausado;
+    private boolean somLigado;
+    private Timer timer;
+
+    public JavanoidOO() {
+        this.areaPlacar = new AreaPlacar();
+        this.areaJogo = new AreaJogo();
+        this.pausado = false;
+    }
+
+    public void iniciar() {
+        JFrame frame = new JFrame();
+        frame.setSize(LARGURA_TELA, ALTURA_TELA);
+        frame.setTitle("JavanoidOO");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        // não permite que o usuário redimensione a janela
+        frame.setResizable(false);
+
+        // centraliza a janela na tela
+        frame.setLocationRelativeTo(null);
+
+        // exibe a janela
+        frame.setVisible(true);
+
+        // invoca o método paint() dessa classe a cada 1000/FPS milissegundos
+        this.timer = new Timer(1000 / FPS, e -> {
+            repaint();
+        });
+        // disparando o timer
+        this.timer.start();
+
+    }
+
+
+    public void paint(Graphics g) { /// TODO graphics é o draw
+        var g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+
+        this.areaJogo.desenharArea(g);
+
+        // sincroniza o contexto gráfico
+        Toolkit.getDefaultToolkit().sync();
+    }
+
+
+
+    private void mudarEstadoSom() {
+        this.somLigado = !this.somLigado;
+    }
+
+    private void mudarEstadoPausado() {
+        this.pausado = !this.pausado;
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO: Implementar
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+package engtelecom.poo;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.util.Timer;
+import java.awt.Toolkit;
+import java.util.ArrayList;
+
+import javax.swing.JPanel;
+
+import com.google.common.collect.ArrayListMultimap;
+
+import edu.princeton.cs.algs4.Particle;
+
+public class AreaJogo{
+    private int coordenadaX;
+    private int coordenadaY;
+    private int largura;
+    private int altura;
+    private int nivel;
+    private Color cor;
+    private ArrayList<Elemento> elementos;
+
+    private int bolaCoordenadaX;
+    private int bolaCoordenadaY;
+    private int velocidadeX;
+    private int velocidadeY;
+
+    private Bolinha bolinha;
+
+    public AreaJogo() {
+        this.coordenadaX = 0;
+        this.coordenadaY = 0;
+        this.largura = 500;
+        this.altura = 600;
+        this.nivel = 1;
+        this.cor = Color.BLACK;
+        this.bolinha = new Bolinha();
+    }
+
+
+    public void desenharArea(Graphics g) {
+        var g2d = (Graphics2D) g;
+ 
+        g2d.setColor(cor);
+        g2d.fillRect(this.coordenadaX, this.coordenadaY, this.largura, this.altura);
+
+        bolinha.desenhar(g2d);
+    }
+
+
+    public Object getBolinha() {
+        return null;
+    }
+}

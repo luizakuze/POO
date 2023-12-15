@@ -1,4 +1,4 @@
-## PRG2 - Programação 2 📌💻
+## POO - Programação Orientada a Objetos 💻
 Esses são os meus estudos de `Programação Orientada a Objetos`, 4ª fase de engenharia de telecom (2023.2).
 <br> A linguaguem de programação utilizada nessa disciplina é o Java. 
 

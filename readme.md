@@ -1,3 +1,15 @@
-# POO
+## PRG2 - Programação 2 📌💻
+Esses são os meus estudos de `Programação Orientada a Objetos`, 4ª fase de engenharia de telecom (2023.2).
+<br> A linguaguem de programação utilizada nessa disciplina é o Java. 
 
-Esse é meu repositório para a disciplina de Programação Orientada a Objetos do curso de Engenharia de Telecomunicações - 4ª fase! Semestre 2023.2
+### Projetos ✨
+#### 🌟 Projeto 01 - Relógio Digital 
+- Projeto de introdução à disciplina.
+- Desenvolvemos a ideia do paradigma básico da orintação a objetos, visualizando qual a responsabilidade de cada classe.
+- Faz a representação gráfica de um relógio e atualiza a sua hora.
+- [**Relógio-Digital**](https://github.com/luizakuze/Relógio-Digital) 💼
+#### 🌟 Projeto 02 - JavanoidOO
+- Projeto final da disciplina.
+- Um projeto de um jogo parecido com Paranoid do sistema operacional DOS.
+- O jogo contém interface gráfica e interação com usuário (jogador).
+- [**JavanoidOO**](https://github.com/luizakuze/JavanoidOO) 🚗

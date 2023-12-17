@@ -5,6 +5,8 @@ import java.time.Instant;
 
 import raytracer.ABunchOfSpheres;
 
+// NÃO FINALIZADO
+
 public class App implements Runnable{
 
     private int num_frames;
